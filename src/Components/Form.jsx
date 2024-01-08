@@ -2,9 +2,9 @@ import React from 'react'
 
 function Form() {
   return (
-    <form className="d-flex flex-column">
+    <form className="d-flex flex-column " style={{width:'70%'}}>
       <h2 style={{color:'#3E0070'}}>Autenticación</h2>
-        <div className="mb-3 text-left">
+        <div className="mb-3">
           <label for="exampleInputEmail1" className="form-label text-secondary">Correo electrónico</label>
           <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
         </div>
