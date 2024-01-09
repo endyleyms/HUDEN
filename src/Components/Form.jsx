@@ -63,6 +63,20 @@ function Form() {
           <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e)=>setPassword(e.target.value)}/>
           {error?.password && <div className="text-danger">{error?.password}</div>}
         </div>
+        <div className="d-flex flex-row justify-content-between">
+          <div className="mb-3 form-check">
+            <input type="checkbox" className="form-check-input" id="Cliente"/>
+            <label className="form-check-label" for="exampleCheck1">Cliente</label>
+          </div>
+          <div className="mb-3 form-check">
+            <input type="checkbox" className="form-check-input" id="Vendedor"/>
+            <label clclassNameass="form-check-label" for="exampleCheck1">Vendedor</label>
+          </div>
+          <div className="mb-3 form-check">
+            <input type="checkbox" className="form-check-input" id="Administrador"/>
+            <label className="form-check-label" for="exampleCheck1">Administrador</label>
+          </div>
+        </div>
         <button type="submit" className="btn text-light" style={{backgroundColor:'#3E0070'}}>Ingresar</button>
     </form>
   )
