@@ -3,11 +3,14 @@ import React, { useState } from 'react'
 function Dropdown({user}) {
   const [selected, setSecelted]= useState(user?.status);
   const [show, setShow]= useState(false);
-  console.log("show", show)
+
+  //funcion para seleccionar status y se oculte el drop
   const handleSelect = (status) => {
     setSecelted(status);
     setShow(!show);
   };
+
+  //funcion manejadora de adición de clase de estilos
   const getButtonClass = (status) => {
     if (status === 'Confirmado') {
       return 'btn-outline-success';
@@ -18,7 +21,7 @@ function Dropdown({user}) {
     }
   };
   return (
-    <div class="dropdown">
+    <div>
       <button
         type="button"
         className={`btn dropdown-toggle ${getButtonClass(selected)}`}
@@ -29,21 +32,21 @@ function Dropdown({user}) {
         {selected}
       </button>
       {show &&
-        <ul class="list-group">
-          <li className={`list-group-item ${selected === 'Confirmado'}`}>
-            <a onClick={() => handleSelect('Confirmado')}>
+        <ul className="list-group">
+          <li className={`list-group-item`}>
+            <button type="button" className='btn' onClick={() => handleSelect('Confirmado')}>
               Confirmado
-            </a>
+            </button>
           </li>
-          <li className={`list-group-item ${selected === 'No Confirmado'}`}>
-            <a onClick={() => handleSelect('No Confirmado')}>
+          <li className={`list-group-item`}>
+            <button type="button" className='btn' onClick={() => handleSelect('No Confirmado')}>
               No Confirmado
-            </a>
+            </button>
           </li>
-          <li className={`list-group-item ${selected === 'Bloqueado'}`}>
-            <a onClick={() => handleSelect('Bloqueado')} >
+          <li className={`list-group-item`}>
+            <button type="button" className='btn' onClick={() => handleSelect('Bloqueado')} >
               Bloqueado
-            </a>
+            </button>
           </li>
         </ul>
       }
