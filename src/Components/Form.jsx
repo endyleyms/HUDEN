@@ -3,16 +3,16 @@ import { z, ZodError } from "zod";
 import { useNavigate } from 'react-router-dom';
 
 function Form() {
+  const [name, setName]= useState('');
   const [email, setEmail]= useState('');
   const [password, setPassword]= useState('');
   const [error, setError]= useState();
   const navigate = useNavigate();
   //validaciones con zod
   const signInSchema = z.object({
-    // name: z.string({
-    //   required_error: "El nombre es requerido",
-    //   invalid_type_error: "El nombre debe contener solo letras",
-    // }),
+    name: z
+    .string()
+    .min(3, "Debe tener al menos 3 letras"),
     email: z.string().email('El email no es válido'),
     password: z
       .string()
@@ -23,6 +23,7 @@ function Form() {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = {
+      name,
       email,
       password
     };
@@ -47,6 +48,11 @@ function Form() {
   return (
     <form className="d-flex flex-column " style={{width:'70%'}} onSubmit={handleSubmit}>
       <h2 style={{color:'#3E0070'}}>Autenticación</h2>
+      <div className="mb-3">
+          <label for="exampleInputName" className="form-label text-secondary">Nombre</label>
+          <input type="text" className="form-control" id="exampleInputName" value={name} onChange={(e)=>setName(e.target.value)} />
+          {error?.name && <div className="text-danger">{error?.name}</div>}
+        </div>
         <div className="mb-3">
           <label for="exampleInputEmail1" className="form-label text-secondary">Correo electrónico</label>
           <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={(e)=>setEmail(e.target.value)} />
