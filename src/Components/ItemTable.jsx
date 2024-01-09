@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Dropdown from './Dropdown';
 
 function ItemTable({user, index}) {
   const [isEditing, setIsEditing] = useState(false);
@@ -33,12 +34,7 @@ function ItemTable({user, index}) {
       </>
       }
       <td>
-        {user.status === 'Confirmado' ?
-        <button type="button" className="btn btn-outline-success">{user.status}</button>
-        :user.status === 'No Confirmado' ?
-        <button type="button" className="btn btn-outline-warning">{user.status}</button>
-        : <button type="button" className="btn btn-outline-danger">{user.status}</button>
-        }
+        <Dropdown user={user}/>
       </td>
       <td>
         <button type="button" className="btn btn-outline-secondary" onClick={sendIndexEdit}>{isEditing ? 'Modificar' : 'Editar'}</button>

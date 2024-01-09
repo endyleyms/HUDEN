@@ -39,6 +39,12 @@ function Admin() {
       email: "JuanPabloGomez@gmail.com",
       role: "cliente",
       status: "Confirmado"
+    },
+    {
+      name: "",
+      email: "",
+      role: "",
+      status: "No Confirmado"
     }
   ]
   return (
