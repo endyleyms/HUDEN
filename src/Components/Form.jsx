@@ -57,7 +57,7 @@ function Form() {
           <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e)=>setPassword(e.target.value)}/>
           {error?.password && <div className="text-danger">{error?.password}</div>}
         </div>
-        <button type="submit" className="btn text-light" style={{backgroundColor:'#3E0070'}}>Acceso</button>
+        <button type="submit" className="btn text-light" style={{backgroundColor:'#3E0070'}}>Ingresar</button>
     </form>
   )
 }

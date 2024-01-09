@@ -5,6 +5,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Singup from "./Pages/Singup";
 import Admin from "./Pages/Admin";
+import Dashboard from "./Pages/Dashboard";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Singup/>} />
         {/* <Route path="/login" element={<Login/>} /> */}
         <Route path="/admin" element={<Admin/>}/>
+        <Route path="/dashboard" element={<Dashboard/>}/>
       </Routes>
     </BrowserRouter>
   )
