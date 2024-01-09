@@ -4,16 +4,17 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Singup from "./Pages/Singup";
+import Admin from "./Pages/Admin";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <BrowserRouter>
-    <Routes>
-    <Route path="/" element={<Singup/>} />
-    {/* <Route path="/login" element={<Login/>} /> */}
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Singup/>} />
+        {/* <Route path="/login" element={<Login/>} /> */}
+        <Route path="/admin" element={<Admin/>}/>
+      </Routes>
     </BrowserRouter>
   )
 }
