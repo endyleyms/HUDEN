@@ -49,8 +49,8 @@ function Admin() {
         podrás manejar todos los aspectos de la página web, incluyendo la administración de usuarios.</p>
         <hr />
         <section id="admin-tools" className="row justify-content-md-center">
-        <div class="table-responsive">
-        <table class="table">
+        <div className="table-responsive">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -63,19 +63,19 @@ function Admin() {
           <tbody>
             {users.map((user, index)=>{
               return(
-              <tr>
-              <th scope="row">{index + 1}</th>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>{user.role}</td>
-              <td>
-                {user.status === 'Confirmado' ?
-                <button type="button" className="btn btn-outline-success">{user.status}</button>
-                :user.status === 'No Confirmado' ?
-                <button type="button" className="btn btn-outline-warning">{user.status}</button>
-                : <button type="button" className="btn btn-outline-danger">{user.status}</button>
-                }
-              </td>
+              <tr key={index}>
+                <th scope="row">{index + 1}</th>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>{user.role}</td>
+                <td>
+                  {user.status === 'Confirmado' ?
+                  <button type="button" className="btn btn-outline-success">{user.status}</button>
+                  :user.status === 'No Confirmado' ?
+                  <button type="button" className="btn btn-outline-warning">{user.status}</button>
+                  : <button type="button" className="btn btn-outline-danger">{user.status}</button>
+                  }
+                </td>
             </tr>)
             })}
           </tbody>
