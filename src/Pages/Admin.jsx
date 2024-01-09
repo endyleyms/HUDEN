@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../Components/Header'
+import ItemTable from '../Components/ItemTable';
 
 function Admin() {
   const users =[
@@ -58,25 +59,14 @@ function Admin() {
               <th scope="col">Correo</th>
               <th scope="col">Rol</th>
               <th scope="col">Estado</th>
+              <th scope="col">Editar</th>
             </tr>
           </thead>
           <tbody>
             {users.map((user, index)=>{
               return(
-              <tr key={index}>
-                <th scope="row">{index + 1}</th>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.role}</td>
-                <td>
-                  {user.status === 'Confirmado' ?
-                  <button type="button" className="btn btn-outline-success">{user.status}</button>
-                  :user.status === 'No Confirmado' ?
-                  <button type="button" className="btn btn-outline-warning">{user.status}</button>
-                  : <button type="button" className="btn btn-outline-danger">{user.status}</button>
-                  }
-                </td>
-            </tr>)
+                <ItemTable key={index} user={user} index={index}/>
+              )
             })}
           </tbody>
         </table>
