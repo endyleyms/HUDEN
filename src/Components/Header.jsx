@@ -12,19 +12,22 @@ const Header = () => {
         <img src="./src/assets/huden-arribaderecha.png" alt="" className="img-fluid" style={{height: 50}}/>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+              <a class="nav-link active" aria-current="page" href="/">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Reporte de horas</a>
+              <a class="nav-link" href="/">Reporte de horas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Laboratorio</a>
+              <a class="nav-link" href="/">Laboratorio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin">Users</a>
             </li>
           </ul>
         </div>
         <div className='d-flex flex-row align-items-center gap-3'>
           <span >JuanPabloGomez@gmail.com</span>
-          <button className='d-flex align-items-center bg-danger text-light' style={{height: '40%', width:'40%'}}>Salir</button>
+          <button className='d-flex justify-content-center align-items-center bg-danger text-light' style={{height: 30, width:50}}>Salir</button>
         </div>
       </div>
     </nav>
