@@ -72,7 +72,7 @@ function Form() {
           </div>
           <div className="mb-3 form-check">
             <input type="radio" className="form-check-input" id="Vendedor" value="Vendedor" checked={role === 'Vendedor'} onChange={() => setRole('Vendedor')}/>
-            <label clclassNameass="form-check-label" for="exampleCheck1">Vendedor</label>
+            <label className="form-check-label" for="exampleCheck1">Vendedor</label>
           </div>
           <div className="mb-3 form-check">
             <input type="radio" className="form-check-input" id="Administrador" value="Administrador" checked={role === 'Administrador'} onChange={() => setRole('Administrador')} />
