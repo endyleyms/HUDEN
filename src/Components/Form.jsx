@@ -6,6 +6,7 @@ function Form() {
   const [name, setName]= useState('');
   const [email, setEmail]= useState('');
   const [password, setPassword]= useState('');
+  const [role, setRole] = useState('');
   const [error, setError]= useState();
   const navigate = useNavigate();
   //validaciones con zod
@@ -25,7 +26,8 @@ function Form() {
     const formData = {
       name,
       email,
-      password
+      password,
+      role
     };
     try {
       signInSchema.parse(formData);
@@ -65,15 +67,15 @@ function Form() {
         </div>
         <div className="d-flex flex-row justify-content-between">
           <div className="mb-3 form-check">
-            <input type="checkbox" className="form-check-input" id="Cliente"/>
+            <input type="radio" className="form-check-input" id="Cliente" value="Cliente" checked={role === 'Cliente'} onChange={() => setRole('Cliente')}/>
             <label className="form-check-label" for="exampleCheck1">Cliente</label>
           </div>
           <div className="mb-3 form-check">
-            <input type="checkbox" className="form-check-input" id="Vendedor"/>
+            <input type="radio" className="form-check-input" id="Vendedor" value="Vendedor" checked={role === 'Vendedor'} onChange={() => setRole('Vendedor')}/>
             <label clclassNameass="form-check-label" for="exampleCheck1">Vendedor</label>
           </div>
           <div className="mb-3 form-check">
-            <input type="checkbox" className="form-check-input" id="Administrador"/>
+            <input type="radio" className="form-check-input" id="Administrador" value="Administrador" checked={role === 'Administrador'} onChange={() => setRole('Administrador')} />
             <label className="form-check-label" for="exampleCheck1">Administrador</label>
           </div>
         </div>
