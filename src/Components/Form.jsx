@@ -6,14 +6,13 @@ function Form() {
   const [name, setName]= useState('');
   const [email, setEmail]= useState('');
   const [password, setPassword]= useState('');
-  const [role, setRole] = useState('');
   const [error, setError]= useState();
   const navigate = useNavigate();
   //validaciones con zod
   const signInSchema = z.object({
-    name: z
-    .string()
-    .min(3, "Debe tener al menos 3 letras"),
+    // name: z
+    // .string()
+    // .min(3, "Debe tener al menos 3 letras"),
     email: z.string().email('El email no es válido'),
     password: z
       .string()
@@ -24,10 +23,9 @@ function Form() {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = {
-      name,
+      // name,
       email,
       password,
-      role
     };
     try {
       signInSchema.parse(formData);
@@ -50,36 +48,22 @@ function Form() {
   return (
     <form className="d-flex flex-column " style={{width:'70%'}} onSubmit={handleSubmit}>
       <h2 style={{color:'#3E0070'}}>Autenticación</h2>
+      {/* <div className="mb-3">
+        <label for="exampleInputName" className="form-label text-secondary">Nombre</label>
+        <input type="text" className="form-control" id="exampleInputName" value={name} onChange={(e)=>setName(e.target.value)} />
+        {error?.name && <div className="text-danger">{error?.name}</div>}
+      </div> */}
       <div className="mb-3">
-          <label for="exampleInputName" className="form-label text-secondary">Nombre</label>
-          <input type="text" className="form-control" id="exampleInputName" value={name} onChange={(e)=>setName(e.target.value)} />
-          {error?.name && <div className="text-danger">{error?.name}</div>}
-        </div>
-        <div className="mb-3">
-          <label for="exampleInputEmail1" className="form-label text-secondary">Correo electrónico</label>
-          <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={(e)=>setEmail(e.target.value)} />
-          {error?.email && <div className="text-danger">{error?.email}</div>}
-        </div>
-        <div className="mb-3">
-          <label for="exampleInputPassword1" className="form-label text-secondary">Contraseña</label>
-          <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e)=>setPassword(e.target.value)}/>
-          {error?.password && <div className="text-danger">{error?.password}</div>}
-        </div>
-        <div className="d-flex flex-row justify-content-between">
-          <div className="mb-3 form-check">
-            <input type="radio" className="form-check-input" id="Cliente" value="Cliente" checked={role === 'Cliente'} onChange={() => setRole('Cliente')}/>
-            <label className="form-check-label" for="exampleCheck1">Cliente</label>
-          </div>
-          <div className="mb-3 form-check">
-            <input type="radio" className="form-check-input" id="Vendedor" value="Vendedor" checked={role === 'Vendedor'} onChange={() => setRole('Vendedor')}/>
-            <label className="form-check-label" for="exampleCheck1">Vendedor</label>
-          </div>
-          <div className="mb-3 form-check">
-            <input type="radio" className="form-check-input" id="Administrador" value="Administrador" checked={role === 'Administrador'} onChange={() => setRole('Administrador')} />
-            <label className="form-check-label" for="exampleCheck1">Administrador</label>
-          </div>
-        </div>
-        <button type="submit" className="btn text-light" style={{backgroundColor:'#3E0070'}}>Ingresar</button>
+        <label for="exampleInputEmail1" className="form-label text-secondary">Correo electrónico</label>
+        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={(e)=>setEmail(e.target.value)} />
+        {error?.email && <div className="text-danger">{error?.email}</div>}
+      </div>
+      <div className="mb-3">
+        <label for="exampleInputPassword1" className="form-label text-secondary">Contraseña</label>
+        <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e)=>setPassword(e.target.value)}/>
+        {error?.password && <div className="text-danger">{error?.password}</div>}
+      </div>
+      <button type="submit" className="btn text-light" style={{backgroundColor:'#3E0070'}}>Ingresar</button>
     </form>
   )
 }

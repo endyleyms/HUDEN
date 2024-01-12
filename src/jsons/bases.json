@@ -1,0 +1,27 @@
+[
+  {
+    "id":"",
+    "title": "'Base Shower'",
+    "description": "'cost: 12'"
+  },
+  {
+    "id":"''",
+    "title": "'Base Emulgel HQ'",
+    "description": "'cost: 45'"
+  },
+  {
+    "id":"''",
+    "title": "'Base AR'",
+    "description": "'cost: 35'"
+  },
+  {
+    "id":"",
+    "title": "'Base crema ACS'",
+    "description": "Teo: 225, cost: 18 %PVP:90"
+  },
+  {
+    "id":"",
+    "title": "'Agua Purificada'",
+    "description": "'cost 10'"
+  }
+]

@@ -1,52 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../Components/Header'
 import ItemTable from '../Components/ItemTable';
+import { listAllUsers } from '../services/users';
 
 function Admin() {
-  const users =[
-    {
-      name: "John Doe",
-      email: "JuanPabloGomez@gmail.com",
-      role: "cliente",
-      status: "Confirmado"
-    },
-    {
-      name:"Maria Rodriguez",
-      email:"maria123@hotmail.com",
-      role:"administrador",
-      status: "Bloqueado"
-    },
-    {
-      name:"Juan Carlos Lopez",
-      email:"juanlopez_97@outlook.com",
-      role:"vendedor",
-      status: "Confirmado"
-    },
-    {
-      name:"Carlos Moreno",
-      email:"carlomoreno@yahoo.com.mx",
-      role:"cliente",
-      status: "No Confirmado"
-    },
-    {
-      name:"Ana Jimenez",
-      email:"anajimenez04@hotmail.com",
-      role:"cliente",
-      status: "Confirmado"
-    },
-    {
-      name: "Mark",
-      email: "JuanPabloGomez@gmail.com",
-      role: "cliente",
-      status: "Confirmado"
-    },
-    {
-      name: "",
-      email: "",
-      role: "",
-      status: "No Confirmado"
-    }
-  ]
+  const [users, setUsers]=useState()
+  const fetchUsers = async (query = {})=>{
+    const data= await listAllUsers (query);
+    setUsers(data);
+  }
+  useEffect(()=>{
+    fetchUsers();
+  },[])
   return (
     <div>
       <Header/>
@@ -69,7 +34,7 @@ function Admin() {
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index)=>{
+            {users?.map((user, index)=>{
               return(
                 <ItemTable key={index} user={user} index={index}/>
               )

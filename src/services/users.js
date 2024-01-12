@@ -1,0 +1,57 @@
+const API_URL = "./src/jsons/users.json";
+
+export const listAllUsers = async () => {
+  try {
+    const response = await fetch(`${API_URL}`);
+    console.log("res", response);
+    const users = await response.json();
+    console.log("users", users);
+    return users;
+  } catch {
+    throw new Error("Error in fetch products");
+  }
+};
+
+export const getUser = async (id) => {
+  try {
+    const response = await fetch(`${API_URL}/${id}`);
+    const user = await response.json();
+    return user;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const newUser = async (newRegister) => {
+  try {
+    const payload = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newRegister),
+    };
+    const response = await fetch(`${API_URL}`, payload);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const updateUser = async (id, body) => {
+  const payload = {
+    method: "PUT",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(body),
+  };
+  try {
+    const response = await fetch(`${API_URL}/${id}`, payload);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};

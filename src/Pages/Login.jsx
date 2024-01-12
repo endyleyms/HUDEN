@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../Components/Header'
 import Form from '../Components/Form'
 
-function Singup() {
+function Login() {
   return (
     <div>
       <Header/>
@@ -20,4 +20,4 @@ function Singup() {
   )
 }
 
-export default Singup
+export default Login

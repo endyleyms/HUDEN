@@ -1,0 +1,51 @@
+[
+  {
+    "id": "1",
+    "name": "John Doe",
+    "email": "JuanPabloGomez@gmail.com",
+    "role": "cliente",
+    "status": "Confirmado"
+  },
+  {
+    "id": "2",
+    "name":"Maria Rodriguez",
+    "email":"maria123@hotmail.com",
+    "role":"administrador",
+    "status": "Bloqueado"
+  },
+  {
+    "id": "3",
+    "name":"Juan Carlos Lopez",
+    "email":"juanlopez_97@outlook.com",
+    "role":"vendedor",
+    "status": "Confirmado"
+  },
+  {
+    "id": "4",
+    "name":"Carlos Moreno",
+    "email":"carlomoreno@yahoo.com.mx",
+    "role":"cliente",
+    "status": "No Confirmado"
+  },
+  {
+    "id": "5",
+    "name":"Ana Jimenez",
+    "email":"anajimenez04@hotmail.com",
+    "role":"cliente",
+    "status": "Confirmado"
+  },
+  {
+    "id": "6",
+    "name": "Mark",
+    "email": "JuanPabloGomez@gmail.com",
+    "role": "cliente",
+    "status": "Confirmado"
+  },
+  {
+    "id": "7",
+    "name": "",
+    "email": "",
+    "role": "",
+    "status": "No Confirmado"
+  }
+]
