@@ -1,20 +1,23 @@
 import React, { useState } from 'react'
 import Dropdown from './Dropdown';
+import { updateUser } from '../services/users';
 
 function ItemTable({user, index}) {
   const [isEditing, setIsEditing] = useState(false);
   const [name, setName]= useState('');
   const [email, setEmail]= useState('');
   const [role, setRole]= useState('');
-  const sendIndexEdit = () => {
+  const sendIndexEdit = (event) => {
     setIsEditing(!isEditing);
     if(isEditing){
       //logica de cambiar los datos del usuario
+      event.preventDefault()
       const formData = {
         name,
         email,
         role
       };
+      updateUser(index, formData)
     }
   };
   return (

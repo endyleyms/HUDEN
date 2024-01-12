@@ -40,6 +40,7 @@ export const newUser = async (newRegister) => {
 };
 
 export const updateUser = async (id, body) => {
+  // descomentar cuándo se conecte con el back
   const payload = {
     method: "PUT",
     headers: {
