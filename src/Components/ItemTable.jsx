@@ -7,6 +7,9 @@ function ItemTable({user, index}) {
   const [name, setName]= useState('');
   const [email, setEmail]= useState('');
   const [role, setRole]= useState('');
+  const [password, setPassword]=useState('');
+
+
   const sendIndexEdit = (event) => {
     setIsEditing(!isEditing);
     if(isEditing){
@@ -17,7 +20,7 @@ function ItemTable({user, index}) {
         email,
         role
       };
-      updateUser(index, formData)
+      //updateUser(index, formData)
     }
   };
   return (
@@ -28,16 +31,18 @@ function ItemTable({user, index}) {
         <td><input type="text" className="form-control" placeholder={`${user.name}`} value={name} onChange={(e)=>setName(e.target.value)}/></td>
         <td><input type="text" className="form-control" placeholder={`${user.email}`} value={email} onChange={(e)=>setEmail(e.target.value)}/></td>
         <td><input type="text" className="form-control" placeholder={`${user.role}`} value={role} onChange={(e)=>setRole(e.target.value)}/></td>
+        <td><input type="text" className="form-control" placeholder={`${user.password}`} value={password} onChange={(e)=>setPassword(e.target.value)}/></td>
       </>
       :
       <>
         <td>{user.name}</td>
         <td>{user.email}</td>
         <td>{user.role}</td>
+        <td>{user.password}</td>
       </>
       }
       <td>
-        <Dropdown user={user}/>
+        <Dropdown data={user} isEditing={isEditing}/>
       </td>
       <td>
         <button type="button" className="btn btn-outline-secondary" onClick={sendIndexEdit}>{isEditing ? 'Modificar' : 'Editar'}</button>

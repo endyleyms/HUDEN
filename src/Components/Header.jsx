@@ -23,6 +23,9 @@ const Header = () => {
             <li className="nav-item">
               <a className="nav-link" href="/admin">Users</a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/adminProd">Productos</a>
+            </li>
           </ul>
         </div>
         <div className='d-flex flex-row align-items-center gap-3'>

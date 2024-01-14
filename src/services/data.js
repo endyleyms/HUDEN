@@ -1,26 +1,25 @@
-const API_URL = "./src/jsons/users.json";
+const API_URL = "./src/jsons/data.json";
 
-export const listAllUsers = async () => {
+export const listAll = async () => {
   try {
     const response = await fetch(`${API_URL}`);
-    const users = await response.json();
-    return users;
+    const data = await response.json();
+    return data;
   } catch {
     throw new Error("Error in fetch products");
   }
 };
 
-export const getUser = async (id) => {
+export const getOne = async (id) => {
   try {
     const response = await fetch(`${API_URL}/${id}`);
-    const user = await response.json();
-    return user;
+    const data = await response.json();
+    return data;
   } catch (error) {
     throw new Error(error);
   }
 };
-
-export const newUser = async (newRegister) => {
+export const newData = async (newRegister) => {
   try {
     const payload = {
       method: "POST",
@@ -36,8 +35,7 @@ export const newUser = async (newRegister) => {
     throw new Error(error);
   }
 };
-
-export const updateUser = async (id, body) => {
+export const updateById = async (id, body) => {
   // descomentar cuándo se conecte con el back
   const payload = {
     method: "PUT",
