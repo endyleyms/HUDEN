@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react'
 import Header from '../Components/Header'
+import { listAll } from '../services/data'
+import ItemProd from '../Components/itemProd'
 
 function AdminProducts() {
+  const [data, setData]=useState()
+  const fetchData = async (query = {})=>{
+    const data= await listAll(query)
+    setData(data);
+  }
+  useEffect(()=>{
+    fetchData();
+  },[])
   return (
     <div>
       <Header/>
@@ -19,17 +29,19 @@ function AdminProducts() {
               <th scope="col">Código</th>
               <th scope="col">Categoría</th>
               <th scope="col">Nombre</th>
+              <th scope="col">Descripción</th>
               <th scope="col">Precio</th>
+              <th scope="col">Cantidad</th>
               <th scope="col">Unidad de medida</th>
               <th scope="col">Editar</th>
             </tr>
           </thead>
           <tbody>
-            {/* {users?.map((user, index)=>{
+            {data?.map((item, index)=>{
               return(
-                <ItemTable key={index} user={user} index={index}/>
+                <ItemProd key={index} data={item} index={index}/>
               )
-            })} */}
+            })}
           </tbody>
         </table>
         </div>

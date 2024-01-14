@@ -3,66 +3,99 @@
     "id":"",
     "title": "'Base Shower'",
     "description": "'cost: 12'",
-    "category": "base"
+    "category": "base",
+    "price": "50cop",
+    "unidad": "mg",
+    "cantidad": "5"
   },
   {
     "id":"''",
     "title": "'Base Emulgel HQ'",
     "description": "'cost: 45'",
-    "category": "base"
+    "category": "base",
+    "price": "50cop",
+    "unidad": "mg",
+    "cantidad": "5"
   },
   {
     "id":"''",
     "title": "'Base AR'",
     "description": "'cost: 35'",
-    "category": "base"
+    "category": "base",
+    "price": "50cop",
+    "unidad": "mg",
+    "cantidad": "5"
   },
   {
     "id":"",
     "title": "'Base crema ACS'",
     "description": "Teo: 225, cost: 18 %PVP:90",
-    "category": "base"
+    "category": "base",
+    "price": "50cop",
+    "unidad": "mg",
+    "cantidad": "5"
   },
   {
     "id":"",
     "title": "'Agua Purificada'",
     "description": "'cost 10'",
-    "category": "base"
+    "category": "base",
+    "price": "50cop",
+    "unidad": "mg",
+    "cantidad": "5"
   },
   {
     "id":"",
     "title": "ENVASE DE VIDRIO 3340 FLINT ROSCA'",
     "description": "'cost: 139'",
-    "category": "envase"
+    "category": "envase",
+    "price": "50cop",
+    "unidad": "unidad",
+    "cantidad": "5"
   },
   {
     "id":"",
     "title": "'ENVASE DE VIDRIO MB30R FLINT TO'",
     "description": "'cost: 39.556'",
-    "category": "envase"
+    "category": "envase",
+    "price": "50cop",
+    "unidad": "unidad",
+    "cantidad": "5"
   },
   {
     "id":"",
     "title": "'ENVASE DE VIDRIO MB40R FLINT TO'",
     "description": "'cost: 39.556'",
-    "category": "envase"
+    "category": "envase",
+    "price": "50cop",
+    "unidad": "unidad",
+    "cantidad": "5"
   },
   {
     "id": "P190010",
     "title": "UVINULT T 150",
     "description":" 275",
-    "category": "principio activo"
+    "category": "principio activo",
+    "price": "50cop",
+    "unidad": "litro",
+    "cantidad": "5"
   },
   {
     "id": "E220002",
     "title": "'Vaselina blanca'",
     "description": "'17'",
-    "category": "principio activo"
+    "category": "principio activo",
+    "price": "50cop",
+    "unidad": "litro",
+    "cantidad": "5"
   },
   {
     "id": "'E0034'",
     "title": "'Vitamina A'",
     "description": "'825'",
-    "category": "principio activo"
+    "category": "principio activo",
+    "price": "50cop",
+    "unidad": "litro",
+    "cantidad": "5"
   }
 ]
