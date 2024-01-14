@@ -75,7 +75,7 @@
     "id": "P190010",
     "title": "UVINULT T 150",
     "description":" 275",
-    "category": "principio activo",
+    "category": "principio",
     "price": "50cop",
     "unidad": "litro",
     "cantidad": "5"
@@ -84,7 +84,7 @@
     "id": "E220002",
     "title": "'Vaselina blanca'",
     "description": "'17'",
-    "category": "principio activo",
+    "category": "principio",
     "price": "50cop",
     "unidad": "litro",
     "cantidad": "5"
@@ -93,7 +93,7 @@
     "id": "'E0034'",
     "title": "'Vitamina A'",
     "description": "'825'",
-    "category": "principio activo",
+    "category": "principio",
     "price": "50cop",
     "unidad": "litro",
     "cantidad": "5"
