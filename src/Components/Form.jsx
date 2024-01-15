@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { z, ZodError } from "zod";
 import { useNavigate } from 'react-router-dom';
 
-function Form() {
+function Form({singUp}) {
   const [name, setName]= useState('');
   const [email, setEmail]= useState('');
   const [password, setPassword]= useState('');
@@ -10,9 +10,16 @@ function Form() {
   const navigate = useNavigate();
   //validaciones con zod
   const signInSchema = z.object({
-    // name: z
-    // .string()
-    // .min(3, "Debe tener al menos 3 letras"),
+    email: z.string().email('El email no es válido'),
+    password: z
+      .string()
+      .min(6, 'La contraseña debe tener al menos 6 caracteres')
+      .max(16, 'La contraseña debe tener menos de 16 caracteres'),
+  });
+  const singUpSchema = z.object({
+    name: z
+    .string()
+    .min(3, "Debe tener al menos 3 letras"),
     email: z.string().email('El email no es válido'),
     password: z
       .string()
@@ -22,17 +29,25 @@ function Form() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const formData = {
-      // name,
+    const formDataLogin = {
+      email,
+      password,
+    };
+    const formDataSingUp = {
+      name,
       email,
       password,
     };
     try {
-      signInSchema.parse(formData);
-      // La validación fue exitosa, realiza las acciones correspondientes
-      console.log('Formulario válido:', formData);
-      navigate('/admin');
-
+      if(!singUp){
+        signInSchema.parse(formDataLogin);
+        console.log('Formulario válido:', formDataLogin);
+        navigate('/admin');
+      }else{
+        singUpSchema.parse(formDataSingUp);
+        console.log('Formulario válido:', formDataSingUp);
+        alert("Usuario creado correctamente");
+      }
     } catch (error) {
       if (error instanceof ZodError) {
         // La validación falló, actualiza el estado de los errores
@@ -48,11 +63,14 @@ function Form() {
   return (
     <form className="d-flex flex-column " style={{width:'70%'}} onSubmit={handleSubmit}>
       <h2 style={{color:'#3E0070'}}>Autenticación</h2>
-      {/* <div className="mb-3">
-        <label for="exampleInputName" className="form-label text-secondary">Nombre</label>
-        <input type="text" className="form-control" id="exampleInputName" value={name} onChange={(e)=>setName(e.target.value)} />
-        {error?.name && <div className="text-danger">{error?.name}</div>}
-      </div> */}
+      {
+        singUp &&
+        <div className="mb-3">
+          <label for="exampleInputName" className="form-label text-secondary">Nombre</label>
+          <input type="text" className="form-control" id="exampleInputName" value={name} onChange={(e)=>setName(e.target.value)} />
+          {error?.name && <div className="text-danger">{error?.name}</div>}
+        </div>
+      }
       <div className="mb-3">
         <label for="exampleInputEmail1" className="form-label text-secondary">Correo electrónico</label>
         <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={(e)=>setEmail(e.target.value)} />
@@ -63,7 +81,7 @@ function Form() {
         <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e)=>setPassword(e.target.value)}/>
         {error?.password && <div className="text-danger">{error?.password}</div>}
       </div>
-      <button type="submit" className="btn text-light" style={{backgroundColor:'#3E0070'}}>Ingresar</button>
+      <button type="submit" className="btn text-light" style={{backgroundColor:'#3E0070'}}>{singUp ? "Registrar" : "Ingresar"}</button>
     </form>
   )
 }
