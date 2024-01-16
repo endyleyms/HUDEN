@@ -13,30 +13,30 @@ function ModalProds({handleShow}) {
           <div className="modal-body d-flex flex-column justify-content-center align-items-center">
           <form className="row row-cols-2">
             <div className="mb-2">
-              <label for="exampleInputEmail1" className="form-label text-secondary">Código</label>
-              <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              <label className="form-label text-secondary">Código</label>
+              <input type="text" className="form-control" />
             </div>
             <div className="mb-2">
-              <label for="exampleInputPassword1" className="form-label text-secondary">Nombre</label>
-              <input type="password" className="form-control" id="exampleInputPassword1" />
+              <label className="form-label text-secondary">Nombre</label>
+              <input type="text" className="form-control"/>
             </div>
             <div className="mb-2">
-              <label for="exampleInputPassword1" className="form-label text-secondary">Descripción</label>
-              <input type="password" className="form-control" id="exampleInputPassword1" />
+              <label className="form-label text-secondary">Descripción</label>
+              <input type="text" className="form-control" />
             </div>
             <div className="mb-2">
-              <label for="exampleInputPassword1" className="form-label text-secondary">Precio</label>
-              <input type="password" className="form-control" id="exampleInputPassword1" />
+              <label className="form-label text-secondary">Precio</label>
+              <input type="text" className="form-control" />
             </div>
             <div className="mb-2">
-              <label for="exampleInputEmail1" className="form-label text-secondary">Categoría</label>
+              <label className="form-label text-secondary">Categoría</label>
               <Dropdown
               options={['Base', 'Envase', 'Principio']}
               defaultSlected='Principio'
               />
             </div>
             <div className="mb-2">
-              <label for="exampleInputPassword1" className="form-label text-secondary">Unidad de medida</label>
+              <label className="form-label text-secondary">Unidad de medida</label>
               <Dropdown
               options={['L', 'ML', 'g', 'mg']}
               defaultSlected='mg'
