@@ -8,7 +8,10 @@ function Login() {
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     minHeight: '100vh',
-    minWidth: '100vw'
+    minWidth: '100vw',
+    position: 'absolute',
+    top: '51px',
+    right: '0px',
   };
   return (
     <div style={appStyles}>

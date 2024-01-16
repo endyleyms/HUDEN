@@ -19,7 +19,7 @@ function DropdownUser({data, isEditing}) {
     }
   };
   return (
-    <div>
+    <div className="dropdown">
       {
         !isEditing ?
         <button
@@ -43,7 +43,7 @@ function DropdownUser({data, isEditing}) {
           {selected}
         </button>
         {show &&
-          <ul className="list-group">
+          <ul className="list-group" style={{ zIndex: 1 , position: 'fixed'}}>
             <li className={`list-group-item`}>
               <button type="button" className='btn' onClick={() => handleSelect('Activo')}>
                 Activo

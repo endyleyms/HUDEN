@@ -6,6 +6,16 @@ import ModalUser from '../Components/ModalUser';
 import ButtonFixed from '../Components/ButtonFixed';
 
 function AdminUsers() {
+  const appStyles = {
+    backgroundImage: 'url(./src/assets/hero-img.jpg)',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    minHeight: '100vh',
+    minWidth: '100vw',
+    position: 'absolute',
+    top: '51px',
+    right: '0px',
+  };
   const [show, setShow]=useState(false)
   const [users, setUsers]=useState()
 
@@ -20,40 +30,42 @@ function AdminUsers() {
     fetchUsers();
   },[])
   return (
-    <div>
+    <div style={appStyles}>
       <Header/>
-      <div>
-        <h2 className="text-center" style={{color:'#3E0070'}}>Página de Administrador de Usuarios</h2>
-        <p className='lead text-muted'>Bienvenid@ a la página de administrador. Aquí
-        podrás manejar todos los aspectos de la página web, incluyendo la administración de usuarios.</p>
-        <hr />
-        <section id="admin-tools" className="row justify-content-md-center">
-        <div className="table-responsive">
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Correo</th>
-              <th scope="col">Rol</th>
-              <th scope="col">Contraseña</th>
-              <th scope="col">Estado</th>
-              <th scope="col">Editar</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users?.map((user, index)=>{
-              return(
-                <ItemTable key={index} user={user} index={index}/>
-              )
-            })}
-          </tbody>
-        </table>
+      <section className="container mt-3">
+        <div>
+          <h2 className="text-center" style={{color:'#3E0070'}}>Página de Administrador de Usuarios</h2>
+          <p className='lead text-muted'>Bienvenid@ a la página de administrador. Aquí
+          podrás manejar todos los aspectos de la página web, incluyendo la administración de usuarios.</p>
+          <hr />
+          <section id="admin-tools" className="row justify-content-md-center">
+          <div className="table-responsive">
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Contraseña</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Editar</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users?.map((user, index)=>{
+                return(
+                  <ItemTable key={index} user={user} index={index}/>
+                )
+              })}
+            </tbody>
+          </table>
+          </div>
+          </section>
         </div>
-        </section>
-      </div>
-      <ButtonFixed title="Nuevo Usuario" handleShow={handleShow} />
-      {show && <ModalUser handleShow={handleShow}/>}
+        <ButtonFixed title="Nuevo Usuario" handleShow={handleShow} />
+        {show && <ModalUser handleShow={handleShow}/>}
+      </section>
     </div>
   )
 }

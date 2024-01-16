@@ -3,6 +3,16 @@ import Header from '../Components/Header'
 import Card from '../Components/Card'
 
 function Dashboard() {
+  const appStyles = {
+    backgroundImage: 'url(./src/assets/hero-img.jpg)',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    minHeight: '100vh',
+    minWidth: '100vw',
+    position: 'absolute',
+    top: '51px',
+    right: '0px',
+  };
   const principios = [
     {
       id: 'P190010',
@@ -65,9 +75,9 @@ function Dashboard() {
     }
   ]
   return (
-    <div>
+    <div style={appStyles}>
       <Header/>
-      <section className="container mt-5">
+      <section className="container mt-3">
         <div>
           <span className="text-center" style={{color:'#3E0070'}}>Principios activos</span>
           <hr />

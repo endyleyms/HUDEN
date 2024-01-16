@@ -8,7 +8,7 @@ function Dropdown({options, defaultSlected}) {
     setShow(!show);
   };
   return (
-    <div>
+    <div className="dropdown">
       <button
         type="button"
         className={`btn dropdown-toggle btn-light`}
@@ -19,6 +19,7 @@ function Dropdown({options, defaultSlected}) {
       >
         {selected}
       </button>
+      <div style={{position: 'fixed', zIndex: 1}}>
       {show &&
           <ul className="list-group">
             {options.map((option, index) => (
@@ -30,6 +31,7 @@ function Dropdown({options, defaultSlected}) {
           ))}
           </ul>
         }
+      </div>
     </div>
   )
 }

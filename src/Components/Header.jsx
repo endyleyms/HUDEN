@@ -1,9 +1,8 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 
 const Header = () => {
   return (
-    <nav className="navbar navbar-expand-lg" style={{backgroundColor: 'rgba(242, 219, 213, 0.9)', position: 'fixed', top: 0, left:0, width: '100%', height: '50px', zIndex: '1'}}>
+    <nav className="navbar navbar-expand-lg" style={{backgroundColor: 'rgba(242, 219, 213, 20)', position: 'fixed', top: 0, left:0, width: '100%', height: '50px', zIndex: '1'}}>
       <div className="container-fluid">
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
