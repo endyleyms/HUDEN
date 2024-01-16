@@ -42,20 +42,22 @@ function DropdownUser({data, isEditing}) {
         >
           {selected}
         </button>
-        {show &&
-          <ul className="list-group" style={{ zIndex: 1 , position: 'fixed'}}>
-            <li className={`list-group-item`}>
-              <button type="button" className='btn' onClick={() => handleSelect('Activo')}>
-                Activo
-              </button>
-            </li>
-            <li className={`list-group-item`}>
-              <button type="button" className='btn' onClick={() => handleSelect('Inactivo')}>
-                Inactivo
-              </button>
-            </li>
-          </ul>
-        }
+        <div style={{position: 'absolute', zIndex: 1,}}>
+          {show &&
+            <ul className="list-group">
+              <li className={`list-group-item`}>
+                <button type="button" className='btn' onClick={() => handleSelect('Activo')}>
+                  Activo
+                </button>
+              </li>
+              <li className={`list-group-item`}>
+                <button type="button" className='btn' onClick={() => handleSelect('Inactivo')}>
+                  Inactivo
+                </button>
+              </li>
+            </ul>
+          }
+        </div>
       </>
       }
     </div>
