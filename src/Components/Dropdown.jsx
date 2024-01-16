@@ -19,7 +19,7 @@ function Dropdown({options, defaultSlected}) {
       >
         {selected}
       </button>
-      <div style={{position: 'fixed', zIndex: 1}}>
+      <div style={{position: 'absolute', zIndex: 1,}}>
       {show &&
           <ul className="list-group">
             {options.map((option, index) => (
