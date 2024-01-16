@@ -2,9 +2,17 @@ import React, { useEffect, useState } from 'react'
 import Header from '../Components/Header'
 import { listAll } from '../services/data'
 import ItemProd from '../Components/itemProd'
+import ButtonFixed from '../Components/ButtonFixed';
+import ModalProds from '../Components/ModalProds';
 
 function AdminProducts() {
+    const [show, setShow]=useState(false)
   const [data, setData]=useState()
+
+   const handleShow = ()=>{
+    setShow(!show);
+  }
+
   const fetchData = async (query = {})=>{
     const data= await listAll(query)
     setData(data);
@@ -47,6 +55,8 @@ function AdminProducts() {
         </div>
         </section>
       </div>
+      <ButtonFixed title="Nuevo Producto" handleShow={handleShow} />
+      {show && <ModalProds handleShow={handleShow}/>}
     </div>
   )
 }

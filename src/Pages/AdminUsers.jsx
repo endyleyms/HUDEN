@@ -3,6 +3,7 @@ import Header from '../Components/Header'
 import ItemTable from '../Components/ItemTable';
 import { listAllUsers } from '../services/users';
 import ModalUser from '../Components/ModalUser';
+import ButtonFixed from '../Components/ButtonFixed';
 
 function AdminUsers() {
   const [show, setShow]=useState(false)
@@ -51,10 +52,8 @@ function AdminUsers() {
         </div>
         </section>
       </div>
-      <button type="button" className="btn text-light" data-bs-toggle="modal" style={{backgroundColor:'#3E0070', position: 'fixed', bottom: 20, right: 10}} onClick={handleShow}>Nuevo Usuario</button>
-      {show &&
-        <ModalUser handleShow={handleShow}/>
-      }
+      <ButtonFixed title="Nuevo Usuario" handleShow={handleShow} />
+      {show && <ModalUser handleShow={handleShow}/>}
     </div>
   )
 }

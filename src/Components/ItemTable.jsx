@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Dropdown from './Dropdown';
+import DropdownUser from './DropdownUser';
 import { updateUser } from '../services/users';
 
 function ItemTable({user, index}) {
@@ -42,7 +42,7 @@ function ItemTable({user, index}) {
       </>
       }
       <td>
-        <Dropdown data={user} isEditing={isEditing}/>
+        <DropdownUser data={user} isEditing={isEditing}/>
       </td>
       <td>
         <button type="button" className="btn btn-outline-secondary" onClick={sendIndexEdit}>{isEditing ? 'Modificar' : 'Editar'}</button>
