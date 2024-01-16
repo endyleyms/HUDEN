@@ -20,17 +20,17 @@ function Dropdown({options, defaultSlected}) {
         {selected}
       </button>
       <div style={{position: 'absolute', zIndex: 1,}}>
-      {show &&
-          <ul className="list-group">
-            {options.map((option, index) => (
-            <li key={index} className={`list-group-item`}>
-              <button type="button" className="btn" onClick={() => handleSelect(option)}>
-                {option}
-              </button>
-            </li>
-          ))}
-          </ul>
-        }
+        {show &&
+            <ul className="list-group">
+              {options.map((option, index) => (
+              <li key={index} className={`list-group-item`}>
+                <button type="button" className="btn" onClick={() => handleSelect(option)}>
+                  {option}
+                </button>
+              </li>
+            ))}
+            </ul>
+          }
       </div>
     </div>
   )
