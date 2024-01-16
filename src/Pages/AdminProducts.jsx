@@ -39,7 +39,7 @@ function AdminProducts() {
               <th scope="col">Nombre</th>
               <th scope="col">Descripción</th>
               <th scope="col">Precio</th>
-              <th scope="col">Unidad de medida</th>
+              <th scope="col">Unidad</th>
               <th scope="col">Editar</th>
             </tr>
           </thead>
