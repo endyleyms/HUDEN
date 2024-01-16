@@ -6,7 +6,7 @@ import ButtonFixed from '../Components/ButtonFixed';
 import ModalProds from '../Components/ModalProds';
 
 function AdminProducts() {
-    const [show, setShow]=useState(false)
+  const [show, setShow]=useState(false)
   const [data, setData]=useState()
 
    const handleShow = ()=>{
@@ -39,7 +39,6 @@ function AdminProducts() {
               <th scope="col">Nombre</th>
               <th scope="col">Descripción</th>
               <th scope="col">Precio</th>
-              <th scope="col">Cantidad</th>
               <th scope="col">Unidad de medida</th>
               <th scope="col">Editar</th>
             </tr>

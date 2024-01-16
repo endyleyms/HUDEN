@@ -38,8 +38,8 @@ function ModalProds({handleShow}) {
             <div className="mb-2">
               <label for="exampleInputPassword1" className="form-label text-secondary">Unidad de medida</label>
               <Dropdown
-              options={['Litro', 'Mililitro', 'Gramo', 'Miligramo']}
-              defaultSlected='Miligramo'
+              options={['L', 'ML', 'g', 'mg']}
+              defaultSlected='mg'
               />
             </div>
           </form>
