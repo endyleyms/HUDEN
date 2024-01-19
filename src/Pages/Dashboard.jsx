@@ -1,8 +1,22 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from '../Components/Header'
 import { SectionProd } from '../Components/SectionProd'
+import ButtonFixed from '../Components/ButtonFixed'
+import ModalResume from '../Components/ModalResume'
 
 function Dashboard() {
+  const [show, setShow]=useState(false)
+  const [selecData, setSelectData]= useState()
+  const handleShow = ()=>{
+    setShow(!show);
+  }
+  const handleSelectData=(data)=>{
+    setSelectData((prevData)=>({
+      ...prevData,
+      [data.id]: data
+    }))
+  }
+  console.log('selected data', selecData)
   const appStyles = {
     backgroundImage: 'url(./src/assets/hero-img.jpg)',
     backgroundSize: 'cover',
@@ -93,10 +107,11 @@ function Dashboard() {
     <div style={appStyles}>
       <Header/>
       <section className="container mt-3 d-flex flex-column justify-content-evenly" style={{backgroundColor: 'rgba(242, 219, 213, 0.9)'}}>
-          <SectionProd data={principios} title={'Principios activos'}/>
-          <SectionProd data={base} title={'Bases'}/>
-          <SectionProd data={envases} title={'Envases'}/>
-        <button type="submit" className="btn text-light" style={{backgroundColor:'#3E0070', position: 'fixed', bottom: 20, right: 10}}>Calcular</button>
+          <SectionProd data={principios} handleSelectData={handleSelectData} title={'Principios activos'}/>
+          <SectionProd data={base}  handleSelectData={handleSelectData} title={'Bases'}/>
+          <SectionProd data={envases} handleSelectData={handleSelectData} title={'Envases'}/>
+          {selecData && <ButtonFixed title={'Calcular'} handleShow={handleShow}/>}
+          {show && <ModalResume handleShow={handleShow} selecData={selecData}/>}
       </section>
     </div>
   )

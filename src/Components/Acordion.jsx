@@ -1,10 +1,15 @@
 import React, { useState } from 'react'
 
-function Acordion() {
+function Acordion({data, handleSelectData}) {
   const [show, setShow]= useState(false)
   const handleShow =()=>{
     setShow(!show)
   }
+
+  const handleCheckboxChange = () => {
+    // Llama a la función de callback para agregar la data al objeto del componente padre
+    handleSelectData(data);
+  };
   return (
     <div className="accordion" id="accordionExample" style={{width: '100%'}}>
       <div className="accordion-item">
@@ -17,13 +22,13 @@ function Acordion() {
         <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
           <div className="accordion-body">
             <div>
-              <p>código: 113313</p>
-              <p>Precio: 50 cop</p>
-              <p>Cantidad: 1mg</p>
+              <p>código: {data.id}</p>
+              <p>Precio: {data.price}</p>
+              <p>Cantidad: {data.value}{data.unidad}</p>
             </div>
             <div className="mb-3 form-check">
               <label className="form-check-label" for="exampleCheck1">Agregar</label>
-              <input type="radio" className="form-check-input" id="Administrador" value="Administrador" />
+              <input type="radio" className="form-check-input" id="Administrador" onChange={handleCheckboxChange}/>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Card from './Card'
 
-export const SectionProd = ({data, title}) => {
+export const SectionProd = ({data, title, handleSelectData}) => {
   const [show, setShow]= useState(true)
   const handleShow =()=>{
     setShow(!show)
@@ -16,7 +16,7 @@ export const SectionProd = ({data, title}) => {
         <div className='row'>
           {data?.map((item, index)=>{
             return(
-              <Card key={index} data={item}/>
+              <Card key={index} data={item} handleSelectData={handleSelectData}/>
             )
           })}
         </div>
