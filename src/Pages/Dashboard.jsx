@@ -1,22 +1,42 @@
-import React, {useState} from 'react'
+import React, { useEffect, useState } from 'react'
+import { listAll } from '../services/data'
 import Header from '../Components/Header'
 import { SectionProd } from '../Components/SectionProd'
 import ButtonFixed from '../Components/ButtonFixed'
 import ModalResume from '../Components/ModalResume'
 
+
 function Dashboard() {
-  const [show, setShow]=useState(false)
+  const [data, setData]=useState()
   const [selecData, setSelectData]= useState()
+  const [show, setShow]=useState(false)
+  
+  //funcion para abrir-cerrar modal
   const handleShow = ()=>{
     setShow(!show);
   }
+  
+  //funcion que maneja la seleccion de los productos a cotizar
   const handleSelectData=(data)=>{
     setSelectData((prevData)=>({
       ...prevData,
       [data.id]: data
     }))
   }
-  console.log('selected data', selecData)
+  
+  //función para traer la data
+  const fetchData = async (query = {})=>{
+    const data= await listAll(query)
+    setData(data);
+  }
+  const principios = data?.filter((item)=>item.category === 'principio')
+  const base = data?.filter((item)=>item.category === 'base')
+  const envases = data?.filter((item)=>item.category === 'envase')
+  useEffect(()=>{
+    fetchData();
+  },[])
+
+  //constante para pasar los estilos de la pagina
   const appStyles = {
     backgroundImage: 'url(./src/assets/hero-img.jpg)',
     backgroundSize: 'cover',
@@ -27,82 +47,7 @@ function Dashboard() {
     top: '51px',
     right: '0px',
   };
-  const principios = [
-    {
-      id: 'P190010',
-      title: 'UVINULT T 150',
-      description: '275'
-    },
-    {
-      id: 'E220002',
-      title: 'Vaselina blanca',
-      description: '17'
-    },
-    {
-      id: 'E0034',
-      title: 'Vitamina A',
-      description: '825'
-    },
-    {
-      id: 'P190010',
-      title: 'UVINULT T 150',
-      description: '275'
-    },
-    {
-      id: 'E220002',
-      title: 'Vaselina blanca',
-      description: '17'
-    },
-    {
-      id: 'E0034',
-      title: 'Vitamina A',
-      description: '825'
-    }
-  ]
-  const base = [
-    {
-      id:'',
-      title: 'Base Shower',
-      description: 'cost: 12'
-    },
-    {
-      id:'',
-      title: 'Base Emulgel HQ',
-      description: 'cost: 45'
-    },
-    {
-      id:'',
-      title: 'Base AR',
-      description: 'cost: 35'
-    },
-    {
-      id:'',
-      title: 'Base crema ACS',
-      description: 'Teo: 225, cost: 18 %PVP:90'
-    },
-    {
-      id:'',
-      title: 'Agua Purificada',
-      description: 'cost 10'
-    }
-  ]
-  const envases = [
-    {
-      id:'',
-      title: 'ENVASE DE VIDRIO 3340 FLINT ROSCA',
-      description: 'cost: 139'
-    },
-    {
-      id:'',
-      title: 'ENVASE DE VIDRIO MB30R FLINT TO',
-      description: 'cost: 39.556'
-    },
-    {
-      id:'',
-      title: 'ENVASE DE VIDRIO MB40R FLINT TO',
-      description: 'cost: 39.556'
-    }
-  ]
+
   return (
     <div style={appStyles}>
       <Header/>

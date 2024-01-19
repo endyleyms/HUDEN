@@ -1,5 +1,4 @@
 import React from 'react'
-import ItemProd from './itemProd'
 
 function TableResume({data}) {
   return (
@@ -16,6 +15,7 @@ function TableResume({data}) {
         </li>
       ))}
       <span className='list-group-item'> <strong>Total:</strong>  </span>
+      <button type="button" className="btn text-light" data-bs-toggle="modal" style={{backgroundColor:'#3E0070', position: 'fixed', bottom: 20, right: 10}} >Enviar Cotización</button>
     </ul>
   )
 }
