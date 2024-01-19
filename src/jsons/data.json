@@ -4,7 +4,7 @@
     "title": "'Base Shower'",
     "description": "'cost: 12'",
     "category": "base",
-    "price": "50cop",
+    "price": "34",
     "unidad": "mg",
     "value": "5"
   },
@@ -13,7 +13,7 @@
     "title": "'Base Emulgel HQ'",
     "description": "'cost: 45'",
     "category": "base",
-    "price": "50cop",
+    "price": "42",
     "unidad": "mg",
     "value": "5"
   },
@@ -22,7 +22,7 @@
     "title": "'Base AR'",
     "description": "'cost: 35'",
     "category": "base",
-    "price": "50cop",
+    "price": "74",
     "unidad": "mg",
     "value": "5"
   },
@@ -31,7 +31,7 @@
     "title": "'Base crema ACS'",
     "description": "Teo: 225, cost: 18 %PVP:90",
     "category": "base",
-    "price": "50cop",
+    "price": "96",
     "unidad": "mg",
     "value": "5"
   },
@@ -40,7 +40,7 @@
     "title": "'Agua Purificada'",
     "description": "'cost 10'",
     "category": "base",
-    "price": "50cop",
+    "price": "40",
     "unidad": "mg",
     "value": "5"
   },
@@ -49,7 +49,7 @@
     "title": "ENVASE DE VIDRIO 3340 FLINT ROSCA'",
     "description": "'cost: 139'",
     "category": "envase",
-    "price": "50cop",
+    "price": "89",
     "unidad": "unidad",
     "value": "5"
   },
@@ -58,7 +58,7 @@
     "title": "'ENVASE DE VIDRIO MB30R FLINT TO'",
     "description": "'cost: 39.556'",
     "category": "envase",
-    "price": "50cop",
+    "price": "23",
     "unidad": "unidad",
     "value": "5"
   },
@@ -67,7 +67,7 @@
     "title": "'ENVASE DE VIDRIO MB40R FLINT TO'",
     "description": "'cost: 39.556'",
     "category": "envase",
-    "price": "50cop",
+    "price": "565",
     "unidad": "unidad",
     "value": "5"
   },
@@ -76,7 +76,7 @@
     "title": "UVINULT T 150",
     "description":" 275",
     "category": "principio",
-    "price": "50cop",
+    "price": "67",
     "unidad": "litro",
     "value": "5"
   },
@@ -85,16 +85,16 @@
     "title": "'Vaselina blanca'",
     "description": "'17'",
     "category": "principio",
-    "price": "50cop",
+    "price": "50",
     "unidad": "litro",
-    "value": "5"
+    "value": "45"
   },
   {
     "id": "'E0034'",
     "title": "'Vitamina A'",
     "description": "'825'",
     "category": "principio",
-    "price": "50cop",
+    "price": "50",
     "unidad": "litro",
     "value": "5"
   }
