@@ -7,7 +7,6 @@ function Acordion({data, handleSelectData}) {
   }
 
   const handleCheckboxChange = () => {
-    // Llama a la función de callback para agregar la data al objeto del componente padre
     handleSelectData(data);
   };
   return (
