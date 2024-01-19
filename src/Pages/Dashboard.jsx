@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../Components/Header'
-import Card from '../Components/Card'
+import { SectionProd } from '../Components/SectionProd'
 
 function Dashboard() {
   const appStyles = {
@@ -14,6 +14,21 @@ function Dashboard() {
     right: '0px',
   };
   const principios = [
+    {
+      id: 'P190010',
+      title: 'UVINULT T 150',
+      description: '275'
+    },
+    {
+      id: 'E220002',
+      title: 'Vaselina blanca',
+      description: '17'
+    },
+    {
+      id: 'E0034',
+      title: 'Vitamina A',
+      description: '825'
+    },
     {
       id: 'P190010',
       title: 'UVINULT T 150',
@@ -77,40 +92,10 @@ function Dashboard() {
   return (
     <div style={appStyles}>
       <Header/>
-      <section className="container mt-3">
-        <div>
-          <span className="text-center" style={{color:'#3E0070'}}>Principios activos</span>
-          <hr />
-          <div className='d-flex flex-row justify-content-evenly'>
-            {principios.map((item, index)=>{
-              return(
-                <Card key={index} data={item}/>
-              )
-            })}
-          </div>
-        </div>
-        <div>
-          <span className="text-center" style={{color:'#3E0070'}}>Base / Producto</span>
-          <hr />
-          <div className='d-flex flex-row justify-content-between'>
-            {base.map((item, index)=>{
-              return(
-                <Card key={index} data={item}/>
-              )
-            })}
-          </div>
-        </div>
-        <div>
-          <span className="text-center" style={{color:'#3E0070'}}>Envases</span>
-          <hr />
-          <div className='d-flex flex-row justify-content-between'>
-            {envases.map((item, index)=>{
-              return(
-                <Card key={index} data={item}/>
-              )
-            })}
-          </div>
-        </div>
+      <section className="container mt-3 d-flex flex-column justify-content-evenly" style={{backgroundColor: 'rgba(242, 219, 213, 0.9)'}}>
+          <SectionProd data={principios} title={'Principios activos'}/>
+          <SectionProd data={base} title={'Bases'}/>
+          <SectionProd data={envases} title={'Envases'}/>
         <button type="submit" className="btn text-light" style={{backgroundColor:'#3E0070', position: 'fixed', bottom: 20, right: 10}}>Calcular</button>
       </section>
     </div>

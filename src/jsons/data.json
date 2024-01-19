@@ -6,7 +6,7 @@
     "category": "base",
     "price": "50cop",
     "unidad": "mg",
-    "cantidad": "5"
+    "value": "5"
   },
   {
     "id":"''",
@@ -15,7 +15,7 @@
     "category": "base",
     "price": "50cop",
     "unidad": "mg",
-    "cantidad": "5"
+    "value": "5"
   },
   {
     "id":"''",
@@ -24,7 +24,7 @@
     "category": "base",
     "price": "50cop",
     "unidad": "mg",
-    "cantidad": "5"
+    "value": "5"
   },
   {
     "id":"",
@@ -33,7 +33,7 @@
     "category": "base",
     "price": "50cop",
     "unidad": "mg",
-    "cantidad": "5"
+    "value": "5"
   },
   {
     "id":"",
@@ -42,7 +42,7 @@
     "category": "base",
     "price": "50cop",
     "unidad": "mg",
-    "cantidad": "5"
+    "value": "5"
   },
   {
     "id":"",
@@ -51,7 +51,7 @@
     "category": "envase",
     "price": "50cop",
     "unidad": "unidad",
-    "cantidad": "5"
+    "value": "5"
   },
   {
     "id":"",
@@ -60,7 +60,7 @@
     "category": "envase",
     "price": "50cop",
     "unidad": "unidad",
-    "cantidad": "5"
+    "value": "5"
   },
   {
     "id":"",
@@ -69,7 +69,7 @@
     "category": "envase",
     "price": "50cop",
     "unidad": "unidad",
-    "cantidad": "5"
+    "value": "5"
   },
   {
     "id": "P190010",
@@ -78,7 +78,7 @@
     "category": "principio",
     "price": "50cop",
     "unidad": "litro",
-    "cantidad": "5"
+    "value": "5"
   },
   {
     "id": "E220002",
@@ -87,7 +87,7 @@
     "category": "principio",
     "price": "50cop",
     "unidad": "litro",
-    "cantidad": "5"
+    "value": "5"
   },
   {
     "id": "'E0034'",
@@ -96,6 +96,6 @@
     "category": "principio",
     "price": "50cop",
     "unidad": "litro",
-    "cantidad": "5"
+    "value": "5"
   }
 ]
