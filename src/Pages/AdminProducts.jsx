@@ -7,7 +7,6 @@ import ModalProds from '../Components/ModalProds';
 
 function AdminProducts() {
   const appStyles = {
-    backgroundImage: 'url(./src/assets/hero-img.jpg)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     minHeight: '100vh',
@@ -33,14 +32,12 @@ function AdminProducts() {
   return (
     <div style={appStyles}>
       <Header/>
-      <section className="container mt-3" >
-        <div>
-          <h2 className="text-center" style={{color:'#3E0070'}}>Página de Administrador de Productos</h2>
-          <p className='lead text-muted'>Bienvenid@ a la página de administrador. Aquí
-          podrás manejar todos los aspectos de la página web, incluyendo la administración de productos.</p>
+      <section className="container mt-5" >
+        <div style={{backgroundColor: 'rgba(242, 219, 213, 0.9)', padding: '15px', borderRadius:'12px'}}>
+          <h2 className="text-center" style={{color:'#3E0070', marginTop: '20px'}}>Administrador de Productos</h2>
           <hr />
           <section id="admin-tools" className="row justify-content-md-center">
-          <div className="table-responsive">
+          <div className="table-responsive"  style={{margin: '20px', paddingLeft: '20px', paddingRight: '20px'}}>
           <table className="table">
             <thead>
               <tr>
@@ -48,7 +45,6 @@ function AdminProducts() {
                 <th scope="col">Código</th>
                 <th scope="col">Categoría</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Descripción</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Unidad</th>
                 <th scope="col">Editar</th>

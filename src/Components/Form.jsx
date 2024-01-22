@@ -62,7 +62,7 @@ function Form({singUp}) {
 
   return (
     <form className="d-flex flex-column " style={{width:'70%'}} onSubmit={handleSubmit}>
-      <h2 style={{color:'#3E0070'}}>Autenticación</h2>
+      <h2 style={{color:'#3E0070', marginTop:'15px', marginBottom:'40px'}}>Inicio de Sesión</h2>
       {
         singUp &&
         <div className="mb-3">
@@ -76,7 +76,7 @@ function Form({singUp}) {
         <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={(e)=>setEmail(e.target.value)} />
         {error?.email && <div className="text-danger">{error?.email}</div>}
       </div>
-      <div className="mb-3">
+      <div className="mb-5">
         <label for="exampleInputPassword1" className="form-label text-secondary">Contraseña</label>
         <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e)=>setPassword(e.target.value)}/>
         {error?.password && <div className="text-danger">{error?.password}</div>}

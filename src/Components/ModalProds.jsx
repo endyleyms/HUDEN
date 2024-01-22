@@ -3,7 +3,7 @@ import Dropdown from './Dropdown'
 
 function ModalProds({handleShow}) {
   return (
-    <div id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="false" style={{zIndex: "1", position: "absolute", top:73, left:66, width: "90%", height:"80%", backgroundColor: 'rgba(242, 219, 213, 0.9)', padding: 30}}>
+    <div id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="false" style={{zIndex: "1", position: "absolute", top:210, left:450, maxWidth: "90%", maxHeheight:"80%", backgroundColor: 'rgba(242, 219, 213, 1)', padding: 30, borderRadius: '12px'}}>
       <div className="d-flex justify-content-center align-items-center">
         <div className="modal-content">
           <div className="modal-header">
@@ -19,10 +19,6 @@ function ModalProds({handleShow}) {
             <div className="mb-2">
               <label className="form-label text-secondary">Nombre</label>
               <input type="text" className="form-control"/>
-            </div>
-            <div className="mb-2">
-              <label className="form-label text-secondary">Descripción</label>
-              <input type="text" className="form-control" />
             </div>
             <div className="mb-2">
               <label className="form-label text-secondary">Precio</label>

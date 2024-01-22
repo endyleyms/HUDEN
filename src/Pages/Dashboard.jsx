@@ -4,7 +4,6 @@ import Card from '../Components/Card'
 
 function Dashboard() {
   const appStyles = {
-    backgroundImage: 'url(./src/assets/hero-img.jpg)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     minHeight: '100vh',

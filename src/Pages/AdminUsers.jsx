@@ -7,7 +7,6 @@ import ButtonFixed from '../Components/ButtonFixed';
 
 function AdminUsers() {
   const appStyles = {
-    backgroundImage: 'url(./src/assets/hero-img.jpg)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     minHeight: '100vh',
@@ -32,14 +31,12 @@ function AdminUsers() {
   return (
     <div style={appStyles}>
       <Header/>
-      <section className="container mt-3">
-        <div>
-          <h2 className="text-center" style={{color:'#3E0070'}}>Página de Administrador de Usuarios</h2>
-          <p className='lead text-muted'>Bienvenid@ a la página de administrador. Aquí
-          podrás manejar todos los aspectos de la página web, incluyendo la administración de usuarios.</p>
+      <section className="container mt-5">
+        <div style={{backgroundColor: 'rgba(242, 219, 213, 0.9)', padding: '15px', borderRadius:'12px'}}>
+          <h2 className="text-center" style={{color:'#3E0070', marginTop: '20px'}}>Administrador de Usuarios</h2>
           <hr />
           <section id="admin-tools" className="row justify-content-md-center">
-          <div className="table-responsive">
+          <div className="table-responsive" style={{margin: '20px', paddingLeft: '20px', paddingRight: '20px'}}>
           <table className="table">
             <thead>
               <tr>

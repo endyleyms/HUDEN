@@ -26,7 +26,6 @@ function ItemProd({data, index}) {
       <td><input type="text" className="form-control" placeholder={`${data.id}`} value={codigo} onChange={(e)=>setCodigo(e.target.value)}/></td>
       <td><Dropdown options={['Base', 'Envase', 'Principio']}  defaultSlected={category}/></td>
       <td><input type="text" className="form-control" placeholder={`${data.title}`} value={title} onChange={(e)=>setTitle(e.target.value)}/></td>
-      <td><input type="text" className="form-control" placeholder={`${data.description}`} value={description} onChange={(e)=>setDescription(e.target.value)}/></td>
       <td><input type="text" className="form-control" placeholder={`${data.price}`} value={price} onChange={(e)=>setPrice(e.target.value)}/></td>
       <td><Dropdown options={['L', 'ML', 'g', 'mg']}  defaultSlected={unidad}/></td>
     </>
@@ -35,8 +34,7 @@ function ItemProd({data, index}) {
     <td>{data.id}</td>
     <td>{data.category}</td>
     <td>{data.title}</td>
-    <td>{data.description}</td>
-    <td>{data.price}</td>
+    <td>${" "}{data.price}</td>
     <td>{data.unidad}</td>
     </>
     }
