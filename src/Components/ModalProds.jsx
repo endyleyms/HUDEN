@@ -34,8 +34,8 @@ function ModalProds({handleShow}) {
             <div className="mb-2">
               <label className="form-label text-secondary">Unidad de medida</label>
               <Dropdown
-              options={['L', 'ML', 'g', 'mg']}
-              defaultSlected='mg'
+              options={['g', 'ml']}
+              defaultSlected='g'
               />
             </div>
           </form>
