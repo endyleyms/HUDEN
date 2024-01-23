@@ -1,8 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { listAll } from '../services/data'
 import Header from '../Components/Header'
-import Card from '../Components/Card'
+import { SectionProd } from '../Components/SectionProd'
+import ButtonFixed from '../Components/ButtonFixed'
+import ModalResume from '../Components/ModalResume'
+
 
 function Dashboard() {
+  const [data, setData]=useState()
+  const [selecData, setSelectData]= useState()
+  const [show, setShow]=useState(false)
+  
+  //funcion para abrir-cerrar modal
+  const handleShow = ()=>{
+    setShow(!show);
+  }
+  
+  //funcion que maneja la seleccion de los productos a cotizar
+  const handleSelectData=(data)=>{
+    setSelectData((prevData)=>({
+      ...prevData,
+      [data.id]: data
+    }))
+  }
+  
+  //función para traer la data
+  const fetchData = async (query = {})=>{
+    const data= await listAll(query)
+    setData(data);
+  }
+  const principios = data?.filter((item)=>item.category === 'principio')
+  const base = data?.filter((item)=>item.category === 'base')
+  const envases = data?.filter((item)=>item.category === 'envase')
+  useEffect(()=>{
+    fetchData();
+  },[])
+
+  //constante para pasar los estilos de la pagina
   const appStyles = {
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
@@ -12,105 +46,16 @@ function Dashboard() {
     top: '51px',
     right: '0px',
   };
-  const principios = [
-    {
-      id: 'P190010',
-      title: 'UVINULT T 150',
-      description: '275'
-    },
-    {
-      id: 'E220002',
-      title: 'Vaselina blanca',
-      description: '17'
-    },
-    {
-      id: 'E0034',
-      title: 'Vitamina A',
-      description: '825'
-    }
-  ]
-  const base = [
-    {
-      id:'',
-      title: 'Base Shower',
-      description: 'cost: 12'
-    },
-    {
-      id:'',
-      title: 'Base Emulgel HQ',
-      description: 'cost: 45'
-    },
-    {
-      id:'',
-      title: 'Base AR',
-      description: 'cost: 35'
-    },
-    {
-      id:'',
-      title: 'Base crema ACS',
-      description: 'Teo: 225, cost: 18 %PVP:90'
-    },
-    {
-      id:'',
-      title: 'Agua Purificada',
-      description: 'cost 10'
-    }
-  ]
-  const envases = [
-    {
-      id:'',
-      title: 'ENVASE DE VIDRIO 3340 FLINT ROSCA',
-      description: 'cost: 139'
-    },
-    {
-      id:'',
-      title: 'ENVASE DE VIDRIO MB30R FLINT TO',
-      description: 'cost: 39.556'
-    },
-    {
-      id:'',
-      title: 'ENVASE DE VIDRIO MB40R FLINT TO',
-      description: 'cost: 39.556'
-    }
-  ]
+
   return (
     <div style={appStyles}>
       <Header/>
-      <section className="container mt-3">
-        <div>
-          <span className="text-center" style={{color:'#3E0070'}}>Principios activos</span>
-          <hr />
-          <div className='d-flex flex-row justify-content-evenly'>
-            {principios.map((item, index)=>{
-              return(
-                <Card key={index} data={item}/>
-              )
-            })}
-          </div>
-        </div>
-        <div>
-          <span className="text-center" style={{color:'#3E0070'}}>Base / Producto</span>
-          <hr />
-          <div className='d-flex flex-row justify-content-between'>
-            {base.map((item, index)=>{
-              return(
-                <Card key={index} data={item}/>
-              )
-            })}
-          </div>
-        </div>
-        <div>
-          <span className="text-center" style={{color:'#3E0070'}}>Envases</span>
-          <hr />
-          <div className='d-flex flex-row justify-content-between'>
-            {envases.map((item, index)=>{
-              return(
-                <Card key={index} data={item}/>
-              )
-            })}
-          </div>
-        </div>
-        <button type="submit" className="btn text-light" style={{backgroundColor:'#3E0070', position: 'fixed', bottom: 20, right: 10}}>Calcular</button>
+      <section className="container mt-3 d-flex flex-column justify-content-evenly" style={{backgroundColor: 'rgba(242, 219, 213, 0.9)'}}>
+          <SectionProd data={principios} handleSelectData={handleSelectData} title={'Principios activos'}/>
+          <SectionProd data={base}  handleSelectData={handleSelectData} title={'Bases'}/>
+          <SectionProd data={envases} handleSelectData={handleSelectData} title={'Envases'}/>
+          {selecData && <ButtonFixed title={'Calcular'} handleShow={handleShow}/>}
+          {show && <ModalResume handleShow={handleShow} selecData={selecData}/>}
       </section>
     </div>
   )

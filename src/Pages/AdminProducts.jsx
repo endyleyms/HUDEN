@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Header from '../Components/Header'
 import { listAll } from '../services/data'
+import Header from '../Components/Header'
 import ItemProd from '../Components/itemProd'
 import ButtonFixed from '../Components/ButtonFixed';
 import ModalProds from '../Components/ModalProds';
@@ -46,6 +46,7 @@ function AdminProducts() {
                 <th scope="col">Categoría</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Precio</th>
+                <th scope="col">Valor</th>
                 <th scope="col">Unidad</th>
                 <th scope="col">Editar</th>
               </tr>
