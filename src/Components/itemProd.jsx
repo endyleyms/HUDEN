@@ -6,7 +6,7 @@ function ItemProd({data, index}) {
   const [category, setCategory]=useState(data.category)
   const [title, setTitle]=useState(data.title)
   const [price, setPrice]=useState(data.price)
-  const [value, setValue]=useState(data.value)
+  const [cantidad, setCantidad]=useState(data.cantidad)
   const [unidad, setUnidad]=useState(data.unidad)
 
 
@@ -27,7 +27,7 @@ function ItemProd({data, index}) {
       <td><Dropdown options={['Base', 'Envase', 'Principio']}  defaultSlected={category}/></td>
       <td><input type="text" className="form-control" placeholder={`${data.title}`} value={title} onChange={(e)=>setTitle(e.target.value)}/></td>
       <td><input type="text" className="form-control" placeholder={`${data.price}`} value={price} onChange={(e)=>setPrice(e.target.value)}/></td>
-      <td><input type="text" className="form-control" placeholder={`${data.value}`} value={value} onChange={(e)=>setValue(e.target.value)}/></td>
+      <td><input type="text" className="form-control" placeholder={`${data.cantidad}`} value={cantidad} onChange={(e)=>setCantidad(e.target.value)}/></td>
       <td><Dropdown options={['g', 'ml']}  defaultSlected={unidad}/></td>
     </>
     :
@@ -35,8 +35,8 @@ function ItemProd({data, index}) {
     <td>{data.id}</td>
     <td>{data.category}</td>
     <td>{data.title}</td>
-    <td>{data.description}</td>
     <td>{data.price}</td>
+    <td>{data.cantidad}</td>
     <td>{data.unidad}</td>
     </>
     }

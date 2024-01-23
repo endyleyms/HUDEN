@@ -47,7 +47,7 @@ function AdminProducts() {
                 <th scope="col">Categoría</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Precio</th>
-                <th scope="col">Valor</th>
+                <th scope="col">Cantidad</th>
                 <th scope="col">Unidad</th>
                 <th scope="col">Editar</th>
               </tr>

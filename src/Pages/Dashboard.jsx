@@ -12,22 +12,30 @@ function Dashboard() {
   const [data, setData]=useState()
   const [selecData, setSelectData]= useState()
   const [addComponent, setAddComponent]= useState(1)
-  console.log('addComponent', addComponent)
   const [show, setShow]=useState(false)
-  
+  const [namePatient, setNamePatien]=useState('')
+  const [nameDoctor, setNameDoctor]=useState('')
+  const [number, setNumber]=useState('')
+  const [concentration, setConcentration]=useState('')
   //funcion para abrir-cerrar modal
   const handleShow = ()=>{
     setShow(!show);
   }
-  
+
   //funcion que maneja la seleccion de los productos a cotizar
   const handleSelectData=(data)=>{
+    const formData={
+      'Paciente':namePatient.toLowerCase(),
+      'Doctor':nameDoctor.toLowerCase(),
+      'Presentacion':number.toUpperCase().replace(/[^0-9]/g,""),
+    }
     setSelectData((prevData)=>({
       ...prevData,
-      [data.id]: data
+      [formData.name_doctor]: formData,
+      [data.id]: data,
     }))
   }
-  
+  //funcion que maneja agregar mas de un principio activo
   const handleAddPrincipiosItem = () => {
     setAddComponent((prevCount) => prevCount + 1);
   };
@@ -66,23 +74,26 @@ function Dashboard() {
           <section>
             <div className="row">
               <div className="col-5">
-                <FormItem title={'Nombre'} placeholder={'Paciente'}/>
+                <FormItem title={'Nombre'} placeholder={'Paciente'} value={namePatient} setValue={setNamePatien}/>
               </div>
               <div className="col-5">
-                <FormItem title={'Nombre'} placeholder={'Doctor'}/>
+                <FormItem title={'Nombre'} placeholder={'Doctor'} value={nameDoctor} setValue={setNameDoctor}/>
               </div>
               <div className="col-5">
                 <SectionProd data={fFarmaceutica} handleSelectData={handleSelectData} title={'Forma Farmacéutica'}/>
               </div>
               <div className="col-5">
-                <FormItem title={'Presentación'} placeholder={'Número'}/>
+                <SectionProd data={base} handleSelectData={handleSelectData} title={'Base'}/>
+              </div>
+              <div className="col-5">
+                <FormItem title={'Presentación'} placeholder={'Número'} value={number} setValue={setNumber}/>
               </div>
             </div>
             {[...Array(addComponent)].map((_, index) => (
-              <PrincipiosItem key={index} principios={principios} handleSelectData={handleSelectData} />
+              <PrincipiosItem key={index} principios={principios} handleSelectData={handleSelectData} value={concentration} setValue={setConcentration} />
             ))}
             <button className="btn btn-primary" onClick={handleAddPrincipiosItem}>
-              Agregar Más
+              Agregar Más Principios
             </button>
             {selecData && <ButtonFixed title={'Calcular'} handleShow={handleShow}/>}
             {show && <ModalResume handleShow={handleShow} selecData={selecData}/>}

@@ -2,7 +2,6 @@
   {
     "id":"B0001",
     "title": "Base Shower",
-    "description": "cost: 12",
     "category": "Base",
     "price": "120",
     "unidad": "g",
@@ -11,7 +10,6 @@
   {
     "id":"B0002",
     "title": "Base Emulgel HQ",
-    "description": "cost: 45",
     "category": "Base",
     "price": "200",
     "unidad": "ml",
@@ -20,7 +18,6 @@
   {
     "id":"B0003",
     "title": "Base AR",
-    "description": "cost: 35",
     "category": "Base",
     "price": "170",
     "unidad": "g",
@@ -29,34 +26,33 @@
   {
     "id":"A0001",
     "title": "Activo crema ACS",
-    "description": "Teo: 225, cost: 18 %PVP:90",
     "category": "Activo",
     "price": "350",
     "unidad": "g",
-    "cantidad": "5"
+    "cantidad": "5",
+    "concentracion": "15%"
   },
   {
     "id":"A0002",
     "title": "Agua Purificada",
-    "description": "cost 10",
     "category": "Activo",
     "price": "70",
     "unidad": "ml",
-    "cantidad": "5"
+    "cantidad": "5",
+    "concentracion": "15%"
   },
   {
     "id":"F0001",
     "title": "ENVASE DE VIDRIO 3340 FLINT ROSCA",
-    "description": "cost: 139",
     "category": "F. Farmaceutica",
     "price": "450",
     "unidad": "Unidad",
-    "cantidad": "5"
+    "cantidad": "5",
+    "concentracion": "15%"
   },
   {
     "id":"F0002",
     "title": "ENVASE crema 300ml",
-    "description": "cost: 39.556",
     "category": "F. Farmaceutica",
     "price": "500",
     "unidad": "Unidad",
@@ -65,7 +61,6 @@
   {
     "id":"F0003",
     "title": "ENVASE locion 120ml",
-    "description": "cost: 39.556",
     "category": "F. Farmaceutica",
     "price": "320",
     "unidad": "Unidad",
@@ -74,28 +69,28 @@
   {
     "id": "A0003",
     "title": "UVINULT T 150",
-    "description":" 275",
     "category": "Activo",
     "price": "37",
     "unidad": "ml",
-    "cantidad": "5"
+    "cantidad": "5",
+    "concentracion": "15%"
   },
   {
     "id": "A0004",
     "title": "Vaselina blanca",
-    "description": "17",
     "category": "Activo",
     "price": "85",
     "unidad": "g",
-    "cantidad": "5"
+    "cantidad": "5",
+    "concentracion": "15%"
   },
   {
     "id": "A0005",
     "title": "Vitamina A",
-    "description": "825",
     "category": "Activo",
     "price": "98",
     "unidad": "ml",
-    "cantidad": "5"
+    "cantidad": "5",
+    "concentracion": "15%"
   }
 ]
