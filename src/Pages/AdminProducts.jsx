@@ -14,6 +14,7 @@ function AdminProducts() {
     position: 'absolute',
     top: '51px',
     right: '0px',
+    backgroundColor: '#f4f6f7'
   };
   const [show, setShow]=useState(false)
   const [data, setData]=useState()
@@ -34,7 +35,7 @@ function AdminProducts() {
       <Header/>
       <section className="container mt-5" >
         <div style={{backgroundColor: 'rgba(242, 219, 213, 0.9)', padding: '15px', borderRadius:'12px'}}>
-          <h2 className="text-center" style={{color:'#3E0070', marginTop: '20px'}}>Administrador de Productos</h2>
+          <h2 className="text-center" style={{color:'#092f62', marginTop: '20px'}}>Administrador de Productos</h2>
           <hr />
           <section id="admin-tools" className="row justify-content-md-center">
           <div className="table-responsive"  style={{margin: '20px', paddingLeft: '20px', paddingRight: '20px'}}>

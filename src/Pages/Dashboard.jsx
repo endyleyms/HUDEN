@@ -29,9 +29,9 @@ function Dashboard() {
     const data= await listAll(query)
     setData(data);
   }
-  const principios = data?.filter((item)=>item.category === 'principio')
-  const base = data?.filter((item)=>item.category === 'base')
-  const envases = data?.filter((item)=>item.category === 'envase')
+  const principios = data?.filter((item)=>item.category === 'Activo')
+  const base = data?.filter((item)=>item.category === 'Base')
+  const envases = data?.filter((item)=>item.category === 'F. Farmaceutica')
   useEffect(()=>{
     fetchData();
   },[])
@@ -45,12 +45,14 @@ function Dashboard() {
     position: 'absolute',
     top: '51px',
     right: '0px',
+    backgroundColor: '#f4f6f7'
   };
 
   return (
     <div style={appStyles}>
       <Header/>
       <section className="container mt-3 d-flex flex-column justify-content-evenly" style={{backgroundColor: 'rgba(242, 219, 213, 0.9)'}}>
+
           <SectionProd data={principios} handleSelectData={handleSelectData} title={'Principios activos'}/>
           <SectionProd data={base}  handleSelectData={handleSelectData} title={'Bases'}/>
           <SectionProd data={envases} handleSelectData={handleSelectData} title={'Envases'}/>

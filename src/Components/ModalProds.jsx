@@ -39,7 +39,7 @@ function ModalProds({handleShow}) {
               />
             </div>
           </form>
-          <button type="submit" className="btn text-light" style={{backgroundColor:'#3E0070'}}>Agregar</button>
+          <button type="submit" className="btn text-light" style={{backgroundColor:'#2e2bff'}}>Agregar</button>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from '../Components/Form'
+import FormAuth from '../Components/FormAuth'
 
 
 function ModalUser({handleShow}) {
@@ -13,7 +13,7 @@ function ModalUser({handleShow}) {
             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={handleShow}></button>
           </div>
           <div className="modal-body d-flex justify-content-center align-items-center">
-          <Form singUp={registerUser}/>
+          <FormAuth singUp={registerUser}/>
           </div>
         </div>
       </div>

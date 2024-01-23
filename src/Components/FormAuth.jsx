@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { z, ZodError } from "zod";
 import { useNavigate } from 'react-router-dom';
 
-function Form({singUp}) {
+function FormAuth({singUp}) {
   const [name, setName]= useState('');
   const [email, setEmail]= useState('');
   const [password, setPassword]= useState('');
@@ -62,7 +62,7 @@ function Form({singUp}) {
 
   return (
     <form className="d-flex flex-column " style={{width:'70%'}} onSubmit={handleSubmit}>
-      <h2 style={{color:'#3E0070', marginTop:'15px', marginBottom:'40px'}}>Inicio de Sesión</h2>
+      <h2 style={{color:'#092f62', marginTop:'15px', marginBottom:'40px'}}>Inicio de Sesión</h2>
       {
         singUp &&
         <div className="mb-3">
@@ -81,9 +81,9 @@ function Form({singUp}) {
         <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e)=>setPassword(e.target.value)}/>
         {error?.password && <div className="text-danger">{error?.password}</div>}
       </div>
-      <button type="submit" className="btn text-light" style={{backgroundColor:'#3E0070'}}>{singUp ? "Registrar" : "Ingresar"}</button>
+      <button type="submit" className="btn text-light" style={{backgroundColor:'#2e2bff'}}>{singUp ? "Registrar" : "Ingresar"}</button>
     </form>
   )
 }
 
-export default Form
+export default FormAuth
