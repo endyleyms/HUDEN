@@ -4,7 +4,6 @@ function TableResume({data}) {
   const sumaPrecios = Object.values(data).reduce((acumulador, elemento) => {
     // Convertir el precio a un número antes de sumarlo
     const precio = parseFloat(elemento.price);
-    
     // Verificar si el precio es un número válido
     if (!isNaN(precio)) {
       acumulador += precio;

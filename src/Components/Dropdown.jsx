@@ -1,11 +1,16 @@
 import React, {useState} from 'react'
 
-function Dropdown({options, data, defaultSlected}) {
+function Dropdown({options, data, defaultSlected, handleSelectData}) {
   const [show, setShow]= useState(false);
   const [selected, setSecelted]= useState(defaultSlected);
   const handleSelect = (status) => {
     setSecelted(status);
     setShow(!show);
+  };
+  const handleSelected = (status) => {
+    setSecelted(status.title);
+    setShow(!show);
+    handleSelectData(status)
   };
   return (
     <div className="dropdown">
@@ -34,9 +39,9 @@ function Dropdown({options, data, defaultSlected}) {
               </>
               :
               <>
-              {data.map((data, index) => (
+              {data?.map((data, index) => (
                 <li key={index} className={`list-group-item`}>
-                  <button type="button" className="btn" onClick={() => handleSelect(data.title)}>
+                  <button type="button" className="btn" onClick={() => handleSelected(data)}>
                     {data.title}
                   </button>
                 </li>

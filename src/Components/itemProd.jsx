@@ -5,7 +5,6 @@ function ItemProd({data, index}) {
   const [codigo, setCodigo]=useState(data.id)
   const [category, setCategory]=useState(data.category)
   const [title, setTitle]=useState(data.title)
-  const [description, setDescription]=useState(data.description)
   const [price, setPrice]=useState(data.price)
   const [value, setValue]=useState(data.value)
   const [unidad, setUnidad]=useState(data.unidad)
@@ -29,7 +28,7 @@ function ItemProd({data, index}) {
       <td><input type="text" className="form-control" placeholder={`${data.title}`} value={title} onChange={(e)=>setTitle(e.target.value)}/></td>
       <td><input type="text" className="form-control" placeholder={`${data.price}`} value={price} onChange={(e)=>setPrice(e.target.value)}/></td>
       <td><input type="text" className="form-control" placeholder={`${data.value}`} value={value} onChange={(e)=>setValue(e.target.value)}/></td>
-      <td><Dropdown options={['L', 'ML', 'g', 'mg']}  defaultSlected={unidad}/></td>
+      <td><Dropdown options={['g', 'ml']}  defaultSlected={unidad}/></td>
     </>
     :
     <>

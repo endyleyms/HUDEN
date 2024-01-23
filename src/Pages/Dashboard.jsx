@@ -4,11 +4,15 @@ import Header from '../Components/Header'
 import { SectionProd } from '../Components/SectionProd'
 import ButtonFixed from '../Components/ButtonFixed'
 import ModalResume from '../Components/ModalResume'
+import { FormItem } from '../Components/FormItem'
+import PrincipiosItem from '../Components/PrincipiosItem'
 
 
 function Dashboard() {
   const [data, setData]=useState()
   const [selecData, setSelectData]= useState()
+  const [addComponent, setAddComponent]= useState(1)
+  console.log('addComponent', addComponent)
   const [show, setShow]=useState(false)
   
   //funcion para abrir-cerrar modal
@@ -24,6 +28,10 @@ function Dashboard() {
     }))
   }
   
+  const handleAddPrincipiosItem = () => {
+    setAddComponent((prevCount) => prevCount + 1);
+  };
+
   //función para traer la data
   const fetchData = async (query = {})=>{
     const data= await listAll(query)
@@ -51,22 +59,35 @@ function Dashboard() {
   return (
     <div style={appStyles}>
       <Header/>
-      <section className="container mt-3 d-flex flex-column justify-content-evenly" style={{backgroundColor: '#bed0ff'}}>
-          <div className="d-flex flex-column">
-            <form class="form-floating">
-              <input type="email" class="form-control" id="floatingInputInvalid" placeholder="Nombre Paciente" value=""/>
-              <label for="floatingInputInvalid">Nombre Paciente</label>
-            </form>
-              <form class="form-floating">
-              <input type="email" class="form-control" id="floatingInputInvalid" placeholder="Nombre Doctor" value=""/>
-              <label for="floatingInputInvalid">Nombre Doctor</label>
-            </form>
-          </div>
-          <SectionProd data={fFarmaceutica} handleSelectData={handleSelectData} title={'Envases'}/>
-          <SectionProd data={principios} handleSelectData={handleSelectData} title={'Principios activos'}/>
-          <SectionProd data={base}  handleSelectData={handleSelectData} title={'Bases'}/>
-          {selecData && <ButtonFixed title={'Calcular'} handleShow={handleShow}/>}
-          {show && <ModalResume handleShow={handleShow} selecData={selecData}/>}
+      <section className="container mt-5">
+        <div style={{backgroundColor: '#bed0ff', padding: '15px', borderRadius:'12px'}}>
+        <h2 className="text-center" style={{color:'#092f62', marginTop: '20px'}}>Productos</h2>
+          <hr />
+          <section>
+            <div className="row">
+              <div className="col-5">
+                <FormItem title={'Nombre'} placeholder={'Paciente'}/>
+              </div>
+              <div className="col-5">
+                <FormItem title={'Nombre'} placeholder={'Doctor'}/>
+              </div>
+              <div className="col-5">
+                <SectionProd data={fFarmaceutica} handleSelectData={handleSelectData} title={'Forma Farmacéutica'}/>
+              </div>
+              <div className="col-5">
+                <FormItem title={'Presentación'} placeholder={'Número'}/>
+              </div>
+            </div>
+            {[...Array(addComponent)].map((_, index) => (
+              <PrincipiosItem key={index} principios={principios} handleSelectData={handleSelectData} />
+            ))}
+            <button className="btn btn-primary" onClick={handleAddPrincipiosItem}>
+              Agregar Más
+            </button>
+            {selecData && <ButtonFixed title={'Calcular'} handleShow={handleShow}/>}
+            {show && <ModalResume handleShow={handleShow} selecData={selecData}/>}
+          </section>
+        </div>
       </section>
     </div>
   )
