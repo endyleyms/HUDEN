@@ -5,7 +5,7 @@ import FormAuth from '../Components/FormAuth'
 function ModalUser({handleShow}) {
   const registerUser = true
   return (
-    <div id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="false" style={{zIndex: "1", position: "absolute", top:150, left:500, width: "50%", height:"60%", backgroundColor: 'rgba(242, 219, 213, 1)', padding: 30, borderRadius: '12px'}}>
+    <div id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="false" style={{zIndex: "1", position: "absolute", top:120, left:250, width:'60%', maxWidth: "90%", maxHeight:"80%", backgroundColor: '#97afff', padding: 30, borderRadius: '12px'}}>
       <div className="d-flex justify-content-center align-items-center">
         <div className="modal-content">
           <div className="modal-header">

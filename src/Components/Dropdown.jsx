@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function Dropdown({options, defaultSlected}) {
+function Dropdown({options, data, defaultSlected}) {
   const [show, setShow]= useState(false);
   const [selected, setSecelted]= useState(defaultSlected);
   const handleSelect = (status) => {
@@ -17,18 +17,32 @@ function Dropdown({options, defaultSlected}) {
         onClick={()=>setShow(!show)}
         style={{width:'100%'}}
       >
-        {selected}
+        {options ? selected : selected}
       </button>
       <div style={{position: 'absolute', zIndex: 1,}}>
         {show &&
             <ul className="list-group">
+              {options?
+              <>
               {options.map((option, index) => (
-              <li key={index} className={`list-group-item`}>
-                <button type="button" className="btn" onClick={() => handleSelect(option)}>
-                  {option}
-                </button>
-              </li>
-            ))}
+                <li key={index} className={`list-group-item`}>
+                  <button type="button" className="btn" onClick={() => handleSelect(option)}>
+                    {option}
+                  </button>
+                </li>
+              ))}
+              </>
+              :
+              <>
+              {data.map((data, index) => (
+                <li key={index} className={`list-group-item`}>
+                  <button type="button" className="btn" onClick={() => handleSelect(data.title)}>
+                    {data.title}
+                  </button>
+                </li>
+              ))}
+              </>
+              }
             </ul>
           }
       </div>

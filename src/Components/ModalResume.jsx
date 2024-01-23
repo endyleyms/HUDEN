@@ -3,7 +3,7 @@ import TableResume from './TableResume'
 
 function ModalResume({handleShow, selecData}) {
   return (
-    <div id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="false" style={{zIndex: "1", position: "absolute", top:20, left:66, width: "90%", height:"60%", backgroundColor: 'rgba(242, 219, 213, 10)', padding: 30}}>
+    <div id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="false" style={{zIndex: "1", position: "absolute", top:20, left:66, width: "90%", height:"60%", backgroundColor: '#97afff', padding: 30}}>
       <div className="d-flex justify-content-center align-items-center">
         <div className="modal-content">
           <div className="modal-header">

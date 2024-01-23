@@ -31,7 +31,7 @@ function Dashboard() {
   }
   const principios = data?.filter((item)=>item.category === 'Activo')
   const base = data?.filter((item)=>item.category === 'Base')
-  const envases = data?.filter((item)=>item.category === 'F. Farmaceutica')
+  const fFarmaceutica = data?.filter((item)=>item.category === 'F. Farmaceutica')
   useEffect(()=>{
     fetchData();
   },[])
@@ -51,11 +51,20 @@ function Dashboard() {
   return (
     <div style={appStyles}>
       <Header/>
-      <section className="container mt-3 d-flex flex-column justify-content-evenly" style={{backgroundColor: 'rgba(242, 219, 213, 0.9)'}}>
-
+      <section className="container mt-3 d-flex flex-column justify-content-evenly" style={{backgroundColor: '#bed0ff'}}>
+          <div className="d-flex flex-column">
+            <form class="form-floating">
+              <input type="email" class="form-control" id="floatingInputInvalid" placeholder="Nombre Paciente" value=""/>
+              <label for="floatingInputInvalid">Nombre Paciente</label>
+            </form>
+              <form class="form-floating">
+              <input type="email" class="form-control" id="floatingInputInvalid" placeholder="Nombre Doctor" value=""/>
+              <label for="floatingInputInvalid">Nombre Doctor</label>
+            </form>
+          </div>
+          <SectionProd data={fFarmaceutica} handleSelectData={handleSelectData} title={'Envases'}/>
           <SectionProd data={principios} handleSelectData={handleSelectData} title={'Principios activos'}/>
           <SectionProd data={base}  handleSelectData={handleSelectData} title={'Bases'}/>
-          <SectionProd data={envases} handleSelectData={handleSelectData} title={'Envases'}/>
           {selecData && <ButtonFixed title={'Calcular'} handleShow={handleShow}/>}
           {show && <ModalResume handleShow={handleShow} selecData={selecData}/>}
       </section>

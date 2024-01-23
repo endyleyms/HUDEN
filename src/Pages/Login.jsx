@@ -16,7 +16,7 @@ function Login() {
   return (
     <div style={appStyles}>
       <Header/>
-      <section className="container d-flex align-items-center" style={{backgroundColor: 'rgba(242, 219, 213, 0.9)', width:'100%', height:'80vh', marginTop: '60px', borderRadius:'12px'}}>
+      <section className="container d-flex align-items-center" style={{backgroundColor: '#bed0ff', width:'100%', height:'80vh', marginTop: '60px', borderRadius:'12px'}}>
         <div className="row">
           <div className='col-md-6 d-flex justify-content-center align-items-center' style={{height:'50%'}}>
             <FormAuth/>

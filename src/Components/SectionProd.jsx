@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
 import Card from './Card'
+import Dropdown from './Dropdown'
 
 export const SectionProd = ({data, title, handleSelectData}) => {
+  console.log('data',)
   const [show, setShow]= useState(true)
   const handleShow =()=>{
     setShow(!show)
@@ -12,15 +14,7 @@ export const SectionProd = ({data, title, handleSelectData}) => {
         <span className="text-center" style={{color:'#3E0070'}}>{title}</span>
         <hr />
       </button>
-      {show &&
-        <div className='row'>
-          {data?.map((item, index)=>{
-            return(
-              <Card key={index} data={item} handleSelectData={handleSelectData}/>
-            )
-          })}
-        </div>
-      }
+      <Dropdown data={data}  defaultSlected={'Selecciona una opción'}/>
     </div>
   )
 }

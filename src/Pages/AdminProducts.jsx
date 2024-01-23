@@ -34,7 +34,7 @@ function AdminProducts() {
     <div style={appStyles}>
       <Header/>
       <section className="container mt-5" >
-        <div style={{backgroundColor: 'rgba(242, 219, 213, 0.9)', padding: '15px', borderRadius:'12px'}}>
+        <div style={{backgroundColor: '#bed0ff', padding: '15px', borderRadius:'12px'}}>
           <h2 className="text-center" style={{color:'#092f62', marginTop: '20px'}}>Administrador de Productos</h2>
           <hr />
           <section id="admin-tools" className="row justify-content-md-center">
