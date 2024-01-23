@@ -92,7 +92,7 @@ function Dashboard() {
             {[...Array(addComponent)].map((_, index) => (
               <PrincipiosItem key={index} principios={principios} handleSelectData={handleSelectData} value={concentration} setValue={setConcentration} />
             ))}
-            <button className="btn btn-primary" onClick={handleAddPrincipiosItem}>
+            <button className="btn btn-primary" onClick={handleAddPrincipiosItem} style={{marginTop: 20}}>
               Agregar Más Principios
             </button>
             {selecData && <ButtonFixed title={'Calcular'} handleShow={handleShow}/>}
