@@ -24,6 +24,8 @@ function Dashboard() {
     setShowResume(!showResume);
     setShowModal(false)
   }
+
+  //funcion para recibir data de componente hijo
   const handledatachild = (data)=>{
     setFormData(data)
   }
