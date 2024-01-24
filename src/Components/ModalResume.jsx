@@ -10,7 +10,7 @@ function ModalResume({handleShow, selecData}) {
             <h1 className="modal-title fs-5" id="exampleModalLabel">Resumen del pedido</h1>
             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={handleShow}></button>
           </div>
-          <div className="modal-body d-flex justify-content-center align-items-center">
+          <div style={{width: '80%'}}>
             <TableResume data={selecData}/>
           </div>
         </div>

@@ -23,21 +23,20 @@ function TableResume({data}) {
         <table className="table">
         <thead>
           <tr>
-            <th scope="col">ID</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Categoría</th>
             <th scope="col">Unidad</th>
             <th scope="col">Concentración</th>
+            <th scope="col">Cantidad</th>
+            {/* falta la cantidad */}
           </tr>
         </thead>
         <tbody>
         {dataArray.map((item, index) => (
           <tr key={index}>
-            <td>{item.id}</td>
             <td>{item.title}</td>
-            <td>{item.category}</td>
             <td>{item.unidad}</td>
             <td>{item.concentracion}</td>
+            <td>{item.cantidad} {item.unidad}</td>
           </tr>
         ))}
           <span className='list-group-item'> <strong>Total:{sumaPrecios} COP</strong>  </span>
