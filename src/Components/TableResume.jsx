@@ -13,10 +13,10 @@ function TableResume({data}) {
   }, 0);
   return (
     <ul className='list-group' style={{width:'100%'}}>
-      {Object.keys(data).map((clave) => (
+      {Object.keys(data)?.map((clave) => (
         <li key={clave} className='list-group-item'>
           <ul className='d-flex justify-content-evenly align-items-center'>
-            {Object.entries(data[clave]).map(([campo, valor]) => (
+            {Object.entries(data[clave])?.map(([campo, valor]) => (
               <li key={campo} className='list-group'>
                 <strong>{campo}</strong> {valor}
               </li>

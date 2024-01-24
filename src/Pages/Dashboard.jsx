@@ -6,32 +6,29 @@ import ButtonFixed from '../Components/ButtonFixed'
 import ModalResume from '../Components/ModalResume'
 import { FormItem } from '../Components/FormItem'
 import PrincipiosItem from '../Components/PrincipiosItem'
+import ModalAddProducts from '../Components/ModalAddProducts'
 
 
 function Dashboard() {
   const [data, setData]=useState()
   const [selecData, setSelectData]= useState()
   const [addComponent, setAddComponent]= useState(1)
+  const [formData, setFormData]=useState()
+  console.log('formdata', selecData)
   const [show, setShow]=useState(false)
-  const [namePatient, setNamePatien]=useState('')
-  const [nameDoctor, setNameDoctor]=useState('')
-  const [number, setNumber]=useState('')
-  const [concentration, setConcentration]=useState('')
   //funcion para abrir-cerrar modal
   const handleShow = ()=>{
     setShow(!show);
   }
+  const handledatachild = (data)=>{
+    setFormData(data)
+  }
 
   //funcion que maneja la seleccion de los productos a cotizar
   const handleSelectData=(data)=>{
-    const formData={
-      'Paciente':namePatient.toLowerCase(),
-      'Doctor':nameDoctor.toLowerCase(),
-      'Presentacion':number.toUpperCase().replace(/[^0-9]/g,""),
-    }
     setSelectData((prevData)=>({
       ...prevData,
-      [formData.name_doctor]: formData,
+      [formData?.Doctor]: formData,
       [data.id]: data,
     }))
   }
@@ -71,7 +68,7 @@ function Dashboard() {
         <div style={{backgroundColor: '#bed0ff', padding: '15px', borderRadius:'12px'}}>
         <h2 className="text-center" style={{color:'#092f62', marginTop: '20px'}}>Productos</h2>
           <hr />
-          <section>
+          {/* <section>
             <div className="row">
               <div className="col-5">
                 <FormItem title={'Nombre'} placeholder={'Paciente'} value={namePatient} setValue={setNamePatien}/>
@@ -97,7 +94,19 @@ function Dashboard() {
             </button>
             {selecData && <ButtonFixed title={'Calcular'} handleShow={handleShow}/>}
             {show && <ModalResume handleShow={handleShow} selecData={selecData}/>}
-          </section>
+          </section> */}
+          <ModalAddProducts
+          addComponent={addComponent}
+          handleSelectData={handleSelectData}
+          selecData={selecData}
+          show={show}
+          handleShow={handleShow}
+          handleAddPrincipiosItem={handleAddPrincipiosItem}
+          base={base}
+          fFarmaceutica={fFarmaceutica}
+          principios={principios}
+          handledatachild={handledatachild}
+           />
         </div>
       </section>
     </div>
