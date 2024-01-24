@@ -40,7 +40,11 @@ function Dashboard() {
   }
   //funcion que maneja agregar mas de un principio activo
   const handleAddPrincipiosItem = () => {
-    setAddComponent((prevCount) => prevCount + 1);
+    if(addComponent <3){
+      setAddComponent(addComponent + 1)
+      }else{
+        alert("Solo se permiten tres activos")
+        }
   };
 
   //función para traer la data
