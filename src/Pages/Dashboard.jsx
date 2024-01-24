@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { listAll } from '../services/data'
 import Header from '../Components/Header'
-import { SectionProd } from '../Components/SectionProd'
-import ButtonFixed from '../Components/ButtonFixed'
-import ModalResume from '../Components/ModalResume'
-import { FormItem } from '../Components/FormItem'
-import PrincipiosItem from '../Components/PrincipiosItem'
 import ModalAddProducts from '../Components/ModalAddProducts'
 
 
@@ -14,7 +9,6 @@ function Dashboard() {
   const [selecData, setSelectData]= useState()
   const [addComponent, setAddComponent]= useState(1)
   const [formData, setFormData]=useState()
-  console.log('formdata', selecData)
   const [show, setShow]=useState(false)
   //funcion para abrir-cerrar modal
   const handleShow = ()=>{

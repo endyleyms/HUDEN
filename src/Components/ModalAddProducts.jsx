@@ -16,7 +16,7 @@ function ModalAddProducts({addComponent, handleSelectData, selecData, handleShow
     'Doctor':nameDoctor.toLowerCase(),
     'Presentacion':number.toUpperCase().replace(/[^0-9]/g,""),
   }
-  const submit =()=>{
+  const submit = ()=>{
     handledatachild(formData)
     handleSelectData(formData)
   }
@@ -25,10 +25,10 @@ function ModalAddProducts({addComponent, handleSelectData, selecData, handleShow
     <section>
       <div className="row">
         <div className="col-5">
-          <FormItem title={'Nombre'} placeholder={'Paciente'} value={namePatient} setValue={setNamePatien}/>
+          <FormItem title={'Nombre Paciente'} placeholder={'Paciente'} value={namePatient} setValue={setNamePatien}/>
         </div>
         <div className="col-5">
-          <FormItem title={'Nombre'} placeholder={'Doctor'} value={nameDoctor} setValue={setNameDoctor}/>
+          <FormItem title={'Nombre Doctor'} placeholder={'Doctor'} value={nameDoctor} setValue={setNameDoctor}/>
         </div>
         <div className="col-5">
           <SectionProd data={fFarmaceutica} handleSelectData={handleSelectData} title={'Forma Farmacéutica'}/>
@@ -43,11 +43,13 @@ function ModalAddProducts({addComponent, handleSelectData, selecData, handleShow
       {[...Array(addComponent)].map((_, index) => (
         <PrincipiosItem key={index} principios={principios} handleSelectData={handleSelectData} value={concentration} setValue={setConcentration} />
       ))}
-      <button className="btn btn-primary" onClick={handleAddPrincipiosItem} style={{marginTop: 20}}>
-        Agregar Más Principios
-      </button>
+      <div>
+        <button className="btn btn-primary" onClick={handleAddPrincipiosItem} style={{marginTop: 20}}>
+          Agregar Más Principios
+        </button>
+      </div>
       <button className="btn btn-primary" onClick={submit} style={{marginTop: 20}}>
-       +
+       Agregar este producto
       </button>
       {selecData && <ButtonFixed title={'Calcular'} handleShow={handleShow}/>}
       {show && <ModalResume handleShow={handleShow} selecData={selecData}/>}

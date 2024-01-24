@@ -3,7 +3,6 @@ import Card from './Card'
 import Dropdown from './Dropdown'
 
 export const SectionProd = ({data, title, handleSelectData}) => {
-  console.log('data',)
   return (
     <div>
       <div className="accordion-button collapsed">
