@@ -34,7 +34,7 @@ function Dashboard() {
   const handleSelectData=(data)=>{
     setSelectData((prevData)=>({
       ...prevData,
-      [formData?.Doctor]: formData,
+      [formData?.Paciente]: formData,
       [data.id]: data,
     }))
   }
