@@ -10,6 +10,13 @@ function Dashboard() {
   const [addComponent, setAddComponent]= useState(1)
   const [formData, setFormData]=useState()
   const [show, setShow]=useState(false)
+  const [showModal, setShowModal]=useState(false)
+
+  //funcion para abrir-cerrar modal
+  const handleShowModal = ()=>{
+    setShowModal(!showModal);
+  }
+
   //funcion para abrir-cerrar modal
   const handleShow = ()=>{
     setShow(!show);
@@ -59,48 +66,28 @@ function Dashboard() {
     <div style={appStyles}>
       <Header/>
       <section className="container mt-5">
-        <div style={{backgroundColor: '#bed0ff', padding: '15px', borderRadius:'12px'}}>
+        <div style={{backgroundColor: '#bed0ff', padding: '15px', borderRadius:'12px', minHeight: 500}}>
         <h2 className="text-center" style={{color:'#092f62', marginTop: '20px'}}>Productos</h2>
           <hr />
-          {/* <section>
-            <div className="row">
-              <div className="col-5">
-                <FormItem title={'Nombre'} placeholder={'Paciente'} value={namePatient} setValue={setNamePatien}/>
-              </div>
-              <div className="col-5">
-                <FormItem title={'Nombre'} placeholder={'Doctor'} value={nameDoctor} setValue={setNameDoctor}/>
-              </div>
-              <div className="col-5">
-                <SectionProd data={fFarmaceutica} handleSelectData={handleSelectData} title={'Forma Farmacéutica'}/>
-              </div>
-              <div className="col-5">
-                <SectionProd data={base} handleSelectData={handleSelectData} title={'Base'}/>
-              </div>
-              <div className="col-5">
-                <FormItem title={'Presentación'} placeholder={'Número'} value={number} setValue={setNumber}/>
-              </div>
-            </div>
-            {[...Array(addComponent)].map((_, index) => (
-              <PrincipiosItem key={index} principios={principios} handleSelectData={handleSelectData} value={concentration} setValue={setConcentration} />
-            ))}
-            <button className="btn btn-primary" onClick={handleAddPrincipiosItem} style={{marginTop: 20}}>
-              Agregar Más Principios
-            </button>
-            {selecData && <ButtonFixed title={'Calcular'} handleShow={handleShow}/>}
-            {show && <ModalResume handleShow={handleShow} selecData={selecData}/>}
-          </section> */}
-          <ModalAddProducts
-          addComponent={addComponent}
-          handleSelectData={handleSelectData}
-          selecData={selecData}
-          show={show}
-          handleShow={handleShow}
-          handleAddPrincipiosItem={handleAddPrincipiosItem}
-          base={base}
-          fFarmaceutica={fFarmaceutica}
-          principios={principios}
-          handledatachild={handledatachild}
-           />
+          {showModal ?
+            <ModalAddProducts
+            addComponent={addComponent}
+            handleSelectData={handleSelectData}
+            selecData={selecData}
+            show={show}
+            handleShow={handleShow}
+            handleAddPrincipiosItem={handleAddPrincipiosItem}
+            base={base}
+            fFarmaceutica={fFarmaceutica}
+            principios={principios}
+            handledatachild={handledatachild}
+            handleShowModal={handleShowModal}
+            />
+            :
+            <button type='button' className="btn btn-primary" style={{position: 'absolute', right: 100, bottom: 200}} onClick={handleShowModal}>
+              Agregar producto
+              </button>
+          }
         </div>
       </section>
     </div>
