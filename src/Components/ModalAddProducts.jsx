@@ -10,6 +10,7 @@ function ModalAddProducts({addComponent, handleSelectData, selecData, handleShow
   const [nameDoctor, setNameDoctor]=useState('')
   const [number, setNumber]=useState('')
   const [concentration, setConcentration]=useState('')
+  const [showDataResume, setShowDataResume]=useState(false)
 
   const formData={
     'Paciente':namePatient.toLowerCase(),
@@ -19,6 +20,7 @@ function ModalAddProducts({addComponent, handleSelectData, selecData, handleShow
   const submit = ()=>{
     handledatachild(formData)
     handleSelectData(formData)
+    setShowDataResume(true)
   }
 
   return (
@@ -50,15 +52,14 @@ function ModalAddProducts({addComponent, handleSelectData, selecData, handleShow
             <PrincipiosItem key={index} principios={principios} handleSelectData={handleSelectData} value={concentration} setValue={setConcentration} />
           ))}
           <div>
-            <button className="btn btn-primary" onClick={handleAddPrincipiosItem} style={{marginTop: 20}}>
-              Añadir Principios
+            <button className="btn btn-primary" onClick={handleAddPrincipiosItem} style={{marginTop: 20, backgroundColor: '#4c58ff'}}>
+              Añadir Activos
             </button>
           </div>
           <button className="btn btn-primary" onClick={submit} style={{marginTop: 20}}>
-          Agregar producto
+          Submit
           </button>
-          {selecData && <ButtonFixed title={'Calcular'} handleShow={handleShow}/>}
-          {show && <ModalResume handleShow={handleShow} selecData={selecData}/>}
+          {showDataResume && <ButtonFixed title={'Calcular'} handleShow={handleShow}/>}
         </div>
       </div>
     </section>

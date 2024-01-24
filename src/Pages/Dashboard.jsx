@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { listAll } from '../services/data'
 import Header from '../Components/Header'
 import ModalAddProducts from '../Components/ModalAddProducts'
+import ModalResume from '../Components/ModalResume'
 
 
 function Dashboard() {
@@ -9,17 +10,19 @@ function Dashboard() {
   const [selecData, setSelectData]= useState()
   const [addComponent, setAddComponent]= useState(1)
   const [formData, setFormData]=useState()
-  const [show, setShow]=useState(false)
+  const [showResume, setShowResume]=useState(false)
   const [showModal, setShowModal]=useState(false)
 
   //funcion para abrir-cerrar modal
   const handleShowModal = ()=>{
     setShowModal(!showModal);
+    setShowResume(false);
   }
 
   //funcion para abrir-cerrar modal
-  const handleShow = ()=>{
-    setShow(!show);
+  const handleShowResume = ()=>{
+    setShowResume(!showResume);
+    setShowModal(false)
   }
   const handledatachild = (data)=>{
     setFormData(data)
@@ -74,8 +77,8 @@ function Dashboard() {
             addComponent={addComponent}
             handleSelectData={handleSelectData}
             selecData={selecData}
-            show={show}
-            handleShow={handleShow}
+            show={showResume}
+            handleShow={handleShowResume}
             handleAddPrincipiosItem={handleAddPrincipiosItem}
             base={base}
             fFarmaceutica={fFarmaceutica}
@@ -88,6 +91,7 @@ function Dashboard() {
               Agregar producto
               </button>
           }
+           {showResume && <ModalResume handleShow={handleShowResume} selecData={selecData}/>}
         </div>
       </section>
     </div>
