@@ -1,4 +1,5 @@
 const API_URL = "./src/jsons/users.json";
+const API_HUDEN = "https://hudenback.onrender.com";
 
 export const listAllUsers = async () => {
   try {
@@ -49,6 +50,24 @@ export const updateUser = async (id, body) => {
   try {
     const response = await fetch(`${API_URL}/${id}`, payload);
     const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const login = async (user) => {
+  try {
+    const payload = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    };
+    const response = await fetch(`${API_HUDEN}/auth/login`, payload);
+    const data = await response.json();
+    localStorage.setItem("token", data.msg.token);
     return data;
   } catch (error) {
     throw new Error(error);

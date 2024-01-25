@@ -1,9 +1,11 @@
 import React, { useContext, useState } from 'react'
 import { z, ZodError } from "zod";
 import { useNavigate } from 'react-router-dom';
-import AuthContext from '../Context/AuthContext';
+import { useAuthContext } from '../Hooks/useAuthContext';
+import { login } from '../services/users';
 
 function FormAuth({singUp}) {
+  const {dispatch}= useAuthContext()
   const [name, setName]= useState('');
   const [email, setEmail]= useState('');
   const [password, setPassword]= useState('');
@@ -28,7 +30,7 @@ function FormAuth({singUp}) {
       .max(16, 'La contraseña debe tener menos de 16 caracteres'),
   });
 
-  function handleSubmit(event) {
+  const handleSubmit= async (event)=> {
     event.preventDefault();
     const formDataLogin = {
       email,
@@ -42,12 +44,12 @@ function FormAuth({singUp}) {
     try {
       if(!singUp){
         signInSchema.parse(formDataLogin);
-        console.log('Formulario válido:', formDataLogin);
-        //falta el handleauth de context
+        await login(formDataLogin)
+        await dispatch({type: 'LOGIN', payload: formDataLogin})
         navigate('/admin');
       }else{
         singUpSchema.parse(formDataSingUp);
-        console.log('Formulario válido:', formDataSingUp);
+        await dispatch({type: 'LOGIN', payload: formDataSingUp})
         alert("Usuario creado correctamente");
       }
     } catch (error) {
