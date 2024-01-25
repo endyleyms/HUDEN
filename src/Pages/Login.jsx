@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../Components/Header'
 import FormAuth from '../Components/FormAuth'
+import { AuthProvider } from '../Context/AuthContext';
 
 function Login() {
   const appStyles = {
@@ -14,19 +15,22 @@ function Login() {
     backgroundColor: '#f4f6f7'
   };
   return (
-    <div style={appStyles}>
-      <Header/>
-      <section className="container d-flex align-items-center" style={{backgroundColor: '#bed0ff', width:'100%', height:'80vh', marginTop: '60px', borderRadius:'12px'}}>
-        <div className="row">
-          <div className='col-md-6 d-flex justify-content-center align-items-center' style={{height:'50%'}}>
-            <FormAuth/>
+    <AuthProvider>
+
+      <div style={appStyles}>
+        <Header/>
+        <section className="container d-flex align-items-center" style={{backgroundColor: '#bed0ff', width:'100%', height:'80vh', marginTop: '60px', borderRadius:'12px'}}>
+          <div className="row">
+            <div className='col-md-6 d-flex justify-content-center align-items-center' style={{height:'50%'}}>
+              <FormAuth/>
+            </div>
+            <div className="col-md-6 rounded" style={{height:'50%', paddingRight:'50px'}}>
+              <img src="./src/assets/portada-todos-proyectos-huden.webp" alt=""  className="img-fluid" style={{borderRadius:'15px'}}/>
+            </div>
           </div>
-          <div className="col-md-6 rounded" style={{height:'50%', paddingRight:'50px'}}>
-            <img src="./src/assets/portada-todos-proyectos-huden.webp" alt=""  className="img-fluid" style={{borderRadius:'15px'}}/>
-          </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </AuthProvider>
   )
 }
 

@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { z, ZodError } from "zod";
 import { useNavigate } from 'react-router-dom';
+import AuthContext from '../Context/AuthContext';
 
 function FormAuth({singUp}) {
   const [name, setName]= useState('');
@@ -42,6 +43,7 @@ function FormAuth({singUp}) {
       if(!singUp){
         signInSchema.parse(formDataLogin);
         console.log('Formulario válido:', formDataLogin);
+        //falta el handleauth de context
         navigate('/admin');
       }else{
         singUpSchema.parse(formDataSingUp);
