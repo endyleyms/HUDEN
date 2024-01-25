@@ -56,7 +56,7 @@ export const updateUser = async (id, body) => {
   }
 };
 
-export const login = async (user) => {
+export const login = async (user, dispatch) => {
   try {
     const payload = {
       method: "POST",
@@ -67,6 +67,7 @@ export const login = async (user) => {
     };
     const response = await fetch(`${API_HUDEN}/auth/login`, payload);
     const data = await response.json();
+    dispatch({ type: "LOGIN", payload: data });
     localStorage.setItem("token", data.msg.token);
     return data;
   } catch (error) {

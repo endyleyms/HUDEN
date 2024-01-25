@@ -44,12 +44,12 @@ function FormAuth({singUp}) {
     try {
       if(!singUp){
         signInSchema.parse(formDataLogin);
-        await login(formDataLogin)
-        await dispatch({type: 'LOGIN', payload: formDataLogin})
+        //  dispatch({type: 'LOGIN', payload: formDataLogin})
+        await login(formDataLogin, dispatch);
         navigate('/admin');
       }else{
         singUpSchema.parse(formDataSingUp);
-        await dispatch({type: 'LOGIN', payload: formDataSingUp})
+        // dispatch({type: 'LOGIN', payload: formDataSingUp})
         alert("Usuario creado correctamente");
       }
     } catch (error) {
