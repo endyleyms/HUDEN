@@ -28,16 +28,17 @@ export const getUser = async (id) => {
   }
 };
 
-export const newUser = async (newRegister) => {
+export const newUser = async (newRegister, token) => {
   try {
     const payload = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`, // Agregar el token de autorización aquí
       },
       body: JSON.stringify(newRegister),
     };
-    const response = await fetch(`${API_URL}`, payload);
+    const response = await fetch(`${API_HUDEN}/auth/register`, payload);
     const data = await response.json();
     return data;
   } catch (error) {

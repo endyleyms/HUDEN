@@ -30,7 +30,7 @@ function AdminUsers() {
   }
   useEffect(()=>{
     fetchUsers();
-  },[])
+  },[users])
   return (
     <div style={appStyles}>
       <Header/>

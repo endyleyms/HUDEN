@@ -13,7 +13,7 @@ function ModalUser({handleShow}) {
             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={handleShow}></button>
           </div>
           <div className="modal-body d-flex justify-content-center align-items-center">
-          <FormAuth singUp={registerUser}/>
+          <FormAuth singUp={registerUser} handleShow={handleShow}/>
           </div>
         </div>
       </div>

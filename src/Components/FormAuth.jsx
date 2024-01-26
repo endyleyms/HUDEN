@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { z, ZodError } from "zod";
 import { useNavigate } from 'react-router-dom';
-import { useLogin } from '../services/users';
+import { newUser, useLogin } from '../services/users';
+import { useAuthContext } from '../Hooks/useAuthContext';
 
-function FormAuth({singUp}) {
+function FormAuth({singUp, handleShow}) {
+  const {user}= useAuthContext();
   const {login, loading}= useLogin();
   const [name, setName]= useState('');
   const [email, setEmail]= useState('');
@@ -44,10 +46,12 @@ function FormAuth({singUp}) {
       if(!singUp){
         signInSchema.parse(formDataLogin);
         await login(formDataLogin)
-        navigate('/admin');
+        navigate('/dashboard');
       }else{
         singUpSchema.parse(formDataSingUp);
-        alert("Usuario creado correctamente");
+        await newUser(formDataSingUp, user?.data?.msg?.token);
+        handleShow();
+        navigate('/admin');
       }
     } catch (error) {
       if (error instanceof ZodError) {
