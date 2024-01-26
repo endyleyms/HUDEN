@@ -1,11 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { z, ZodError } from "zod";
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from '../Hooks/useAuthContext';
-import { login } from '../services/users';
+import { useLogin } from '../services/users';
 
 function FormAuth({singUp}) {
-  const {dispatch}= useAuthContext()
+  const {login, loading}= useLogin();
   const [name, setName]= useState('');
   const [email, setEmail]= useState('');
   const [password, setPassword]= useState('');
@@ -17,7 +16,7 @@ function FormAuth({singUp}) {
     password: z
       .string()
       .min(6, 'La contraseña debe tener al menos 6 caracteres')
-      .max(16, 'La contraseña debe tener menos de 16 caracteres'),
+      .max(60, 'La contraseña debe tener menos de 30 caracteres'),
   });
   const singUpSchema = z.object({
     name: z
@@ -44,12 +43,10 @@ function FormAuth({singUp}) {
     try {
       if(!singUp){
         signInSchema.parse(formDataLogin);
-        //  dispatch({type: 'LOGIN', payload: formDataLogin})
-        await login(formDataLogin, dispatch);
+        await login(formDataLogin)
         navigate('/admin');
       }else{
         singUpSchema.parse(formDataSingUp);
-        // dispatch({type: 'LOGIN', payload: formDataSingUp})
         alert("Usuario creado correctamente");
       }
     } catch (error) {
@@ -85,7 +82,7 @@ function FormAuth({singUp}) {
         <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e)=>setPassword(e.target.value)}/>
         {error?.password && <div className="text-danger">{error?.password}</div>}
       </div>
-      <button type="submit" className="btn text-light" style={{backgroundColor:'#2e2bff'}}>{singUp ? "Registrar" : "Ingresar"}</button>
+      <button disabled={loading} type="submit" className="btn text-light" style={{backgroundColor:'#2e2bff'}}>{singUp ? "Registrar" : "Ingresar"}</button>
     </form>
   )
 }

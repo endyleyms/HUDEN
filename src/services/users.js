@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useAuthContext } from "../Hooks/useAuthContext";
+
 const API_URL = "./src/jsons/users.json";
 const API_HUDEN = "https://hudenback.onrender.com";
 
@@ -56,21 +59,28 @@ export const updateUser = async (id, body) => {
   }
 };
 
-export const login = async (user, dispatch) => {
-  try {
-    const payload = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    };
-    const response = await fetch(`${API_HUDEN}/auth/login`, payload);
-    const data = await response.json();
-    dispatch({ type: "LOGIN", payload: data });
-    localStorage.setItem("token", data.msg.token);
-    return data;
-  } catch (error) {
-    throw new Error(error);
-  }
+export const useLogin = () => {
+  const [loading, setLoading] = useState(null);
+  const { dispatch } = useAuthContext();
+  const login = async (user) => {
+    setLoading(true);
+    try {
+      const payload = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      };
+      const response = await fetch(`${API_HUDEN}/auth/login`, payload);
+      const data = await response.json();
+      dispatch({ type: "LOGIN", payload: { data, user } });
+      setLoading(false);
+      localStorage.setItem("user", JSON.stringify({ data, user }));
+      return data;
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
+  return { login, loading };
 };
