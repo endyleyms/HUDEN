@@ -12,9 +12,9 @@ function DropdownUser({data, isEditing}) {
 
   //funcion manejadora de adición de clase de estilos
   const getButtonClass = (status) => {
-    if (status === 'Activo') {
+    if (status === true) {
       return 'btn-outline-success';
-    } else if (status === 'Inactivo') {
+    } else if (status === false) {
       return 'btn-outline-danger';
     }
   };
@@ -46,13 +46,13 @@ function DropdownUser({data, isEditing}) {
           {show &&
             <ul className="list-group">
               <li className={`list-group-item`}>
-                <button type="button" className='btn' onClick={() => handleSelect('Activo')}>
-                  Activo
+                <button type="button" className='btn' onClick={() => handleSelect(true)}>
+                  true
                 </button>
               </li>
               <li className={`list-group-item`}>
-                <button type="button" className='btn' onClick={() => handleSelect('Inactivo')}>
-                  Inactivo
+                <button type="button" className='btn' onClick={() => handleSelect(false)}>
+                  false
                 </button>
               </li>
             </ul>

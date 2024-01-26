@@ -37,7 +37,7 @@ function ItemTable({user, index}) {
       <>
         <td>{user.name}</td>
         <td>{user.email}</td>
-        <td>{user.role}</td>
+        <td>{user.rol}</td>
         <td>{user.password}</td>
       </>
       }

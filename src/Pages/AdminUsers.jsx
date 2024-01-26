@@ -4,8 +4,10 @@ import ItemTable from '../Components/ItemTable';
 import { listAllUsers } from '../services/users';
 import ModalUser from '../Components/ModalUser';
 import ButtonFixed from '../Components/ButtonFixed';
+import { useAuthContext } from '../Hooks/useAuthContext';
 
 function AdminUsers() {
+  const {user}= useAuthContext();
   const appStyles = {
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
@@ -23,8 +25,8 @@ function AdminUsers() {
     setShow(!show);
   }
   const fetchUsers = async (query = {})=>{
-    const data= await listAllUsers (query);
-    setUsers(data);
+    const data= await listAllUsers (user?.data?.msg?.token);
+    setUsers(data.msg);
   }
   useEffect(()=>{
     fetchUsers();

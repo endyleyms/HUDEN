@@ -4,13 +4,17 @@ import { useAuthContext } from "../Hooks/useAuthContext";
 const API_URL = "./src/jsons/users.json";
 const API_HUDEN = "https://hudenback.onrender.com";
 
-export const listAllUsers = async () => {
+export const listAllUsers = async (token) => {
   try {
-    const response = await fetch(`${API_URL}`);
+    const response = await fetch(`${API_HUDEN}/users`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const users = await response.json();
     return users;
   } catch {
-    throw new Error("Error in fetch products");
+    throw new Error("Error in fetch users");
   }
 };
 
