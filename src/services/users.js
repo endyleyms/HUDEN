@@ -46,17 +46,18 @@ export const newUser = async (newRegister, token) => {
   }
 };
 
-export const updateUser = async (id, body) => {
+export const updateUser = async (email, token, body) => {
   // descomentar cuándo se conecte con el back
   const payload = {
     method: "PUT",
     headers: {
-      "Content-type": "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`, // Agregar el token de autorización aquí
     },
     body: JSON.stringify(body),
   };
   try {
-    const response = await fetch(`${API_URL}/${id}`, payload);
+    const response = await fetch(`${API_HUDEN}/users/${email}`, payload);
     const data = await response.json();
     return data;
   } catch (error) {

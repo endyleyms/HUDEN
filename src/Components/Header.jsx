@@ -28,15 +28,22 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
           <a className="nav-link active" aria-current="page" href="/"><img src="./src/assets/huden-arribaderecha.png" alt="" className="img-fluid" style={{ height: 50, marginRight: '15px' }} /></a>
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            {admin ?
+            <>
             <li className="nav-item">
               <a className="nav-link" href="/dashboard" style={{ color: 'white' }}>Cotizador</a>
             </li>
-            {admin &&
-            <><li className="nav-item">
+            <li className="nav-item">
               <a className="nav-link" href="/admin" style={{ color: 'white' }}>Usuarios</a>
-            </li><li className="nav-item">
+            </li>
+            <li className="nav-item">
               <a className="nav-link" href="/adminProd" style={{ color: 'white' }}>Productos</a>
-            </li></>
+            </li>
+            </>
+            :
+            <li className="nav-item">
+              <a className="nav-link" href="/dashboard" style={{ color: 'white' }}>Cotizador</a>
+            </li>
             }
           </ul>
         </div>
