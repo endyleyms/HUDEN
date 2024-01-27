@@ -10,7 +10,7 @@ function ItemTable({user, index}) {
   const [email, setEmail]= useState(user.email);
   const [role, setRole]= useState(user.role);
   const [password, setPassword]=useState(user.password);
- 
+
 
 
   const toggleEditing = () => {

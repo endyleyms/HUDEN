@@ -25,8 +25,7 @@ function AdminProducts() {
 
   const fetchData = async (query = {})=>{
     const data= await listAll(query)
-    const dataFilter = data?.filter((item)=>item.category === 'Activo' || item.category === 'Base')
-    setData(dataFilter);
+    setData(data.msg);
   }
   useEffect(()=>{
     fetchData();

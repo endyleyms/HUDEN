@@ -7,7 +7,7 @@ function ItemProd({data, index}) {
   const [title, setTitle]=useState(data.title)
   const [price, setPrice]=useState(data.price)
   const [cantidad, setCantidad]=useState(data.cantidad)
-  const [unidad, setUnidad]=useState(data.unidad)
+  const [unidad, setUnidad]=useState(data.unit)
 
 
   const [isEditing, setIsEditing] = useState(false);
@@ -31,11 +31,11 @@ function ItemProd({data, index}) {
     </>
     :
     <>
-    <td>{data.id}</td>
+    <td>{data.code}</td>
     <td>{data.category}</td>
-    <td>{data.title}</td>
+    <td>{data.name}</td>
     <td>{data.price}</td>
-    <td>{data.unidad}</td>
+    <td>{data.unit}</td>
     </>
     }
     <td>

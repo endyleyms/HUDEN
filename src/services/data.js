@@ -1,8 +1,9 @@
 const API_URL = "./src/jsons/data.json";
+const API_HUDEN = "https://hudenback.onrender.com";
 
 export const listAll = async () => {
   try {
-    const response = await fetch(`${API_URL}`);
+    const response = await fetch(`${API_HUDEN}/assets`);
     const data = await response.json();
     return data;
   } catch {
