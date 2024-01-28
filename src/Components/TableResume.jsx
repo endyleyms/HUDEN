@@ -33,8 +33,8 @@ function TableResume({data}) {
         <tbody>
         {dataArray.map((item, index) => (
           <tr key={index}>
-            <td>{item.title}</td>
-            <td>{item.unidad}</td>
+            <td>{item.name}</td>
+            <td>{item.unit}</td>
             <td>{item.concentracion}</td>
             <td>{item.cantidad} {item.unidad}</td>
           </tr>

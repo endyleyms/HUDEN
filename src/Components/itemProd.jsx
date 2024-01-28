@@ -41,10 +41,10 @@ function ItemProd({data, index}) {
     {isEditing ?
     <>
       <td><input type="text" className="form-control" placeholder={`${data.code}`} value={code} onChange={(e)=>setCode(e.target.value)}/></td>
-      <td><Dropdown options={['Base', 'Activo']}  defaultSlected={category}/></td>
+      <td><Dropdown options={['Base', 'Activo']}  defaultSlected={category} setValue={setCategory}/></td>
       <td><input type="text" className="form-control" placeholder={`${data.name}`} value={name} onChange={(e)=>setName(e.target.value)}/></td>
       <td><input type="text" className="form-control" placeholder={`${data.price}`} value={price} onChange={(e)=>setPrice(e.target.value)}/></td>
-      <td><Dropdown options={['g', 'ml']}  defaultSlected={unit}/></td>
+      <td><Dropdown options={['g', 'ml']}  defaultSlected={unit} setValue={setUnit}/></td>
     </>
     :
     <>

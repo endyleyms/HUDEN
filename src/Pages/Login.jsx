@@ -15,8 +15,6 @@ function Login() {
     backgroundColor: '#f4f6f7'
   };
   return (
-    <AuthProvider>
-
       <div style={appStyles}>
         <Header/>
         <section className="container d-flex align-items-center" style={{backgroundColor: '#bed0ff', width:'100%', height:'80vh', marginTop: '60px', borderRadius:'12px'}}>
@@ -30,7 +28,6 @@ function Login() {
           </div>
         </section>
       </div>
-    </AuthProvider>
   )
 }
 

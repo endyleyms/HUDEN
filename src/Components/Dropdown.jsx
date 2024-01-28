@@ -5,11 +5,11 @@ function Dropdown({options, data, defaultSlected, handleSelectData, setValue}) {
   const [selected, setSecelted]= useState(defaultSlected);
   const handleSelectOptions = (status) => {
     setSecelted(status);
-    setValue(status);
+    setValue(status)
     setShow(!show);
   };
   const handleSelected = (status) => {
-    setSecelted(status.title);
+    setSecelted(status.name);
     setShow(!show);
     handleSelectData(status)
   };
@@ -43,7 +43,7 @@ function Dropdown({options, data, defaultSlected, handleSelectData, setValue}) {
               {data?.map((data, index) => (
                 <li key={index} className={`list-group-item`}>
                   <button type="button" className="btn" onClick={() => handleSelected(data)}>
-                    {data.title}
+                    {data.name}
                   </button>
                 </li>
               ))}

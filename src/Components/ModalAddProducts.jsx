@@ -4,7 +4,7 @@ import { SectionProd } from './SectionProd'
 import PrincipiosItem from './PrincipiosItem'
 import ButtonFixed from './ButtonFixed'
 
-function ModalAddProducts({addComponent, handleSelectData, selecData, handleShow, show, handleAddPrincipiosItem,  base, fFarmaceutica, principios, handledatachild, handleShowModal}) {
+function ModalAddProducts({addComponent, handleSelectData, selecData, handleShow, show, handleAddPrincipiosItem,  base, principios, handledatachild, handleShowModal}) {
   const [namePatient, setNamePatien]=useState('')
   const [nameDoctor, setNameDoctor]=useState('')
   const [number, setNumber]=useState('')
@@ -37,9 +37,9 @@ function ModalAddProducts({addComponent, handleSelectData, selecData, handleShow
             <div className="col-5">
               <FormItem title={'Nombre Doctor'} placeholder={'Doctor'} value={nameDoctor} setValue={setNameDoctor}/>
             </div>
-            <div className="col-5">
+            {/* <div className="col-5">
               <SectionProd data={fFarmaceutica} handleSelectData={handleSelectData} title={'Forma Farmacéutica'}/>
-            </div>
+            </div> */}
             <div className="col-5">
               <SectionProd data={base} handleSelectData={handleSelectData} title={'Base'}/>
             </div>

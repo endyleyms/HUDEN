@@ -8,6 +8,7 @@ import ModalResume from '../Components/ModalResume'
 function Dashboard() {
   const [data, setData]=useState()
   const [selecData, setSelectData]= useState()
+  console.log('select data', selecData)
   const [addComponent, setAddComponent]= useState(1)
   const [formData, setFormData]=useState()
   const [showResume, setShowResume]=useState(false)
@@ -35,7 +36,7 @@ function Dashboard() {
     setSelectData((prevData)=>({
       ...prevData,
       [formData?.Paciente]: formData,
-      [data.id]: data,
+      [data._id]: data,
     }))
   }
   //funcion que maneja agregar mas de un principio activo
@@ -48,16 +49,16 @@ function Dashboard() {
   };
 
   //función para traer la data
-  // const fetchData = async (query = {})=>{
-  //   const data= await listAll(query)
-  //   setData(data);
-  // }
-  // const principios = data?.filter((item)=>item.category === 'Activo')
-  // const base = data?.filter((item)=>item.category === 'Base')
+  const fetchData = async (query = {})=>{
+    const data= await listAll(query)
+    setData(data.msg);
+  }
+   const principios = data?.filter((item)=>item.category === 'ACTIVO')
+   const base = data?.filter((item)=>item.category === 'BASE')
   // const fFarmaceutica = data?.filter((item)=>item.category === 'F. Farmaceutica')
-  // useEffect(()=>{
-  //   fetchData();
-  // },[])
+  useEffect(()=>{
+    fetchData();
+  },[])
 
   //constante para pasar los estilos de la pagina
   const appStyles = {
@@ -77,7 +78,7 @@ function Dashboard() {
       <section className="container mt-5">
         <div style={{backgroundColor: '#bed0ff', padding: '15px', borderRadius:'12px', minHeight: 500}}>
         <h2 className="text-center" style={{color:'#092f62', marginTop: '20px'}}>Productos</h2>
-            {/* <hr />
+            <hr />
             {showModal ?
               <ModalAddProducts
               addComponent={addComponent}
@@ -87,7 +88,6 @@ function Dashboard() {
               handleShow={handleShowResume}
               handleAddPrincipiosItem={handleAddPrincipiosItem}
               base={base}
-              fFarmaceutica={fFarmaceutica}
               principios={principios}
               handledatachild={handledatachild}
               handleShowModal={handleShowModal}
@@ -97,7 +97,7 @@ function Dashboard() {
                 Agregar producto
                 </button>
             }
-            {showResume && <ModalResume handleShow={handleShowResume} selecData={selecData}/>} */}
+            {showResume && <ModalResume handleShow={handleShowResume} selecData={selecData}/>}
         </div>
       </section>
     </div>
