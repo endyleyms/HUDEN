@@ -53,6 +53,7 @@ function FormAuth({singUp, handleShow}) {
         handleShow();
         navigate('/admin');
       }
+      window.location.reload()
     } catch (error) {
       if (error instanceof ZodError) {
         // La validación falló, actualiza el estado de los errores

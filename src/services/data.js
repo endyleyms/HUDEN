@@ -20,16 +20,17 @@ export const getOne = async (id) => {
     throw new Error(error);
   }
 };
-export const newData = async (newRegister) => {
+export const newData = async (newRegister, token) => {
   try {
     const payload = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(newRegister),
     };
-    const response = await fetch(`${API_HUDEN}`, payload);
+    const response = await fetch(`${API_HUDEN}/assets`, payload);
     const data = await response.json();
     return data;
   } catch (error) {

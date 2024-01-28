@@ -29,6 +29,7 @@ function ItemProd({data, index}) {
       };
       await updateByCode(data.code, user?.data?.msg?.token, formData )
       toggleEditing();
+      window.location.reload()
     } catch (error) {
       console.error("Error updating asset:", error);
     }

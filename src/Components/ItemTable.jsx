@@ -27,6 +27,7 @@ function ItemTable({user, index}) {
         password
       };
       await updateUser(user?.email, userByContext?.data?.msg?.token, formData );
+      window.location.reload()
       toggleEditing();
     } catch (error) {
       console.error("Error updating user:", error);
