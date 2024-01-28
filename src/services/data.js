@@ -29,24 +29,25 @@ export const newData = async (newRegister) => {
       },
       body: JSON.stringify(newRegister),
     };
-    const response = await fetch(`${API_URL}`, payload);
+    const response = await fetch(`${API_HUDEN}`, payload);
     const data = await response.json();
     return data;
   } catch (error) {
     throw new Error(error);
   }
 };
-export const updateById = async (id, body) => {
-  // descomentar cuándo se conecte con el back
+export const updateByCode = async (code, token, body) => {
   const payload = {
     method: "PUT",
     headers: {
-      "Content-type": "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`, // Agregar el token de autorización aquí
     },
     body: JSON.stringify(body),
   };
   try {
-    const response = await fetch(`${API_URL}/${id}`, payload);
+    const response = await fetch(`${API_HUDEN}/assets/${code}`, payload);
+    console.log(response);
     const data = await response.json();
     return data;
   } catch (error) {

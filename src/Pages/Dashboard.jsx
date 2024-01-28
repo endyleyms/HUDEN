@@ -48,16 +48,16 @@ function Dashboard() {
   };
 
   //función para traer la data
-  const fetchData = async (query = {})=>{
-    const data= await listAll(query)
-    setData(data);
-  }
-  const principios = data?.filter((item)=>item.category === 'Activo')
-  const base = data?.filter((item)=>item.category === 'Base')
-  const fFarmaceutica = data?.filter((item)=>item.category === 'F. Farmaceutica')
-  useEffect(()=>{
-    fetchData();
-  },[])
+  // const fetchData = async (query = {})=>{
+  //   const data= await listAll(query)
+  //   setData(data);
+  // }
+  // const principios = data?.filter((item)=>item.category === 'Activo')
+  // const base = data?.filter((item)=>item.category === 'Base')
+  // const fFarmaceutica = data?.filter((item)=>item.category === 'F. Farmaceutica')
+  // useEffect(()=>{
+  //   fetchData();
+  // },[])
 
   //constante para pasar los estilos de la pagina
   const appStyles = {
@@ -77,27 +77,27 @@ function Dashboard() {
       <section className="container mt-5">
         <div style={{backgroundColor: '#bed0ff', padding: '15px', borderRadius:'12px', minHeight: 500}}>
         <h2 className="text-center" style={{color:'#092f62', marginTop: '20px'}}>Productos</h2>
-          <hr />
-          {showModal ?
-            <ModalAddProducts
-            addComponent={addComponent}
-            handleSelectData={handleSelectData}
-            selecData={selecData}
-            show={showResume}
-            handleShow={handleShowResume}
-            handleAddPrincipiosItem={handleAddPrincipiosItem}
-            base={base}
-            fFarmaceutica={fFarmaceutica}
-            principios={principios}
-            handledatachild={handledatachild}
-            handleShowModal={handleShowModal}
-            />
-            :
-            <button type='button' className="btn btn-primary" style={{position: 'absolute', right: 100, bottom: 200}} onClick={handleShowModal}>
-              Agregar producto
-              </button>
-          }
-           {showResume && <ModalResume handleShow={handleShowResume} selecData={selecData}/>}
+            {/* <hr />
+            {showModal ?
+              <ModalAddProducts
+              addComponent={addComponent}
+              handleSelectData={handleSelectData}
+              selecData={selecData}
+              show={showResume}
+              handleShow={handleShowResume}
+              handleAddPrincipiosItem={handleAddPrincipiosItem}
+              base={base}
+              fFarmaceutica={fFarmaceutica}
+              principios={principios}
+              handledatachild={handledatachild}
+              handleShowModal={handleShowModal}
+              />
+              :
+              <button type='button' className="btn btn-primary" style={{position: 'absolute', right: 100, bottom: 200}} onClick={handleShowModal}>
+                Agregar producto
+                </button>
+            }
+            {showResume && <ModalResume handleShow={handleShowResume} selecData={selecData}/>} */}
         </div>
       </section>
     </div>
