@@ -44,7 +44,7 @@ function ModalAddProducts({addComponent, handleSelectData, selecData, handleShow
               <SectionProd data={base} handleSelectData={handleSelectData} title={'Base'}/>
             </div>
             <div className="col-5">
-              <FormItem title={'Presentación'} placeholder={'Número'} value={number} setValue={setNumber}/>
+              <FormItem title={'Presentación (g)'} placeholder={'Número'} value={number} setValue={setNumber}/>
             </div>
           </div>
           {[...Array(addComponent)].map((_, index) => (
