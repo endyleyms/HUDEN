@@ -4,7 +4,7 @@ import { SectionProd } from './SectionProd'
 import PrincipiosItem from './PrincipiosItem'
 import ButtonFixed from './ButtonFixed'
 
-function ModalAddProducts({addComponent, handleSelectData, selecData, handleShow, show, handleAddPrincipiosItem,  base, principios, handledatachild, handleShowModal}) {
+function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAddPrincipiosItem,  base, principios, handledatachild, handleShowModal}) {
   const [namePatient, setNamePatien]=useState('')
   const [nameDoctor, setNameDoctor]=useState('')
   const [number, setNumber]=useState('')
@@ -15,11 +15,16 @@ function ModalAddProducts({addComponent, handleSelectData, selecData, handleShow
     'Paciente':namePatient.toLowerCase(),
     'Doctor':nameDoctor.toLowerCase(),
     'Presentacion':number.toUpperCase().replace(/[^0-9]/g,""),
+    'Dosis': concentration
   }
   const submit = ()=>{
     handledatachild(formData)
     handleSelectData(formData)
     setShowDataResume(true)
+  }
+
+  const handleInput=(value)=>{
+    setConcentration(value)
   }
 
   return (
@@ -48,7 +53,7 @@ function ModalAddProducts({addComponent, handleSelectData, selecData, handleShow
             </div>
           </div>
           {[...Array(addComponent)].map((_, index) => (
-            <PrincipiosItem key={index} principios={principios} handleSelectData={handleSelectData} value={concentration} setValue={setConcentration} />
+            <PrincipiosItem key={index} principios={principios} handleSelectData={handleSelectData} handleInput={handleInput} />
           ))}
           <div>
             <button className="btn btn-primary" onClick={handleAddPrincipiosItem} style={{marginTop: 20, backgroundColor: '#4c58ff'}}>
