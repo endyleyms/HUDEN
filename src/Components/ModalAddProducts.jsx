@@ -15,16 +15,11 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
     'Paciente':namePatient.toLowerCase(),
     'Doctor':nameDoctor.toLowerCase(),
     'Presentacion':number.toUpperCase().replace(/[^0-9]/g,""),
-    'Dosis': concentration
   }
   const submit = ()=>{
     handledatachild(formData)
     handleSelectData(formData)
     setShowDataResume(true)
-  }
-
-  const handleInput=(value)=>{
-    setConcentration(value)
   }
 
   return (
@@ -53,7 +48,7 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
             </div>
           </div>
           {[...Array(addComponent)].map((_, index) => (
-            <PrincipiosItem key={index} principios={principios} handleSelectData={handleSelectData} handleInput={handleInput} />
+            <PrincipiosItem key={index} principios={principios} handleSelectData={handleSelectData} value={concentration} setValue={setConcentration}/>
           ))}
           <div>
             <button className="btn btn-primary" onClick={handleAddPrincipiosItem} style={{marginTop: 20, backgroundColor: '#4c58ff'}}>
