@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React from 'react';
+import { jsPDF } from "jspdf";
 
 function TableResume({data}) {
   const dataArray = Object.values(data); //convertir un obj a array
@@ -17,6 +17,26 @@ function TableResume({data}) {
 
     return acumulador;
   }, 0);
+
+  const generatePDF = () => {
+    // Crear un nuevo documento PDF
+    const doc = new jsPDF();
+    const content = document.documentElement.innerHTML;
+
+    // Convertir la estructura HTML a PDF
+    doc.html(content, {
+      callback: function (doc) {
+        // Descargar el PDF
+        doc.save('resumen.pdf');
+      },
+      x: 10,
+      y: 10
+    });
+  };
+
+  const handleGeneratePDF = () => {
+    generatePDF();
+  };
 
   return (
     <div>
@@ -55,6 +75,7 @@ function TableResume({data}) {
       </ul>
       </div>
       <button
+      onClick={handleGeneratePDF}
       type="button"
       className="btn text-light"
       data-bs-toggle="modal"
