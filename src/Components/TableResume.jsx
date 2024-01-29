@@ -1,8 +1,11 @@
 import React from 'react';
 import { jsPDF } from "jspdf";
+import 'jspdf-autotable'
 
 function TableResume({data}) {
   const dataArray = Object.values(data); //convertir un obj a array
+  const currentDate = new Date();
+  const formattedDate = currentDate.toISOString().split('T')[0];
   const manoObra = 4500;
   const envases= 3000;
   const totalMateriasPrimas = 9300
@@ -21,17 +24,23 @@ function TableResume({data}) {
   const generatePDF = () => {
     // Crear un nuevo documento PDF
     const doc = new jsPDF();
-    const content = document.documentElement.innerHTML;
+  //cuerpo del documento
+    doc.text(`Fecha: ${formattedDate}`, 20,10)
+    doc.text(`Paciente: ${dataArray[0].Paciente}`, 20,20)
+    doc.text(`Doctor: ${dataArray[0].Doctor}`, 20,30)
 
-    // Convertir la estructura HTML a PDF
-    doc.html(content, {
-      callback: function (doc) {
-        // Descargar el PDF
-        doc.save('resumen.pdf');
-      },
-      x: 10,
-      y: 10
-    });
+    //crear la tabla
+    const columns =['Nombre', 'Unidad', 'Concentración', 'Cantidad' ]
+    const tableData = dataArray.map(item => [item.name, item.unit, item.concentracion, `${item.cantidad} ${item.unidad}`]);
+    doc.autoTable({
+      startY: 50,
+      head: [columns],
+      body: tableData
+
+    })
+
+    //guardar el pdf
+    doc.save(`Resume_${formattedDate}.pdf`)
   };
 
   const handleGeneratePDF = () => {
