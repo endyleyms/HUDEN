@@ -48,8 +48,9 @@ function TableResume({data}) {
   };
 
   return (
-    <div>
+    <div style={{marginLeft: '10%'}}>
       <ul class="list-group list-group-horizontal">
+      <li class="list-group-item"><strong>Fecha:</strong>  {formattedDate}</li>
         <li class="list-group-item"><strong>Paciente:</strong>  {dataArray[0].Paciente}</li>
         <li class="list-group-item"><strong>Doctor:</strong>  {dataArray[0].Doctor}</li>
         <li class="list-group-item"> <strong>Presentacion:</strong>  {dataArray[0].Presentacion}</li>
@@ -74,14 +75,15 @@ function TableResume({data}) {
             <td>{item.cantidad} {item.unidad}</td>
           </tr>
         ))}
-          <span className='list-group-item'> <strong>Total:{sumaPrecios} COP</strong>  </span>
         </tbody>
         </table>
         <ul class="list-group list-group-vertical">
-        <li class="list-group-item"><strong>PrecioPaciente:</strong>  {dataArray[0].Paciente}</li>
-        <li class="list-group-item"><strong>Precio Tienda:</strong>  {dataArray[0].Doctor}</li>
-        <li class="list-group-item"> <strong>Presentacion:</strong>  {dataArray[0].Presentacion}</li>
-      </ul>
+          <li class="list-group-item"> <strong>IVA:</strong>  {IVA}</li>
+          <li class="list-group-item"> <strong>Mano de obra:</strong>  {manoObra}</li>
+          <li class="list-group-item"> <strong>Envases:</strong>  {envases}</li>
+          <li class="list-group-item"><strong>PrecioPaciente:</strong>  {dataArray[0].Paciente}</li>
+          <li class="list-group-item"><strong>Precio Tienda:</strong>  {dataArray[0].Doctor}</li>
+        </ul>
       </div>
       <button
       onClick={handleGeneratePDF}

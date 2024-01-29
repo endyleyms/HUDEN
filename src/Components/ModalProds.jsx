@@ -22,7 +22,7 @@ function ModalProds({handleShow}) {
         unit
       }
       await newData(formData, user.data.msg.token);
-      window.location.reload()
+      // window.location.reload()
     } catch (error) {
       console.error("Error creating asset: ", error);
     }

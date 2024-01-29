@@ -20,17 +20,22 @@ function AdminUsers() {
   };
   const [show, setShow]=useState(false)
   const [users, setUsers]=useState()
+  console.log(users)
 
   const handleShow = ()=>{
     setShow(!show);
   }
   const fetchUsers = async (query = {})=>{
-    const data= await listAllUsers (user?.data?.msg?.token);
-    setUsers(data.msg);
+    try {
+      const data= await listAllUsers (user?.data?.msg?.token);
+      setUsers(data.msg);
+    } catch (error) {
+      console.log(error)
+    }
   }
   useEffect(()=>{
     fetchUsers();
-  },[users])
+  },[])
   return (
     <div style={appStyles}>
       <Header/>

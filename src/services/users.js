@@ -11,10 +11,18 @@ export const listAllUsers = async (token) => {
         Authorization: `Bearer ${token}`,
       },
     });
+
+    if (!response.ok) {
+      throw new Error(
+        "Failed to fetch users. Response status: " + response.status
+      );
+    }
+
     const users = await response.json();
     return users;
-  } catch {
-    throw new Error("Error in fetch users");
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    throw new Error("Error fetching users");
   }
 };
 
