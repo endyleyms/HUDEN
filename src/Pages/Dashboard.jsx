@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { listAll } from '../services/data'
 import Header from '../Components/Header'
 import ModalAddProducts from '../Components/ModalAddProducts'
-import ModalResume from '../Components/ModalResume'
+import ResumePedido from '../Components/ResumePedido'
 
 
 function Dashboard() {
@@ -97,7 +97,7 @@ function Dashboard() {
                 Agregar producto
                 </button>
             }
-            {showResume && <ModalResume handleShow={handleShowResume} selecData={selecData}/>}
+            {showResume && <ResumePedido handleShow={handleShowResume} selecData={selecData}/>}
         </div>
       </section>
     </div>

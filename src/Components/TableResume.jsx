@@ -1,7 +1,12 @@
 import React from 'react'
 
+
 function TableResume({data}) {
   const dataArray = Object.values(data); //convertir un obj a array
+  const manoObra = 4500;
+  const envases= 3000;
+  const totalMateriasPrimas = 9300
+  const IVA = (envases + totalMateriasPrimas)*1.19
   const sumaPrecios = Object.values(data).reduce((acumulador, elemento) => {
     // Convertir el precio a un número antes de sumarlo
     const precio = parseFloat(elemento.price);
@@ -12,6 +17,7 @@ function TableResume({data}) {
 
     return acumulador;
   }, 0);
+
   return (
     <div>
       <ul class="list-group list-group-horizontal">
@@ -41,9 +47,20 @@ function TableResume({data}) {
         ))}
           <span className='list-group-item'> <strong>Total:{sumaPrecios} COP</strong>  </span>
         </tbody>
-          <button type="button" className="btn text-light" data-bs-toggle="modal" style={{backgroundColor:'#3E0070', position: 'fixed', bottom: 20, right: 10}} >Enviar Cotización</button>
         </table>
+        <ul class="list-group list-group-vertical">
+        <li class="list-group-item"><strong>PrecioPaciente:</strong>  {dataArray[0].Paciente}</li>
+        <li class="list-group-item"><strong>Precio Tienda:</strong>  {dataArray[0].Doctor}</li>
+        <li class="list-group-item"> <strong>Presentacion:</strong>  {dataArray[0].Presentacion}</li>
+      </ul>
       </div>
+      <button
+      type="button"
+      className="btn text-light"
+      data-bs-toggle="modal"
+      style={{backgroundColor:'#3E0070', position: 'fixed', bottom: 20, right: 10}} >
+      Generar PDF
+      </button>
     </div>
   )
 }

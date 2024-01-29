@@ -1,7 +1,7 @@
 import React from 'react'
 import TableResume from './TableResume'
 
-function ModalResume({handleShow, selecData}) {
+function ResumePedido({handleShow, selecData}) {
   return (
     <div>
       <div className="d-flex justify-content-center align-items-center">
@@ -19,4 +19,4 @@ function ModalResume({handleShow, selecData}) {
   )
 }
 
-export default ModalResume
+export default ResumePedido
