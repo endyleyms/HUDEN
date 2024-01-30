@@ -4,11 +4,14 @@ import App from "./App.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import { AuthProvider } from "./Context/AuthContext.jsx";
+import { ResumeProvider } from "./Context/ResumeContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-      <App />
+      <ResumeProvider>
+        <App />
+      </ResumeProvider>
     </AuthProvider>
   </React.StrictMode>
 );
