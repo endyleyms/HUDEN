@@ -1,25 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { jsPDF } from "jspdf";
 import 'jspdf-autotable'
 
 function TableResume({data}) {
+  const [fullPrice, setFullPrice]=useState();
+  const [patientPrice, setPatientPrice]=useState();
   const dataArray = Object.values(data); //convertir un obj a array
+
+  //obtener la fecha actual
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().split('T')[0];
+
+
+  //valores fijos
   const manoObra = 4500;
   const envases= 3000;
-  const totalMateriasPrimas = 9300
-  const IVA = (envases + totalMateriasPrimas)*1.19
-  const sumaPrecios = Object.values(data).reduce((acumulador, elemento) => {
-    // Convertir el precio a un número antes de sumarlo
-    const precio = parseFloat(elemento.price);
-    // Verificar si el precio es un número válido
-    if (!isNaN(precio)) {
-      acumulador += precio;
-    }
+  const rateIVA = 1.19
 
-    return acumulador;
-  }, 0);
+  const calculate=()=>{
+    //calculo por item = presentacion y precio
+    const dataresult = dataArray.map((item)=> {
+      const itemPresentation= (item.concentration * dataArray[0].Presentacion)/100
+      const price =  item.Price * itemPresentation
+      return price
+    })
+    //suma de los precios
+    const totalPrice = dataresult.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    //suma el envase 1
+    const sumEnvase= envases + totalPrice
+    //suma el IVA 2
+    const dataIVA= sumEnvase * rateIVA
+    //Total 3
+    const total = sumEnvase + dataIVA + manoObra
+    // Establecer los precios finales
+    setFullPrice((total* 3)+2000)
+    setPatientPrice(total*2.5)
+  }
+
+  useEffect(() => {
+    calculate()
+  },[data])
+
 
   const generatePDF = () => {
     // Crear un nuevo documento PDF
@@ -30,15 +51,17 @@ function TableResume({data}) {
     doc.text(`Doctor: ${dataArray[0].Doctor}`, 20,30)
 
     //crear la tabla
-    const columns =['Nombre', 'Unidad', 'Concentración', 'Cantidad' ]
-    const tableData = dataArray.map(item => [item.name, item.unit, item.concentracion, `${item.cantidad} ${item.unidad}`]);
+    const columns =['Nombre', 'Concentración', 'Unidad']
+    const tableData = dataArray.map(item => [item.name, item.concentracion, item.unit]);
+    // Agregar fullPrice y patientPrice al array de datos de la tabla
+    tableData.push(['Precio full', fullPrice]);
+    tableData.push(['Precio Paciente',  patientPrice]);
     doc.autoTable({
       startY: 50,
       head: [columns],
-      body: tableData
+      body: tableData,
 
     })
-
     //guardar el pdf
     doc.save(`Resume_${formattedDate}.pdf`)
   };
@@ -62,8 +85,6 @@ function TableResume({data}) {
             <th scope="col">Nombre</th>
             <th scope="col">Unidad</th>
             <th scope="col">Concentración</th>
-            <th scope="col">Cantidad</th>
-            {/* falta la cantidad */}
           </tr>
         </thead>
         <tbody>
@@ -72,17 +93,13 @@ function TableResume({data}) {
             <td>{item.name}</td>
             <td>{item.unit}</td>
             <td>{item.concentracion}</td>
-            <td>{item.cantidad} {item.unidad}</td>
           </tr>
         ))}
         </tbody>
         </table>
         <ul class="list-group list-group-vertical">
-          <li class="list-group-item"> <strong>IVA:</strong>  {IVA}</li>
-          <li class="list-group-item"> <strong>Mano de obra:</strong>  {manoObra}</li>
-          <li class="list-group-item"> <strong>Envases:</strong>  {envases}</li>
-          <li class="list-group-item"><strong>PrecioPaciente:</strong>  {dataArray[0].Paciente}</li>
-          <li class="list-group-item"><strong>Precio Tienda:</strong>  {dataArray[0].Doctor}</li>
+          <li class="list-group-item"> <strong>Fullprice:</strong>  {fullPrice}</li>
+          <li class="list-group-item"> <strong>Precio Paciente:</strong>  {patientPrice}</li>
         </ul>
       </div>
       <button
