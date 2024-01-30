@@ -9,7 +9,7 @@ function PrincipiosItem({principios, handleSelectData, value, setValue}) {
         <SectionProd data={principios} handleSelectData={handleSelectData} title={'Principios activos'}/>
       </div>
       <div className="col-4">
-        <FormItem title={'Concentración'} placeholder={'%'} data={principios?.concentration} value={value} setValue={setValue}/>
+        <FormItem title={'Concentración'} placeholder={'%'} value={value} setValue={setValue}/>
       </div>
     </div>
   )

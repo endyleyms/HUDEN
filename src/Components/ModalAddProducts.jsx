@@ -3,6 +3,7 @@ import { FormItem } from './FormItem'
 import { SectionProd } from './SectionProd'
 import PrincipiosItem from './PrincipiosItem'
 import ButtonFixed from './ButtonFixed'
+import { useResumeContext } from '../Hooks/useResumeContext'
 
 function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAddPrincipiosItem,  base, principios, handledatachild, handleShowModal}) {
   const [namePatient, setNamePatien]=useState('')
@@ -15,6 +16,7 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
     'Paciente':namePatient.toLowerCase(),
     'Doctor':nameDoctor.toLowerCase(),
     'Presentacion':number.toUpperCase().replace(/[^0-9]/g,""),
+    'Concentración 1': concentration.toUpperCase().replace(/[^0-9]/g,"")
   }
   const submit = ()=>{
     handledatachild(formData)
@@ -37,9 +39,6 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
             <div className="col-5">
               <FormItem title={'Nombre Doctor'} placeholder={'Doctor'} value={nameDoctor} setValue={setNameDoctor}/>
             </div>
-            {/* <div className="col-5">
-              <SectionProd data={fFarmaceutica} handleSelectData={handleSelectData} title={'Forma Farmacéutica'}/>
-            </div> */}
             <div className="col-5">
               <SectionProd data={base} handleSelectData={handleSelectData} title={'Base'}/>
             </div>
