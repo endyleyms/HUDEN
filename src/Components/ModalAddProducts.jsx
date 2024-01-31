@@ -5,20 +5,20 @@ import PrincipiosItem from './PrincipiosItem'
 import ButtonFixed from './ButtonFixed'
 import { useResumeContext } from '../Hooks/useResumeContext'
 
-function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAddPrincipiosItem,  base, principios, handledatachild, handleShowModal}) {
+function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAddPrincipiosItem,  base, principios, handledatachild, handleShowModal, selecData, handleEditData}) {
   const [namePatient, setNamePatien]=useState('')
   const [nameDoctor, setNameDoctor]=useState('')
   const [number, setNumber]=useState('')
-  const [concentration, setConcentration]=useState('')
   const [showDataResume, setShowDataResume]=useState(false)
 
   const formData={
     'Paciente':namePatient.toLowerCase(),
     'Doctor':nameDoctor.toLowerCase(),
     'Presentacion':number.toUpperCase().replace(/[^0-9]/g,""),
-    'Concentración 1': concentration.toUpperCase().replace(/[^0-9]/g,"")
   }
-  const submit = ()=>{
+
+  //funcion que maneja el envio de datos al padre
+  const handleSubmit = ()=>{
     handledatachild(formData)
     handleSelectData(formData)
     setShowDataResume(true)
@@ -47,16 +47,19 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
             </div>
           </div>
           {[...Array(addComponent)].map((_, index) => (
-            <PrincipiosItem key={index} principios={principios} handleSelectData={handleSelectData} value={concentration} setValue={setConcentration}/>
+            <PrincipiosItem key={index} principios={principios} handleSelectData={handleSelectData} selecData={selecData} handleEditData={handleEditData}/>
           ))}
           <div>
             <button className="btn btn-primary" onClick={handleAddPrincipiosItem} style={{marginTop: 20, backgroundColor: '#4c58ff'}}>
               Añadir Activos
             </button>
           </div>
-          <button className="btn btn-primary" onClick={submit} style={{marginTop: 20}}>
+          {
+            selecData &&
+          <button className="btn btn-primary" onClick={handleSubmit} style={{marginTop: 20}}>
           Submit
           </button>
+          }
           {showDataResume && <ButtonFixed title={'Calcular'} handleShow={handleShow}/>}
         </div>
       </div>

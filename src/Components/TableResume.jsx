@@ -47,8 +47,8 @@ function TableResume({data}) {
     const doc = new jsPDF();
   //cuerpo del documento
     doc.text(`Fecha: ${formattedDate}`, 20,10)
-    doc.text(`Paciente: ${dataArray[0].Paciente}`, 20,20)
-    doc.text(`Doctor: ${dataArray[0].Doctor}`, 20,30)
+    doc.text(`Paciente: ${dataArray[0]?.Paciente}`, 20,20)
+    doc.text(`Doctor: ${dataArray[0]?.Doctor}`, 20,30)
 
     //crear la tabla
     const columns =['Nombre', 'Concentración', 'Unidad']
@@ -74,9 +74,9 @@ function TableResume({data}) {
     <div style={{marginLeft: '10%'}}>
       <ul class="list-group list-group-horizontal">
       <li class="list-group-item"><strong>Fecha:</strong>  {formattedDate}</li>
-        <li class="list-group-item"><strong>Paciente:</strong>  {dataArray[0].Paciente}</li>
-        <li class="list-group-item"><strong>Doctor:</strong>  {dataArray[0].Doctor}</li>
-        <li class="list-group-item"> <strong>Presentacion:</strong>  {dataArray[0].Presentacion}</li>
+        <li class="list-group-item"><strong>Paciente:</strong>  {dataArray[0]?.Paciente}</li>
+        <li class="list-group-item"><strong>Doctor:</strong>  {dataArray[0]?.Doctor}</li>
+        <li class="list-group-item"> <strong>Presentacion:</strong>  {dataArray[0]?.Presentacion}</li>
       </ul>
       <div className="table-responsive">
         <table className="table">
@@ -88,7 +88,7 @@ function TableResume({data}) {
           </tr>
         </thead>
         <tbody>
-        {dataArray.map((item, index) => (
+        {dataArray?.map((item, index) => (
           <tr key={index}>
             <td>{item.name}</td>
             <td>{item.unit}</td>

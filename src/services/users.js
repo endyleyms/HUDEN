@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuthContext } from "../Hooks/useAuthContext";
+import { jwtDecode } from "jwt-decode";
 
 const API_URL = "./src/jsons/users.json";
 const API_HUDEN = "https://hudenback.onrender.com";
@@ -88,7 +89,9 @@ export const useLogin = () => {
       };
       const response = await fetch(`${API_HUDEN}/auth/login`, payload);
       const data = await response.json();
-      dispatch({ type: "LOGIN", payload: { data, user } });
+      const decoded = jwtDecode(`'${data.msg.token}'`);
+      // console.log("decoded", decoded, data.msg.token);
+      dispatch({ type: "LOGIN", payload: { data, decoded, user } });
       setLoading(false);
       localStorage.setItem("user", JSON.stringify({ data, user }));
       return data;

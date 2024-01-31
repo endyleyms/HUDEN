@@ -1,10 +1,14 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../Hooks/useAuthContext'
+import { jwtDecode } from "jwt-decode";
 
 const Header = () => {
   const navigate = useNavigate();
   const {user, dispatch}= useAuthContext();
+  // const token = user?.data?.msg
+  // const decoded = jwtDecode(token)
+  // console.log('decode', decoded)
   const admin = user?.user?.email === "daniel_felipe_c11@hotmail.com"
 
   const logOut =()=>{
