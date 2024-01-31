@@ -10,8 +10,13 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
   const [namePatient, setNamePatien]=useState('')
   const [nameDoctor, setNameDoctor]=useState('')
   const [number, setNumber]=useState('')
-  const [concentration, setConcentration]=useState('')
   const [showDataResume, setShowDataResume]=useState(false)
+  const [principio, setPrincipio]= useState()
+  const [concentration, setConcentration]=useState(principio?.concentration)
+  console.log('principio seleccionado', principio)
+  const handleSelectedPrincipio=(item)=>{
+    setPrincipio(item);
+  }
 
   const formData={
     'Paciente':namePatient.toLowerCase(),
@@ -50,7 +55,16 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
             </div>
           </div>
           {[...Array(addComponent)].map((_, index) => (
-            <PrincipiosItem key={index} principios={principios} handleSelectData={handleSelectData} selecData={selecData}  value={concentration} setValue={setConcentration} />
+            <PrincipiosItem
+            key={index}
+            principios={principios}
+            handleSelectData={handleSelectData}
+            principio={principio}
+            setPrincipio={principio}
+            concentration={concentration}
+            setConcentration={setConcentration}
+            handleSelectedPrincipio={handleSelectedPrincipio}
+            />
           ))}
           <div>
             <button className="btn btn-primary" onClick={handleAddPrincipiosItem} style={{marginTop: 20, backgroundColor: '#4c58ff'}}>

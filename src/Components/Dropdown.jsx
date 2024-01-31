@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function Dropdown({options, data, defaultSlected, handleSelectData, setValue}) {
+function Dropdown({options, data, defaultSlected, handleSelectData, setValue, handleSelectedPrincipio}) {
   const [show, setShow]= useState(false);
   const [selected, setSecelted]= useState(defaultSlected);
   const handleSelectOptions = (status) => {
@@ -12,6 +12,7 @@ function Dropdown({options, data, defaultSlected, handleSelectData, setValue}) {
     setSecelted(status.name);
     setShow(!show);
     handleSelectData(status)
+    handleSelectedPrincipio(status)
   };
   return (
     <div className="dropdown">
