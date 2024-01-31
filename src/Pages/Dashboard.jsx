@@ -3,11 +3,9 @@ import { listAll } from '../services/data'
 import Header from '../Components/Header'
 import ModalAddProducts from '../Components/ModalAddProducts'
 import ResumePedido from '../Components/ResumePedido'
-import { useResumeContext } from '../Hooks/useResumeContext'
 
 
 function Dashboard() {
-  const {dispatch}=useResumeContext();
   const [data, setData]=useState()
   const [selecData, setSelectData]= useState()
   console.log('select data', selecData)
@@ -40,8 +38,10 @@ function Dashboard() {
       [formData?.Paciente]: formData,
       [data._id]: data,
     }))
-    dispatch({type: "RESUME", payload: selecData});
   }
+
+
+
   //funcion que maneja agregar mas de un principio activo
   const handleAddPrincipiosItem = () => {
     if(addComponent <3){

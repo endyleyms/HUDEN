@@ -5,10 +5,12 @@ import PrincipiosItem from './PrincipiosItem'
 import ButtonFixed from './ButtonFixed'
 import { useResumeContext } from '../Hooks/useResumeContext'
 
-function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAddPrincipiosItem,  base, principios, handledatachild, handleShowModal, selecData, handleEditData}) {
+function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAddPrincipiosItem,  base, principios, handledatachild, handleShowModal, selecData}) {
+  const {dispatch}= useResumeContext();
   const [namePatient, setNamePatien]=useState('')
   const [nameDoctor, setNameDoctor]=useState('')
   const [number, setNumber]=useState('')
+  const [concentration, setConcentration]=useState('')
   const [showDataResume, setShowDataResume]=useState(false)
 
   const formData={
@@ -17,11 +19,12 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
     'Presentacion':number.toUpperCase().replace(/[^0-9]/g,""),
   }
 
-  //funcion que maneja el envio de datos al padre
+  //funcion que maneja el envio de datos al componente padre, context y seleccion de datos
   const handleSubmit = ()=>{
     handledatachild(formData)
     handleSelectData(formData)
     setShowDataResume(true)
+    dispatch({type: "RESUME", payload: {...formData, selecData}});
   }
 
   return (
@@ -47,7 +50,7 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
             </div>
           </div>
           {[...Array(addComponent)].map((_, index) => (
-            <PrincipiosItem key={index} principios={principios} handleSelectData={handleSelectData} selecData={selecData} handleEditData={handleEditData}/>
+            <PrincipiosItem key={index} principios={principios} handleSelectData={handleSelectData} selecData={selecData}  value={concentration} setValue={setConcentration} updateConcentration={updateConcentration} />
           ))}
           <div>
             <button className="btn btn-primary" onClick={handleAddPrincipiosItem} style={{marginTop: 20, backgroundColor: '#4c58ff'}}>
