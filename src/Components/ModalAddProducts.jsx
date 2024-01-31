@@ -50,7 +50,7 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
             </div>
           </div>
           {[...Array(addComponent)].map((_, index) => (
-            <PrincipiosItem key={index} principios={principios} handleSelectData={handleSelectData} selecData={selecData}  value={concentration} setValue={setConcentration} updateConcentration={updateConcentration} />
+            <PrincipiosItem key={index} principios={principios} handleSelectData={handleSelectData} selecData={selecData}  value={concentration} setValue={setConcentration} />
           ))}
           <div>
             <button className="btn btn-primary" onClick={handleAddPrincipiosItem} style={{marginTop: 20, backgroundColor: '#4c58ff'}}>
