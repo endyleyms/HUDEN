@@ -20,7 +20,6 @@ function AdminUsers() {
   };
   const [show, setShow]=useState(false)
   const [users, setUsers]=useState()
-  console.log(users)
 
   const handleShow = ()=>{
     setShow(!show);

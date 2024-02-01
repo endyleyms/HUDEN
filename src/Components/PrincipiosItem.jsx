@@ -4,16 +4,12 @@ import { useResumeContext } from '../Hooks/useResumeContext';
 import DropdownActives from './DropDownActives';
 
 
-function PrincipiosItem({principios}) {
+function PrincipiosItem({principios, selecActivos, handleseleActivos}) {
   const {activo}= useResumeContext();
-  const [selecActivos, setSelectactivos]=useState();
-  console.log(selecActivos)
-  const handleseleActivos =(data)=>{
-    setSelectactivos((prevData)=>({
-      ...prevData,
-      [data._id]: data,
-    }))
-  }
+  const [concentration, setConcentration]=useState();
+  console.log('selecActivos= item', selecActivos)
+
+
   return (
     <div className="row">
       <div className="col-4">
@@ -24,11 +20,11 @@ function PrincipiosItem({principios}) {
           <DropdownActives options={principios} handleseleActivos={handleseleActivos}/>
         </div>
       </div>
-      {/* {activo &&
+      {selecActivos &&
       <div className="col-4">
         <FormItem title={'Concentración'} placeholder={'%'} value={concentration} setValue={setConcentration}/>
       </div>
-      } */}
+      }
     </div>
   )
 }

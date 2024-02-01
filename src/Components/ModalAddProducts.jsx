@@ -26,6 +26,13 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
     await dispatch({type: "RESUME", payload: {...formData, selecData}});
     localStorage.setItem("resume", JSON.stringify({...formData, selecData}));
   }
+  const [selecActivos, setSelectactivos]=useState({});
+  const handleseleActivos =(data)=>{
+    setSelectactivos((prevData)=>({
+      ...prevData,
+      [data.code]: data,
+    }))
+  }
 
   return (
     <section aria-labelledby="exampleModalLabel" aria-hidden="false" style={{zIndex: "1", position: "absolute", top:60, right:300, width: "60%", minHeight: "70%", height:"85%", backgroundColor: '#97afff', padding: 30, borderRadius: '12px'}}>
@@ -53,6 +60,8 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
             <PrincipiosItem
             key={index}
             principios={principios}
+            handleseleActivos={handleseleActivos}
+            selecActivos={selecActivos}
             />
           ))}
           <div>

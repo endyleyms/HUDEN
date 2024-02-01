@@ -5,7 +5,6 @@ import { useResumeContext } from '../Hooks/useResumeContext';
 
 function TableResume({data}) {
   const {resume}= useResumeContext();
-  console.log('resume', resume.selecData)
   const [fullPrice, setFullPrice]=useState();
   const [patientPrice, setPatientPrice]=useState();
   const dataArray = Object.values(data); //convertir un obj a array
