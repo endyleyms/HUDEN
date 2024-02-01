@@ -11,11 +11,17 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
   const [nameDoctor, setNameDoctor]=useState('')
   const [number, setNumber]=useState('')
   const [showDataResume, setShowDataResume]=useState(false)
+  const [selecActivos, setSelectactivos]=useState({});
 
   const formData={
     'Paciente':namePatient.toLowerCase(),
     'Doctor':nameDoctor.toLowerCase(),
     'Presentacion':number.toUpperCase().replace(/[^0-9]/g,""),
+  }
+  const handleseleActivos = (data)=>{
+    setSelectactivos((prevData)=>({
+      [data._id]: data,
+    }))
   }
 
   //funcion que maneja el envio de datos al componente padre, context y seleccion de datos
@@ -25,13 +31,6 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
     setShowDataResume(true)
     await dispatch({type: "RESUME", payload: {...formData, selecData}});
     localStorage.setItem("resume", JSON.stringify({...formData, selecData}));
-  }
-  const [selecActivos, setSelectactivos]=useState({});
-  const handleseleActivos =(data)=>{
-    setSelectactivos((prevData)=>({
-      ...prevData,
-      [data._id]: data,
-    }))
   }
 
   return (
@@ -62,6 +61,7 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
             principios={principios}
             handleseleActivos={handleseleActivos}
             selecActivos={selecActivos}
+            addComponent={addComponent}
             />
           ))}
           <div>

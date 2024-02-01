@@ -1,26 +1,43 @@
 import { createContext, useReducer, useEffect } from "react";
 
 const ResumeContext = createContext();
-
 const resumeReducer = (state, action) => {
   switch (action.type) {
     case "ACTIVOS":
       return { ...state, activo: action.payload };
     case "RESUME":
       return { ...state, resume: action.payload };
-      case "EDITAR_CONCENTRACION_ACTIVO":
+    case "ACTIVO_1":
       const { nuevaConcentracion } = action.payload;
-      // Verifica si state.activo es un objeto
       if (typeof state.activo === 'object' && state.activo !== null) {
-        // Crea una copia del activo actualizado con la nueva concentración
-        const activoEditado = {
+        const resumeEditado = {
           ...state.activo,
           concentration: nuevaConcentracion
         };
-        // Retorna el nuevo estado con el activo actualizado
-        return { ...state, activo: activoEditado };
+        return { ...state, edited1: resumeEditado };
       } else {
-        // Si state.activo no es un objeto, retorna el estado sin cambios
+        return state;
+      }
+    case "ACTIVO_2":
+      const { nuevaConcentracion2 } = action.payload;
+      if (typeof state.activo === 'object' && state.activo !== null) {
+        const resumeEditado2 = {
+          ...state.activo,
+          concentration: nuevaConcentracion2
+        };
+        return { ...state, edited2: resumeEditado2 };
+      } else {
+        return state;
+      }
+    case "ACTIVO_3":
+      const { nuevaConcentracion3 } = action.payload;
+      if (typeof state.activo === 'object' && state.activo !== null) {
+        const resumeEditado3 = {
+          ...state.activo,
+          concentration: nuevaConcentracion3
+        };
+        return { ...state, edited3: resumeEditado3 };
+      } else {
         return state;
       }
     default:
@@ -28,19 +45,19 @@ const resumeReducer = (state, action) => {
   }
 };
 
+
 const ResumeProvider = ({ children }) => {
   const [state, dispatch] = useReducer(resumeReducer, {
     resume: null,
+    edited1: null,
+    edited2: null,
+    edited3: null,
   });
 
   useEffect(()=>{
     const resume = JSON.parse(localStorage.getItem('resume'))
     if(resume){
       dispatch({type: 'RESUME', payload: resume })
-    }
-    const activo = JSON.parse(localStorage.getItem('activo'))
-    if(activo){
-      dispatch({type: 'ACTIVO', payload: activo })
     }
   },[])
 

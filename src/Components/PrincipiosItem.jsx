@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
-import { FormItem } from './FormItem'
 import { useResumeContext } from '../Hooks/useResumeContext';
 import DropdownActives from './DropDownActives';
+import FormItemActive from './FormItemActive';
 
 
-function PrincipiosItem({principios, selecActivos, handleseleActivos}) {
-  // const {activo}= useResumeContext();
-  const [concentration, setConcentration]=useState();
-  console.log('selecActivos= item', selecActivos)
-
-
+function PrincipiosItem({principios, selecActivos, handleseleActivos, addComponent}) {
+  const [concentration, setConcentration] = useState();
+  const dataArray = Object.values(selecActivos);
   return (
     <div className="row">
       <div className="col-4">
@@ -21,10 +18,16 @@ function PrincipiosItem({principios, selecActivos, handleseleActivos}) {
         </div>
       </div>
       <div className="col-4">
-        <FormItem title={'Concentración'} placeholder={'%'} value={concentration} setValue={setConcentration}/>
+        { addComponent <=1 ?
+          <FormItemActive value={concentration} setValue={setConcentration} title={'concentracion1'} id={dataArray[0]} selecActivos={selecActivos}/>
+          :  addComponent <=2 ?
+          <FormItemActive value={concentration} setValue={setConcentration} title={'concentracion2'} id={dataArray[0]} selecActivos={selecActivos} />
+          : addComponent <=3 &&
+          <FormItemActive value={concentration} setValue={setConcentration} title={'concentracion3'} id={dataArray[0]} selecActivos={selecActivos} />
+        }
       </div>
     </div>
-  )
+  );
 }
 
 export default PrincipiosItem

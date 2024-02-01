@@ -1,8 +1,7 @@
 import React from 'react'
 import { useResumeContext } from '../Hooks/useResumeContext';
 
-export const FormItem = ({title, value, setValue, selecActivos }) => {
-  console.log('selected activos', selecActivos)
+export const FormItem = ({title, value, setValue }) => {
   return (
     <div>
       <span className="text-center">{title}</span>

@@ -8,6 +8,7 @@ function TableResume({data}) {
   const [fullPrice, setFullPrice]=useState();
   const [patientPrice, setPatientPrice]=useState();
   const dataArray = Object.values(data); //convertir un obj a array
+  console.log('data', data, 'dataarray', dataArray)
 
   //obtener la fecha actual
   const currentDate = new Date();
