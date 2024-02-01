@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { jsPDF } from "jspdf";
 import 'jspdf-autotable'
+import { useResumeContext } from '../Hooks/useResumeContext';
 
 function TableResume({data}) {
+  const {resume}= useResumeContext();
+  console.log('resume', resume.selecData)
   const [fullPrice, setFullPrice]=useState();
   const [patientPrice, setPatientPrice]=useState();
   const dataArray = Object.values(data); //convertir un obj a array
@@ -74,9 +77,9 @@ function TableResume({data}) {
     <div style={{marginLeft: '10%'}}>
       <ul class="list-group list-group-horizontal">
       <li class="list-group-item"><strong>Fecha:</strong>  {formattedDate}</li>
-        <li class="list-group-item"><strong>Paciente:</strong>  {dataArray[0]?.Paciente}</li>
-        <li class="list-group-item"><strong>Doctor:</strong>  {dataArray[0]?.Doctor}</li>
-        <li class="list-group-item"> <strong>Presentacion:</strong>  {dataArray[0]?.Presentacion}</li>
+        <li class="list-group-item"><strong>Paciente:</strong>  {resume?.Paciente}</li>
+        <li class="list-group-item"><strong>Doctor:</strong>  {resume?.Doctor}</li>
+        <li class="list-group-item"> <strong>Presentacion:</strong>  {resume?.Presentacion}</li>
       </ul>
       <div className="table-responsive">
         <table className="table">

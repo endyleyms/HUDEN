@@ -14,6 +14,7 @@ const Header = () => {
   const logOut =()=>{
     dispatch({type:"LOGOUT"});
     localStorage.removeItem('user');
+    localStorage.removeItem('resume');
     navigate('/');
   }
 

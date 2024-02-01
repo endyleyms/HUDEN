@@ -5,7 +5,7 @@ import Dropdown from './Dropdown'
 import { useResumeContext } from '../Hooks/useResumeContext';
 
 
-function PrincipiosItem({principios, handleSelectData,  concentration, setConcentration}) {
+function PrincipiosItem({principios,  concentration, setConcentration}) {
   const {activo}= useResumeContext();
   return (
     <div className="row">
@@ -14,7 +14,7 @@ function PrincipiosItem({principios, handleSelectData,  concentration, setConcen
           <div className="accordion-button collapsed">
             <span className="text-center" style={{color:'#3E0070'}}>Principios Activos</span>
           </div>
-          <Dropdown data={principios}  defaultSlected={'Selecciona una opción'} handleSelectData={handleSelectData}/>
+          {/* <Dropdown data={principios}  defaultSlected={'Selecciona una opción'} handleSelectData={handleSelectData}/> */}
         </div>
       </div>
       {activo &&

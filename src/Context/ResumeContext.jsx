@@ -4,7 +4,7 @@ const ResumeContext = createContext();
 
 const resumeReducer = (state, action) => {
   switch (action.type) {
-    case "ACTIVO":
+    case "ACTIVOS":
       return { ...state, activo: action.payload };
     case "RESUME":
       return { ...state, resume: action.payload };
