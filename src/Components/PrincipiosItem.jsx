@@ -5,7 +5,7 @@ import DropdownActives from './DropDownActives';
 
 
 function PrincipiosItem({principios, selecActivos, handleseleActivos}) {
-  const {activo}= useResumeContext();
+  // const {activo}= useResumeContext();
   const [concentration, setConcentration]=useState();
   console.log('selecActivos= item', selecActivos)
 
@@ -20,11 +20,9 @@ function PrincipiosItem({principios, selecActivos, handleseleActivos}) {
           <DropdownActives options={principios} handleseleActivos={handleseleActivos}/>
         </div>
       </div>
-      {selecActivos &&
       <div className="col-4">
         <FormItem title={'Concentración'} placeholder={'%'} value={concentration} setValue={setConcentration}/>
       </div>
-      }
     </div>
   )
 }

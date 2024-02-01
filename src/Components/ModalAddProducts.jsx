@@ -30,7 +30,7 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
   const handleseleActivos =(data)=>{
     setSelectactivos((prevData)=>({
       ...prevData,
-      [data.code]: data,
+      [data._id]: data,
     }))
   }
 
