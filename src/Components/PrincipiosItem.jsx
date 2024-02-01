@@ -1,12 +1,19 @@
 import React, { useState } from 'react'
-import { SectionProd } from './SectionProd'
 import { FormItem } from './FormItem'
-import Dropdown from './Dropdown'
 import { useResumeContext } from '../Hooks/useResumeContext';
+import DropdownActives from './DropDownActives';
 
 
-function PrincipiosItem({principios,  concentration, setConcentration}) {
+function PrincipiosItem({principios}) {
   const {activo}= useResumeContext();
+  const [selecActivos, setSelectactivos]=useState();
+  console.log(selecActivos)
+  const handleseleActivos =(data)=>{
+    setSelectactivos((prevData)=>({
+      ...prevData,
+      [data._id]: data,
+    }))
+  }
   return (
     <div className="row">
       <div className="col-4">
@@ -14,14 +21,14 @@ function PrincipiosItem({principios,  concentration, setConcentration}) {
           <div className="accordion-button collapsed">
             <span className="text-center" style={{color:'#3E0070'}}>Principios Activos</span>
           </div>
-          {/* <Dropdown data={principios}  defaultSlected={'Selecciona una opción'} handleSelectData={handleSelectData}/> */}
+          <DropdownActives options={principios} handleseleActivos={handleseleActivos}/>
         </div>
       </div>
-      {activo &&
+      {/* {activo &&
       <div className="col-4">
         <FormItem title={'Concentración'} placeholder={'%'} value={concentration} setValue={setConcentration}/>
       </div>
-      }
+      } */}
     </div>
   )
 }

@@ -6,15 +6,11 @@ import ButtonFixed from './ButtonFixed'
 import { useResumeContext } from '../Hooks/useResumeContext'
 
 function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAddPrincipiosItem,  base, principios, handledatachild, handleShowModal, selecData}) {
-  const {dispatch, activo}= useResumeContext();
+  const {dispatch}= useResumeContext();
   const [namePatient, setNamePatien]=useState('')
   const [nameDoctor, setNameDoctor]=useState('')
   const [number, setNumber]=useState('')
   const [showDataResume, setShowDataResume]=useState(false)
-  const [concentration, setConcentration]=useState(activo?.concentration)
-  const handleEditarConcentracion = (idActivo, nuevaConcentracion) => {
-    dispatch({ type: "EDITAR_CONCENTRACION_ACTIVO", payload: { idActivo, nuevaConcentracion } });
-  }
 
   const formData={
     'Paciente':namePatient.toLowerCase(),
@@ -29,9 +25,6 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
     setShowDataResume(true)
     await dispatch({type: "RESUME", payload: {...formData, selecData}});
     localStorage.setItem("resume", JSON.stringify({...formData, selecData}));
-    if(activo){
-      handleEditarConcentracion(activo?._id, concentration)
-    }
   }
 
   return (
@@ -60,8 +53,6 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
             <PrincipiosItem
             key={index}
             principios={principios}
-            concentration={concentration}
-            setConcentration={setConcentration}
             />
           ))}
           <div>
