@@ -6,31 +6,43 @@ import ButtonFixed from './ButtonFixed'
 import { useResumeContext } from '../Hooks/useResumeContext'
 
 function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAddPrincipiosItem,  base, principios, handledatachild, handleShowModal, selecData}) {
-  const {dispatch}= useResumeContext();
+  const {dispatch, activo}= useResumeContext();
+  console.log('activo', activo?._id)
   const [namePatient, setNamePatien]=useState('')
   const [nameDoctor, setNameDoctor]=useState('')
   const [number, setNumber]=useState('')
   const [showDataResume, setShowDataResume]=useState(false)
-  const [principio, setPrincipio]= useState()
-  const [concentration, setConcentration]=useState(principio?.concentration)
-  console.log('principio seleccionado', principio)
-  const handleSelectedPrincipio=(item)=>{
-    setPrincipio(item);
+  const [concentration, setConcentration]=useState(activo?.concentration)
+  console.log('concentration', concentration)
+  const handleEditarConcentracion = (idActivo, nuevaConcentracion) => {
+    dispatch({ type: "EDITAR_CONCENTRACION_ACTIVO", payload: { idActivo, nuevaConcentracion } });
   }
 
-  const formData={
-    'Paciente':namePatient.toLowerCase(),
-    'Doctor':nameDoctor.toLowerCase(),
-    'Presentacion':number.toUpperCase().replace(/[^0-9]/g,""),
-  }
-
-  //funcion que maneja el envio de datos al componente padre, context y seleccion de datos
-  const handleSubmit = ()=>{
-    handledatachild(formData)
-    handleSelectData(formData)
-    setShowDataResume(true)
-    dispatch({type: "RESUME", payload: {...formData, selecData}});
-  }
+  const handleSubmit = async () => {
+    const formData = {
+      'Paciente': namePatient.toLowerCase(),
+      'Doctor': nameDoctor.toLowerCase(),
+      'Presentacion': number.toUpperCase().replace(/[^0-9]/g, ""),
+    };
+    // Si hay un activo, editar su concentración
+    if (activo) {
+      handleEditarConcentracion(activo._id, concentration);
+    }
+    // Enviar la data seleccionada y activo editado al contexto de resume
+    const payload = {
+      ...formData,
+      selecData,
+      activoEditado: activo ? { _id: activo._id, concentration } : null
+    };
+  
+    handledatachild(formData); // Enviar data al componente padre
+    handleSelectData(formData); // Enviar data seleccionada al contexto de selección
+    setShowDataResume(true); // Mostrar data seleccionada en el componente
+  
+    // Enviar payload al contexto de resume
+    await dispatch({ type: "RESUME", payload });
+  
+  };
 
   return (
     <section aria-labelledby="exampleModalLabel" aria-hidden="false" style={{zIndex: "1", position: "absolute", top:60, right:300, width: "60%", minHeight: "70%", height:"85%", backgroundColor: '#97afff', padding: 30, borderRadius: '12px'}}>
@@ -59,11 +71,8 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
             key={index}
             principios={principios}
             handleSelectData={handleSelectData}
-            principio={principio}
-            setPrincipio={principio}
             concentration={concentration}
             setConcentration={setConcentration}
-            handleSelectedPrincipio={handleSelectedPrincipio}
             />
           ))}
           <div>

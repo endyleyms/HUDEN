@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
+import { useResumeContext } from '../Hooks/useResumeContext';
 
-function Dropdown({options, data, defaultSlected, handleSelectData, setValue, handleSelectedPrincipio}) {
+function Dropdown({options, data, defaultSlected, handleSelectData, setValue}) {
+  const {dispatch}=useResumeContext();
   const [show, setShow]= useState(false);
   const [selected, setSecelted]= useState(defaultSlected);
   const handleSelectOptions = (status) => {
@@ -12,7 +14,9 @@ function Dropdown({options, data, defaultSlected, handleSelectData, setValue, ha
     setSecelted(status.name);
     setShow(!show);
     handleSelectData(status)
-    handleSelectedPrincipio(status)
+    if(status.category === "ACTIVO"){
+      dispatch({type: 'ACTIVO', payload: status})
+    }
   };
   return (
     <div className="dropdown">
