@@ -8,8 +8,8 @@ function TableResume({data}) {
   const [fullPrice, setFullPrice]=useState();
   const [patientPrice, setPatientPrice]=useState();
   const dataArray = Object.values(data); //convertir un obj a array
+  dataArray.push(edited1, edited2, edited3)
   console.log('data', data, 'dataarray', dataArray)
-
   //obtener la fecha actual
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().split('T')[0];
@@ -55,10 +55,10 @@ function TableResume({data}) {
 
     //crear la tabla
     const columns =['Nombre', 'Concentración', 'Unidad']
-    const tableData = dataArray.map(item => [item.name, item.concentracion, item.unit]);
-    tableData.push([`${edited1?.name}`, `${edited1?.concentration}`, `${edited1?.unit}` ]);
-    tableData.push([`${edited2?.name}`, `${edited2?.concentration}`, `${edited2?.unit}` ]);
-    tableData.push([`${edited3?.name}`, `${edited3?.concentration}`, `${edited3?.unit}` ]);
+    const tableData = dataArray.map(item => [item.name, item.concentration, item.unit]);
+    // tableData.push([`${edited1?.name}`, `${edited1?.concentration}`, `${edited1?.unit}` ]);
+    // tableData.push([`${edited2?.name}`, `${edited2?.concentration}`, `${edited2?.unit}` ]);
+    // tableData.push([`${edited3?.name}`, `${edited3?.concentration}`, `${edited3?.unit}` ]);
     // Agregar fullPrice y patientPrice al array de datos de la tabla
     tableData.push(['Precio full', fullPrice]);
     tableData.push(['Precio Paciente',  patientPrice]);
@@ -78,11 +78,11 @@ function TableResume({data}) {
 
   return (
     <div style={{marginLeft: '10%'}}>
-      <ul class="list-group list-group-horizontal">
-      <li class="list-group-item"><strong>Fecha:</strong>  {formattedDate}</li>
-        <li class="list-group-item"><strong>Paciente:</strong>  {resume?.Paciente}</li>
-        <li class="list-group-item"><strong>Doctor:</strong>  {resume?.Doctor}</li>
-        <li class="list-group-item"> <strong>Presentacion:</strong>  {resume?.Presentacion}</li>
+      <ul className="list-group list-group-horizontal">
+      <li className="list-group-item"><strong>Fecha:</strong>  {formattedDate}</li>
+        <li className="list-group-item"><strong>Paciente:</strong>  {resume?.Paciente}</li>
+        <li className="list-group-item"><strong>Doctor:</strong>  {resume?.Doctor}</li>
+        <li className="list-group-item"> <strong>Presentacion:</strong>  {resume?.Presentacion}</li>
       </ul>
       <div className="table-responsive">
         <table className="table">
@@ -98,10 +98,10 @@ function TableResume({data}) {
           <tr key={index}>
             <td>{item.name}</td>
             <td>{item.unit}</td>
-            <td>{item.concentracion}</td>
+            <td>{item.concentration}</td>
           </tr>
         ))}
-        <tr >
+        {/* <tr >
           <td>{edited1?.name}</td>
           <td>{edited1?.unit}</td>
           <td>{edited1?.concentration}</td>
@@ -115,12 +115,12 @@ function TableResume({data}) {
           <td>{edited3?.name}</td>
           <td>{edited3?.unit}</td>
           <td>{edited3?.concentration}</td>
-        </tr>
+        </tr> */}
         </tbody>
         </table>
-        <ul class="list-group list-group-vertical">
-          <li class="list-group-item"> <strong>Fullprice:</strong>  {fullPrice}</li>
-          <li class="list-group-item"> <strong>Precio Paciente:</strong>  {patientPrice}</li>
+        <ul className="list-group list-group-vertical">
+          <li className="list-group-item"> <strong>Fullprice:</strong>  {fullPrice}</li>
+          <li className="list-group-item"> <strong>Precio Paciente:</strong>  {patientPrice}</li>
         </ul>
       </div>
       <button
