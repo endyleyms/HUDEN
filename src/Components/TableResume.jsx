@@ -4,7 +4,7 @@ import 'jspdf-autotable'
 import { useResumeContext } from '../Hooks/useResumeContext';
 
 function TableResume({data}) {
-  const {resume}= useResumeContext();
+  const {resume, edited1, edited2, edited3}= useResumeContext();
   const [fullPrice, setFullPrice]=useState();
   const [patientPrice, setPatientPrice]=useState();
   const dataArray = Object.values(data); //convertir un obj a array
@@ -56,6 +56,9 @@ function TableResume({data}) {
     //crear la tabla
     const columns =['Nombre', 'Concentración', 'Unidad']
     const tableData = dataArray.map(item => [item.name, item.concentracion, item.unit]);
+    tableData.push([`${edited1?.name}`, `${edited1?.concentration}`, `${edited1?.unit}` ]);
+    tableData.push([`${edited2?.name}`, `${edited2?.concentration}`, `${edited2?.unit}` ]);
+    tableData.push([`${edited3?.name}`, `${edited3?.concentration}`, `${edited3?.unit}` ]);
     // Agregar fullPrice y patientPrice al array de datos de la tabla
     tableData.push(['Precio full', fullPrice]);
     tableData.push(['Precio Paciente',  patientPrice]);
@@ -98,6 +101,21 @@ function TableResume({data}) {
             <td>{item.concentracion}</td>
           </tr>
         ))}
+        <tr >
+          <td>{edited1?.name}</td>
+          <td>{edited1?.unit}</td>
+          <td>{edited1?.concentration}</td>
+        </tr>
+        <tr >
+          <td>{edited2?.name}</td>
+          <td>{edited2?.unit}</td>
+          <td>{edited2?.concentration}</td>
+        </tr>
+        <tr >
+          <td>{edited3?.name}</td>
+          <td>{edited3?.unit}</td>
+          <td>{edited3?.concentration}</td>
+        </tr>
         </tbody>
         </table>
         <ul class="list-group list-group-vertical">
