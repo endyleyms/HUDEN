@@ -59,6 +59,19 @@ const ResumeProvider = ({ children }) => {
     if(resume){
       dispatch({type: 'RESUME', payload: resume })
     }
+    const edited1 = JSON.parse(localStorage.getItem('edited1'))
+    if(edited1){
+      dispatch({type: 'ACTIVO_1', payload: edited1 })
+    }
+    const edited2 = JSON.parse(localStorage.getItem('edited2'))
+    if(edited2){
+      dispatch({type: 'ACTIVO_2', payload: edited2 })
+    }
+    const edited3 = JSON.parse(localStorage.getItem('edited3'))
+    if(edited3){
+      dispatch({type: 'ACTIVO_3', payload: edited3 })
+    }
+
   },[])
 
   console.log("resume context state", state);

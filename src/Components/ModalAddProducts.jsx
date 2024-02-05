@@ -6,7 +6,7 @@ import ButtonFixed from './ButtonFixed'
 import { useResumeContext } from '../Hooks/useResumeContext'
 
 function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAddPrincipiosItem,  base, principios, handledatachild, handleShowModal, selecData}) {
-  const {dispatch}= useResumeContext();
+  const {dispatch, resume}= useResumeContext();
   const [namePatient, setNamePatien]=useState('')
   const [nameDoctor, setNameDoctor]=useState('')
   const [number, setNumber]=useState('')

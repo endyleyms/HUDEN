@@ -29,17 +29,17 @@ export const FormItemActive = ({ title, value, setValue, id, selecActivos }) => 
   return (
     <div>
       <span className="text-center">{title}</span>
-      <form className="form">
-      <input
-        type="text"
-        className="form-control"
-        id="floatingInputInvalid"
-        value={typeof value === 'object' ? JSON.stringify(value) : value}
-        onChange={(e)=>setValue(e.target.value)}
-        placeholder={value}
-      />
+      <form className="form d-flex  flex-row justify-content-between">
+        <input
+          type="text"
+          className="form-control"
+          id="floatingInputInvalid"
+          value={typeof value === 'object' ? JSON.stringify(value) : value}
+          onChange={(e)=>setValue(e.target.value)}
+          placeholder={value}
+        />
+        <button type="submit" className="btn text-light" style={{backgroundColor:'#2e2bff'}} onClick={handleSubmit}>submit</button>
       </form>
-      <button type="submit" onClick={handleSubmit}>submit</button>
     </div>
   );
 };
