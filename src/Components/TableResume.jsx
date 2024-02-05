@@ -14,9 +14,6 @@ function TableResume({data}) {
   if (edited2) dataArray.push(edited2);
   if (edited3) dataArray.push(edited3);
 
-  //manejo de seleccion de activos
-  const base_farmaceutica = resume.selecData
-
 
   //obtener la fecha actual
   const currentDate = new Date();

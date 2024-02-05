@@ -29,8 +29,8 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
     handledatachild(formData)
     handleSelectData(formData)
     setShowDataResume(true)
-    await dispatch({type: "RESUME", payload: {...formData, selecData}});
-    localStorage.setItem("resume", JSON.stringify({...formData, selecData}));
+    await dispatch({type: "RESUME", payload: {...formData}});
+    localStorage.setItem("resume", JSON.stringify({...formData}));
   }
 
   return (
