@@ -4,12 +4,12 @@ import 'jspdf-autotable'
 import { useResumeContext } from '../Hooks/useResumeContext';
 
 function TableResume({data}) {
-  const {resume, edited1, edited2, edited3}= useResumeContext();
+  const {resume, base, edited1, edited2, edited3}= useResumeContext();
+  const [baseConcentration, setBaseConcentration]=useState();
   const [fullPrice, setFullPrice]=useState();
   const [patientPrice, setPatientPrice]=useState();
-  const dataArray = Object.values(resume?.selecData); //convertir un obj a array
+  const dataArray = Object.values(base); //convertir un obj a array
   dataArray?.push(edited1, edited2, edited3) // agregar los valores editados al array de datos originales
-
 
   //manejo de seleccion de activos
   const base_farmaceutica = resume.selecData
@@ -42,23 +42,19 @@ function TableResume({data}) {
     return { baseConcentration, basePresentacion };
   }
   const { baseConcentration, basePresentacion } = concentrationBase();
-  console.log('Base Concentration:', baseConcentration);
-  console.log('Base Presentacion:', basePresentacion);
+  setBaseConcentration(baseConcentration)
 
     //calculo por item = presentacion y precio
     const dataresult = dataArray?.map((item)=> {
       const parse = parseInt(item?.concentration, 10) //falta la concentracion de la crema o base
       const itemPresentation= (parse * resume?.Presentacion)/100
       const price =  item?.price * itemPresentation
-      console.log('price', price)
       return price
     })
     //suma de los precios
     const totalPrice = dataresult.reduce((accumulator, currentValue) => {
-      console.log('accumulator', accumulator, 'currentValue', currentValue);
       return accumulator + currentValue; // Devolver el valor acumulado en cada iteración
     }, basePresentacion); // El segundo parámetro de reduce es el valor inicial del acumulador
-    console.log('totalPrice', totalPrice);
 
     //suma el envase 1
     const sumEnvase= envases + totalPrice
@@ -86,7 +82,15 @@ function TableResume({data}) {
 
     //crear la tabla
     const columns =['Nombre', 'Concentración', 'Unidad']
-    const tableData = dataArray.map(item => [item?.name, item?.concentration, item?.unit]);
+    const tableData = [];
+
+    // Agregar datos de base a la tabla
+    tableData.push([base?.base?.name, base?.base?.unit, `${baseConcentration}%`]);
+
+    // Verificar y agregar datos de edited1, edited2 y edited3 a la tabla
+    if (edited1) tableData.push([edited1.name, edited1.unit, `${edited1.concentration}%`]);
+    if (edited2) tableData.push([edited2.name, edited2.unit, `${edited2.concentration}%`]);
+    if (edited3) tableData.push([edited3.name, edited3.unit, `${edited3.concentration}%`]);
     // Agregar fullPrice y patientPrice al array de datos de la tabla
     tableData.push(['Precio full', fullPrice]);
     tableData.push(['Precio Paciente',  patientPrice]);
@@ -122,13 +126,32 @@ function TableResume({data}) {
           </tr>
         </thead>
         <tbody>
-        {dataArray?.map((item, index) => (
-          <tr key={index}>
-            <td>{item?.name}</td>
-            <td>{item?.unit}</td>
-            <td>{item?.concentration}%</td>
+         <tr>
+            <td>{base?.base?.name}</td>
+            <td>{base?.base?.unit}</td>
+            <td>{baseConcentration}%</td>
           </tr>
-        ))}
+          {edited1 &&
+          <tr>
+            <td>{edited1?.name}</td>
+            <td>{edited1?.unit}</td>
+            <td>{edited1?.concentration}%</td>
+          </tr>
+          }
+          {edited2 &&
+          <tr>
+            <td>{edited2?.name}</td>
+            <td>{edited2?.unit}</td>
+            <td>{edited2?.concentration}%</td>
+          </tr>
+          }
+          {edited3 &&
+            <tr>
+              <td>{edited3?.name}</td>
+              <td>{edited3?.unit}</td>
+              <td>{edited3?.concentration}%</td>
+            </tr>
+          }
         </tbody>
         </table>
         <ul className="list-group list-group-vertical">
