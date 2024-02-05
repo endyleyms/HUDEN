@@ -9,7 +9,10 @@ function TableResume({data}) {
   const [fullPrice, setFullPrice]=useState();
   const [patientPrice, setPatientPrice]=useState();
   const dataArray = Object.values(base); //convertir un obj a array
-  dataArray?.push(edited1, edited2, edited3) // agregar los valores editados al array de datos originales
+  // Verificar y agregar los elementos al array solo si existen
+  if (edited1) dataArray.push(edited1);
+  if (edited2) dataArray.push(edited2);
+  if (edited3) dataArray.push(edited3);
 
   //manejo de seleccion de activos
   const base_farmaceutica = resume.selecData

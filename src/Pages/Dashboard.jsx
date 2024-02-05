@@ -35,7 +35,7 @@ function Dashboard() {
     setSelectData((prevData)=>({
       ...prevData,
       [formData?.Paciente]: formData,
-      [data._id]: data,
+      //[data._id]: data,
     }))
   }
 
