@@ -8,8 +8,8 @@ function PrincipiosItem({principios, selecActivos, handleseleActivos, addCompone
   const [concentration, setConcentration] = useState();
   const dataArray = Object.values(selecActivos);
   return (
-    <div className="row">
-      <div className="col-4">
+    <div className="row d-flex">
+      <div className="col-5">
         <div>
           <div className="accordion-button collapsed">
             <span className="text-center" style={{color:'#3E0070'}}>Principios Activos</span>
@@ -17,7 +17,7 @@ function PrincipiosItem({principios, selecActivos, handleseleActivos, addCompone
           <DropdownActives options={principios} handleseleActivos={handleseleActivos}/>
         </div>
       </div>
-      <div className="col-4">
+      <div className="col-5">
         { addComponent <=1 ?
           <FormItemActive value={concentration} setValue={setConcentration} title={'concentracion1'} id={dataArray[0]} selecActivos={selecActivos}/>
           :  addComponent <=2 ?
