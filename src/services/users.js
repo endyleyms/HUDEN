@@ -90,10 +90,9 @@ export const useLogin = () => {
       const response = await fetch(`${API_HUDEN}/auth/login`, payload);
       const data = await response.json();
       const decoded = jwtDecode(`'${data.msg.token}'`);
-      // console.log("decoded", decoded, data.msg.token);
       dispatch({ type: "LOGIN", payload: { data, decoded, user } });
       setLoading(false);
-      localStorage.setItem("user", JSON.stringify({ data, user }));
+      localStorage.setItem("user", JSON.stringify({ data, decoded, user }));
       return data;
     } catch (error) {
       throw new Error(error);

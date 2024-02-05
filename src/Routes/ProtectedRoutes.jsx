@@ -4,7 +4,7 @@ import { useAuthContext } from '../Hooks/useAuthContext';
 
 function ProtectedRoutes() {
   const {user}= useAuthContext();
-  const isLogged = user;
+  const isLogged = true;
 
   return isLogged ? <Outlet /> : <Navigate to="/" />;
 }
