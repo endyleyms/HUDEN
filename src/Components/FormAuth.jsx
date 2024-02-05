@@ -44,10 +44,12 @@ function FormAuth({singUp, handleShow}) {
     };
     try {
       if(!singUp){
+        //login
         signInSchema.parse(formDataLogin);
         await login(formDataLogin)
         navigate('/dashboard');
       }else{
+        //singup
         singUpSchema.parse(formDataSingUp);
         await newUser(formDataSingUp, user?.data?.msg?.token);
         handleShow();
