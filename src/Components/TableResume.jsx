@@ -33,10 +33,10 @@ function TableResume({data}) {
     const parseedited3 = parseInt(edited3?.concentration, 10)
     const sumConcentrations = (parseedited1 || 0) + (parseedited2|| 0) + (parseedited3|| 0);
     let baseConcentration = 0
-    if(sumConcentrations >= 100){
+    if(sumConcentrations >= resume?.Presentacion){
       baseConcentration = 0
     }else{
-      baseConcentration = 100 - sumConcentrations
+      baseConcentration = resume?.Presentacion - sumConcentrations
     }
     const  basePresentacion = (baseConcentration * resume?.Presentacion)/100
     return { baseConcentration, basePresentacion };
