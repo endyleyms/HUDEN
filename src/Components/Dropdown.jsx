@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
+import { useResumeContext } from '../Hooks/useResumeContext';
 
 function Dropdown({options, data, defaultSlected, handleSelectData, setValue}) {
+  const {dispatch}= useResumeContext();
   const [show, setShow]= useState(false);
   const [selected, setSecelted]= useState(defaultSlected);
   const handleSelectOptions = (status) => {
@@ -12,6 +14,7 @@ function Dropdown({options, data, defaultSlected, handleSelectData, setValue}) {
     setSecelted(status.name);
     setShow(!show);
     handleSelectData(status)
+    dispatch({type: "BASE",  payload:{base : status}})
   };
   return (
     <div className="dropdown">

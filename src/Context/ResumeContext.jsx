@@ -7,6 +7,8 @@ const resumeReducer = (state, action) => {
       return { ...state, activo: action.payload };
     case "RESUME":
       return { ...state, resume: action.payload };
+      case "BASE":
+      return { ...state, base: action.payload };
     case "ACTIVO_1":
       const { nuevaConcentracion } = action.payload;
       if (typeof state.activo === 'object' && state.activo !== null) {
@@ -49,6 +51,7 @@ const resumeReducer = (state, action) => {
 const ResumeProvider = ({ children }) => {
   const [state, dispatch] = useReducer(resumeReducer, {
     resume: null,
+    base: null,
     edited1: null,
     edited2: null,
     edited3: null,
@@ -58,6 +61,10 @@ const ResumeProvider = ({ children }) => {
     const resume = JSON.parse(localStorage.getItem('resume'))
     if(resume){
       dispatch({type: 'RESUME', payload: resume })
+    }
+    const base = JSON.parse(localStorage.getItem('base'))
+    if(base){
+      dispatch({type: 'BASE', payload: base })
     }
     const edited1 = JSON.parse(localStorage.getItem('edited1'))
     if(edited1){
