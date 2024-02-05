@@ -4,19 +4,19 @@ import Login from "./Pages/Login";
 import AdminUsers from "./Pages/AdminUsers";
 import Dashboard from "./Pages/Dashboard";
 import AdminProducts from "./Pages/AdminProducts";
-import { useAuthContext } from "./Hooks/useAuthContext";
+import ProtectedRoutes from "./Routes/ProtectedRoutes";
 
 function App() {
-
-  const {user}= useAuthContext();
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={ <Login/>} />
-        <Route path="/admin" element={<AdminUsers/> }/>
-        <Route path="/adminProd" element={ <AdminProducts/>}/>
-        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/admin" element={<AdminUsers/> }/>
+          <Route path="/adminProd" element={ <AdminProducts/>}/>
+          <Route path="/dashboard" element={<Dashboard/>}/>
+        </Route>
       </Routes>
     </BrowserRouter>
   )
