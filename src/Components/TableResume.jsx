@@ -109,12 +109,12 @@ function TableResume({data}) {
   };
 
   return (
-    <div style={{marginLeft: '10%'}}>
-      <ul className="list-group list-group-horizontal">
-      <li className="list-group-item"><strong>Fecha:</strong>  {formattedDate}</li>
-        <li className="list-group-item"><strong>Paciente:</strong>  {resume?.Paciente}</li>
-        <li className="list-group-item"><strong>Doctor:</strong>  {resume?.Doctor}</li>
-        <li className="list-group-item"> <strong>Presentacion:</strong>  {resume?.Presentacion}</li>
+    <div style={{marginLeft: '20%'}}>
+      <ul className="table-responsive list-group list-group-horizontal">
+        <li className="list-group-item" style={{width: '30%'}}><strong>Fecha:</strong>  {formattedDate}</li>
+        <li className="list-group-item" style={{width: '30%'}}><strong>Paciente:</strong>  {resume?.Paciente}</li>
+        <li className="list-group-item" style={{width: '30%'}}><strong>Doctor:</strong>  {resume?.Doctor}</li>
+        <li className="list-group-item" style={{width: '30%'}}> <strong>Presentacion:</strong>  {resume?.Presentacion}</li>
       </ul>
       <div className="table-responsive">
         <table className="table">
@@ -155,8 +155,8 @@ function TableResume({data}) {
         </tbody>
         </table>
         <ul className="list-group list-group-vertical">
-          <li className="list-group-item"> <strong>Fullprice:</strong>  {fullPrice}</li>
-          <li className="list-group-item"> <strong>Precio Paciente:</strong>  {patientPrice}</li>
+          <li className="list-group-item"> <strong>Fullprice: </strong>{fullPrice.toLocaleString('es-CO', {style: 'currency',currency: 'COP'})} COP</li>
+          <li className="list-group-item"> <strong>Precio Paciente: </strong>{patientPrice.toLocaleString('es-CO', {style: 'currency',currency: 'COP'})} COP</li>
         </ul>
       </div>
       <button
