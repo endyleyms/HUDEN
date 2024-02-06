@@ -81,7 +81,6 @@ const ResumeProvider = ({ children }) => {
 
   },[])
 
-  console.log("resume context state", state);
 
   return (
     <ResumeContext.Provider value={{ ...state, dispatch }}>
