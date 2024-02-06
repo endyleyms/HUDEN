@@ -8,7 +8,6 @@ import ResumePedido from '../Components/ResumePedido'
 function Dashboard() {
   const [data, setData]=useState()
   const [selecData, setSelectData]= useState()
-  console.log('selectdata', selecData)
   const [addComponent, setAddComponent]= useState(1)
   const [formData, setFormData]=useState()
   const [showResume, setShowResume]=useState(false)
