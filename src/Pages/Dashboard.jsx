@@ -8,6 +8,7 @@ import ResumePedido from '../Components/ResumePedido'
 function Dashboard() {
   const [data, setData]=useState()
   const [selecData, setSelectData]= useState()
+  console.log('selectdata', selecData)
   const [addComponent, setAddComponent]= useState(1)
   const [formData, setFormData]=useState()
   const [showResume, setShowResume]=useState(false)
@@ -15,8 +16,13 @@ function Dashboard() {
 
   //funcion para abrir-cerrar modal
   const handleShowModal = ()=>{
-    setShowModal(!showModal);
-    setShowResume(false);
+    if(selecData != undefined){
+    alert("Si no has descargado la cotización, se borraran los datos.")
+    window.location.reload()
+    }else{
+      setShowModal(!showModal);
+      setShowResume(false);
+    }
   }
 
   //funcion para abrir-cerrar modal
@@ -94,12 +100,13 @@ function Dashboard() {
               handledatachild={handledatachild}
               handleShowModal={handleShowModal}
               />
-              :
-              <button type='button' className="btn btn-primary" style={{position: 'absolute', right: 100, bottom: 200}} onClick={handleShowModal}>
-                Agregar producto
-                </button>
+              : showResume &&
+              <ResumePedido handleShow={handleShowResume} selecData={selecData}/>
             }
-            {showResume && <ResumePedido handleShow={handleShowResume} selecData={selecData}/>}
+            <button type='button' className="btn btn-primary" style={{position: 'absolute', right: 100, bottom: 200}} onClick={handleShowModal}>
+              Agregar producto
+            </button>
+            {/* {showResume && <ResumePedido handleShow={handleShowResume} selecData={selecData}/>} */}
         </div>
       </section>
     </div>
