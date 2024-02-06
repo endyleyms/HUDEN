@@ -92,8 +92,8 @@ function TableResume({data}) {
     if (edited2) tableData.push([edited2.name, edited2.unit, `${edited2.concentration}%`]);
     if (edited3) tableData.push([edited3.name, edited3.unit, `${edited3.concentration}%`]);
     // Agregar fullPrice y patientPrice al array de datos de la tabla
-    tableData.push(['Precio full', fullPrice]);
-    tableData.push(['Precio Paciente',  patientPrice]);
+    tableData.push(['Precio full', fullPrice?.toLocaleString('es-CO', {style: 'currency',currency: 'COP'})]);
+    tableData.push(['Precio Paciente',  patientPrice?.toLocaleString('es-CO', {style: 'currency',currency: 'COP'})]);
     doc.autoTable({
       startY: 50,
       head: [columns],
