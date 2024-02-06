@@ -3,6 +3,8 @@ import { listAll } from '../services/data'
 import Header from '../Components/Header'
 import ModalAddProducts from '../Components/ModalAddProducts'
 import ResumePedido from '../Components/ResumePedido'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 
 function Dashboard() {
@@ -13,11 +15,27 @@ function Dashboard() {
   const [showResume, setShowResume]=useState(false)
   const [showModal, setShowModal]=useState(false)
 
+  const MySwal = withReactContent(Swal)
+
   //funcion para abrir-cerrar modal
   const handleShowModal = ()=>{
     if(selecData != undefined){
-    alert("Si no has descargado la cotización, se borraran los datos.")
-    window.location.reload()
+      MySwal.fire({
+        title: 'Si no has descargado la cotización, se borrarán los datos.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Aceptar',
+        cancelButtonText: 'Cancelar'
+      })
+      .then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          window.location.reload()
+          Swal.fire("Saved!", "", "success");
+        } else if (result.isDenied) {
+          Swal.fire("Changes are not saved", "", "info");
+        }
+      });
     }else{
       setShowModal(!showModal);
       setShowResume(false);

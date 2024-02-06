@@ -79,7 +79,7 @@ function TableResume({data}) {
     doc.text(`Fecha: ${formattedDate}`, 10,10)
     doc.text(`Paciente: ${resume?.Paciente}`, 10,20)
     doc.text(`Doctor: ${resume?.Doctor}`, 10,30)
-    doc.text(`Presentación: ${resume?.Presentacion}`, 10,40)
+    doc.text(`Presentación: ${resume?.Presentacion} g`, 10,40)
 
     //crear la tabla
     const columns =['Nombre', 'Concentración', 'Unidad']
