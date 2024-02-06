@@ -40,7 +40,7 @@ function ModalAddProducts({addComponent, handleSelectData, handleShow, handleAdd
           <h1 className="modal-title fs-5" id="exampleModalLabel">Nuevo Producto</h1>
           <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={handleShowModal}></button>
         </div>
-        <div className="modal-body">
+        <div className="modal-body" style={{marginLeft: '10%'}}>
           <div className="row">
             <div className="col-5">
               <FormItem title={'Nombre Paciente'} placeholder={'Paciente'} value={namePatient} setValue={setNamePatien}/>
