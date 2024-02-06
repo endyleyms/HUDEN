@@ -76,9 +76,10 @@ function TableResume({data}) {
     // Crear un nuevo documento PDF
     const doc = new jsPDF();
   //cuerpo del documento
-    doc.text(`Fecha: ${formattedDate}`, 20,10)
-    doc.text(`Paciente: ${resume?.Paciente}`, 20,20)
-    doc.text(`Doctor: ${resume?.Doctor}`, 20,30)
+    doc.text(`Fecha: ${formattedDate}`, 10,10)
+    doc.text(`Paciente: ${resume?.Paciente}`, 10,20)
+    doc.text(`Doctor: ${resume?.Doctor}`, 10,30)
+    doc.text(`Presentación: ${resume?.Presentacion}`, 10,40)
 
     //crear la tabla
     const columns =['Nombre', 'Concentración', 'Unidad']
