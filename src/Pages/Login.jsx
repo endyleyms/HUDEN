@@ -23,7 +23,7 @@ function Login() {
               <FormAuth/>
             </div>
             <div className="col-md-6 rounded" style={{height:'50%', paddingRight:'50px'}}>
-              <img src="./src/assets/portada-todos-proyectos-huden.webp" alt=""  className="img-fluid" style={{borderRadius:'15px'}}/>
+              <img src="./public/assets/portada-todos-proyectos-huden.webp" alt=""  className="img-fluid" style={{borderRadius:'15px'}}/>
             </div>
           </div>
         </section>
